@@ -1,0 +1,212 @@
+<!-- Indica al navegador que este documento está escrito en HTML5 -->
+<!DOCTYPE html>
+<!-- Define el idioma principal de la página como español -->
+<html lang="es">
+<head>
+    <!-- Define la codificación de caracteres para aceptar tildes y la letra ñ -->
+    <meta charset="UTF-8">
+    <!-- CRUCIAL: Obliga a los dispositivos móviles a no alejar el zoom, ajustando el ancho de la web al ancho de la pantalla -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- El título que aparecerá en la pestaña del navegador -->
+    <title>Rectabags - De ciclista para ciclistas</title>
+    
+    <!-- Carga Bootstrap 5 desde un servidor externo (CDN). Esto nos da acceso a las clases de layout (grillas, d-flex, paddings) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Enlaza el archivo donde ustedes escribirán su propio CSS para la tipografía, efectos hover y colores específicos -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="header-principal fixed-top bg-black text-white py-3">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+            
+            <!-- Bloque izquierdo -->
+            <div class="header-left d-flex gap-3">
+                <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
+                      p-0: (padding 0) Elimina el espacio interno del botón para que su tamaño sea exactamente el de la imagen. -->
+                <button class="btn btn-link p-0" aria-label="Menú">
+                    <!-- class="icono-nav": Clase creada por nosotros para controlar el tamaño desde el CSS. -->
+                    <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav">
+                </button>
+                <button class="btn btn-link p-0" aria-label="Buscar">
+                    <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav">
+                </button>
+            </div>
+
+            <!-- Bloque central: Logo y Eslogan -->
+            <div class="header-center text-center">
+                <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
+                <a href="home.html">
+                    <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
+                    <img src="img/Logo R.jpg" alt="Recta" class="logo-img">
+                </a>
+                <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
+                <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+            </div>
+
+            <!-- Bloque derecho -->
+            <div class="header-right d-flex gap-3">
+                <button class="btn btn-link p-0" aria-label="Usuario">
+                    <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav">
+                </button>
+                <button class="btn btn-link p-0" aria-label="Carrito">
+                    <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav">
+                </button>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- <main>: Etiqueta semántica que envuelve todo el contenido principal de la página, excluyendo header y footer -->
+    <main class="py-5 mt-5">
+        <div class="container py-4">
+
+            <section class="card border-0 rounded-5 p-4 mb-5 shadow-sm" style="background-color: #E8DED8;">
+                <div class="row g-4 align-items-start">
+                    
+                    <div class="col-lg-7 d-flex gap-3">
+                        <div class="rounded-4 overflow-hidden flex-shrink-0" style="width: 120px; height: 520px; background-color: #F1E4D6;">
+                            </div>
+                        
+                        <div class="rounded-4 overflow-hidden flex-grow-1">
+                            <img src="img/mochila-rc30-principal.jpg" alt="Imagen producto" class="img-fluid w-100 object-fit-cover">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 mb-2">Tag producto</span>
+                        <h1 class="h2 fw-bold text-dark mb-1">'Producto'</h1>
+                        <p class="display-6 fw-bold text-dark mb-4">$Precio</p>
+
+                        <div class="bg-white rounded-4 p-3 mb-3 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h2 class="h6 fw-bold m-0">Descripción</h2>
+                                <span class="small">▲</span>
+                            </div>
+                            <p class="small text-secondary m-0">
+                                ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+
+                        <button class="btn btn-dark w-100 py-3 rounded-4 fw-bold mb-3">Añadir al carro</button>
+
+                        <div class="bg-white rounded-4 p-3 shadow-sm">
+                            <h2 class="h6 fw-bold mb-2">Medidas</h2>
+                            <ul class="list-unstyled small text-secondary m-0">
+                                <li><strong>30 cm</strong> de ancho</li>
+                                <li><strong>43 cm</strong> de alto</li>
+                                <li><strong>15 cm</strong> de largo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="card border-0 rounded-5 p-4 shadow-sm" style="background-color: #E8DED8;">
+                <div class="row g-4">
+                    
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white-50 rounded-4 h-100 position-relative">
+                            <span class="small text-muted d-block">Bags</span>
+                            <h3 class="h5 fw-bold mb-3">-Producto-</h3>
+                            
+                            <img src="imagen_mochila.img" alt="Imagen-mochila" class="img-fluid mb-3">
+                            
+                            <div class="small text-muted">
+                                <p class="m-0"><strong>Medidas:</strong></p>
+                                <p class="m-0">'' cm de ancho</p>
+                                <p class="m-0">'' cm de alto</p>
+                                <p class="m-0">'' cm de largo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <h2 class="h5 fw-bold mb-3">Opiniones del producto: 'Insertar producto'</h2>
+                        
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <span class="display-6 fw-bold">4,8</span>
+                            <div class="text-warning fs-4">★★★★★</div>
+                        </div>
+
+                        <div class="d-flex flex-column gap-2">
+                            <div class="d-flex align-items-center gap-2 small">
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 85%;"></div></div>
+                                <span>5 ★</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 small">
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 10%;"></div></div>
+                                <span>4 ★</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 small">
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 2%;"></div></div>
+                                <span>3 ★</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 small">
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 0%;"></div></div>
+                                <span>2 ★</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2 small">
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 3%;"></div></div>
+                                <span>1 ★</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2 class="h5 fw-bold mb-3">Te podría interesar</h2>
+                        <div class="rounded-4 h-75 overflow-hidden" style="background-color: #F1E4D6;">
+                            </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
+    <footer class="bg-black text-white py-5 border-top border-secondary">
+        <div class="container">
+            <div class="row">
+
+                <!-- d-flex: Activa flexbox.
+                  flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
+                  justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
+                  align-items-md-start: En PC, alinea el logo a la izquierda.
+                  align-items-center: En celulares, centra el logo en la pantalla. -->
+              <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column justify-content-center align-items-md-start align-items-center">
+  
+                  <!-- img-fluid: Hace que el logo sea responsivo y no se salga de la pantalla.
+                      style="max-height: 100px;": Controla que el logo no sea gigante, ajusta este valor de 100px según te guste. -->
+                  <img src="img/Logo footer.png" alt="Logo Recta" class="img-fluid" style="max-height: 100px;">
+              </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
+                    <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
+                    <ul class="list-unstyled lh-lg">
+                        <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
+                        <li><a href="#" class="text-white text-decoration-none">Sobre Nosotros</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Contactanos</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h4 class="fw-bold mb-3">TIENDA</h4>
+                    <p class="text-secondary">*Foto Mapa*</p>
+                    <!-- style="height: 150px;": Esto es CSS en línea provisional solo para darle forma al cuadrado gris donde irá el mapa más adelante -->
+                    <div class="bg-secondary" style="height: 150px; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carga el JavaScript de Bootstrap. Necesario para que funcione el menú de hamburguesa en celulares (si deciden implementarlo más adelante) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
