@@ -3,31 +3,28 @@
 <!-- Define el idioma principal de la página como español -->
 <html lang="es">
 <head>
-    <!-- Define la codificación de caracteres para aceptar tildes y la letra ñ -->
+    <!-- Configuración básica de codificación y responsive -->
     <meta charset="UTF-8">
-    <!-- CRUCIAL: Ajusta el ancho de la web al dispositivo móvil para evitar zooms no deseados -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- El título que aparecerá en la pestaña del navegador -->
-    <title>Rectabags - Mochila RC-30</title>
     
-    <!-- Carga Bootstrap 5 desde CDN para manejo de grillas y clases utilitarias -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
-    <!-- Hoja de estilos personalizada de la tienda -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Título de la pestaña -->
+    <title>Rectabags - Musette</title>
 
-    <!-- Estilos específicos para dar el efecto de selección activa a las miniaturas -->
-    <style>
-        .thumbnail-btn {
-            opacity: 0.6;
-            transition: opacity 0.2s ease, border-color 0.2s ease;
-            cursor: pointer;
-        }
-        .thumbnail-btn:hover, .thumbnail-btn.active {
-            opacity: 1;
-            border: 2px solid #000 !important; /* Resalta la miniatura seleccionada */
-        }
-    </style>
+    <!-- Favicon (Opcional) -->
+    <link rel="icon" type="image/x-icon" href="img/Logo R.jpg">
+
+    <!-- Framework Bootstrap 5.3 CDN -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+      crossorigin="anonymous">
+
+    <!-- Estilos generales compartidos (Header y Footer) -->
+    <link rel="stylesheet" href="css/style_header_footer.css">
+
+    <!-- Estilos específicos de vistas de producto -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
