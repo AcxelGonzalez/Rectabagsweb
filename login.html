@@ -1,11 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi cuenta</title>
+
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="css/style_header_footer.css" />
+        <link rel="stylesheet" href="css/style_login.css" />
+    </head>
+    <body>
+        <!-- ================= HEADER / NAVBAR ================= -->
+        <header class="header-principal fixed-top bg-black text-white py-3">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+                <!-- Bloque izquierdo -->
+                <div class="header-left d-flex gap-3">
+                    <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
+                        p-0: (padding 0) Elimina el espacio interno del botón para que su tamaño sea exactamente el de la imagen. -->
+                    <button class="btn btn-link p-0" aria-label="Menú">
+                        <!-- class="icono-nav": Clase creada por nosotros para controlar el tamaño desde el CSS. -->
+                        <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
+                    </button>
+                    <button class="btn btn-link p-0" aria-label="Buscar">
+                        <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
+                    </button>
+                </div>
+
+                <!-- Bloque central: Logo y Eslogan -->
+                <div class="header-center text-center">
+                    <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
+                    <a href="home.html">
+                        <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
+                        <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
+                    </a>
+                    <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
+                    <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+                </div>
+
+                <!-- Bloque derecho -->
+                <div class="header-right d-flex gap-3">
+                    <button class="btn btn-link p-0" aria-label="Usuario">
+                    <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
+                    </button>
+                    <button class="btn btn-link p-0" aria-label="Carrito">
+                    <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Se asume que el header ya está cargado arriba -->
+        <!-- min-vh-100 asegura que la sección ocupe toda la altura de la pantalla, d-flex centra el contenido verticalmente -->
+        <section class="login-section d-flex align-items-center py-5 min-vh-100">
+            <div class="container">
+                
+                <!-- Títulos Superiores -->
+                <div class="row mb-5 text-center">
+                    <div class="col-12">
+                        <!-- display-5 ajusta el tamaño, titulo-mono aplica la fuente tipo máquina de escribir del mockup -->
+                        <h1 class="display-5 titulo-mono mb-2">Bienvenido a Rectabags</h1>
+                        <p class="fs-5 text-dark fw-light">Ingresa o crea tu cuenta para poder comprar</p>
+                    </div>
+                </div>
+
+                <!-- Contenedor de las dos tarjetas -->
+                <!-- justify-content-center centra las cajas, g-4 da un espacio (gap) entre ellas en móviles -->
+                <div class="row justify-content-center g-4">
+                    
+                    <!-- TARJETA IZQUIERDA: INGRESAR -->
+                    <div class="col-md-5">
+                        <!-- border-0 quita el borde por defecto de Bootstrap, shadow-sm da una sombra muy sutil, h-100 iguala la altura con la otra tarjeta -->
+                        <div class="card border-0 shadow-sm h-100 p-4 rounded-0">
+                            <div class="card-body">
+                                <h2 class="text-center mb-4 titulo-mono">Ingresar</h2>
+                                
+                                <form id="form-login">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label small text-secondary">Correo electrónico</label>
+                                        <!-- rounded-0 quita los bordes redondeados para que sea cuadrado como en el mockup -->
+                                        <input type="email" class="form-control rounded-0 border-dark" id="email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label small text-secondary">Contraseña</label>
+                                        <input type="password" class="form-control rounded-0 border-dark" id="password" required>
+                                    </div>
+                                    
+                                    <!-- Opciones de contraseña y recordar -->
+                                    <div class="d-flex justify-content-between align-items-center mb-4 mt-2">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input border-dark rounded-0" id="recordarme">
+                                            <label class="form-check-label small" for="recordarme">Recuerdame</label>
+                                        </div>
+                                        <a href="#" class="small text-secondary text-decoration-underline">¿Olvidaste tu contraseña?</a>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-dark w-100 rounded-0 py-2">Ingresar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA DERECHA: CREAR CUENTA -->
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm h-100 p-4 rounded-0">
+                            <!-- flex-column permite empujar el botón al fondo si la tarjeta izquierda es más alta -->
+                            <div class="card-body d-flex flex-column">
+                                <h2 class="text-center mb-4 titulo-mono">Crear cuenta</h2>
+                                
+                                <!-- flex-grow-1 hace que este texto ocupe el espacio sobrante, empujando lo demás hacia abajo -->
+                                <p class="texto-mono small flex-grow-1 text-secondary lh-lg">
+                                    Al registrarte podrás comenzar a realizar tus compras, acceder al estado e historial de tus pedidos. Solo te pediremos lo esencial.
+                                </p>
+                                
+                                <div class="mb-4">
+                                    <a href="#" class="small text-secondary text-decoration-underline">Términos y condiciones.</a>
+                                </div>
+                                
+                                <button type="button" class="btn btn-dark w-100 rounded-0 py-2 mt-auto" onclick="window.location.href='registro.html'">Crear cuenta</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Se asume que el footer cargará aquí abajo -->
+
+
+
+
+        <!-- ================= FOOTER ================= -->
+        <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
+        <footer class="bg-black text-white py-5 border-top border-secondary">
+            <div class="container">
+                <div class="row">
+                    <!-- d-flex: Activa flexbox.
+                            flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
+                            justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
+                            align-items-md-start: En PC, alinea el logo a la izquierda.
+                            align-items-center: En celulares, centra el logo en la pantalla. -->
+                    <div class="col-md-4 columna-logo">
+                        <img src="img/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
+                    </div>
+
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h4 class="fw-bold mb-3">
+                            INFORMACIÓN
+                        </h4>
+                        <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
+                        <ul class="list-unstyled lh-lg">
+                            <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
+                            <li>
+                                <a href="sobre_nosotros.html" class="text-white text-decoration-none">
+                                    Sobre Nosotros
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blog.html" class="text-white text-decoration-none">
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contacto.html" class="text-white text-decoration-none">
+                                    Contactanos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4 class="fw-bold mb-3">
+                            RETIRO EN TIENDA
+                        </h4>
+                        <p class="text-white text-decoration-none">
+                            Monseñor Miller 22-B, Providencia, Chile
+                        </p>
+                        <div class="bg-secondary">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
+                                width="100%"
+                                height="300"
+                                style="border: 0"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous">
+        </script>  
+    </body>
 </html>
