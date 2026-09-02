@@ -1,107 +1,248 @@
+<!-- Indica al navegador que este documento está escrito en HTML5 -->
 <!doctype html>
-<html>
+<!-- Define el idioma principal de la página como español -->
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
+    <!-- Define la codificación de caracteres para aceptar tildes y la letra ñ -->
+    <meta charset="UTF-8" />
+    <!-- CRUCIAL: Obliga a los dispositivos móviles a no alejar el zoom, ajustando el ancho de la web al ancho de la pantalla -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- El título que aparecerá en la pestaña del navegador -->
+    <title>Rectabags - De ciclista para ciclistas</title>
 
-    <title>El título de mi página</title>
+    <!-- Carga Bootstrap 5 desde un servidor externo (CDN). Esto nos da acceso a las clases de layout (grillas, d-flex, paddings) -->
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      type="text/css" />
-    <link rel="stylesheet" href="style.css" />
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"/>
 
-    <!-- las tres siguientes líneas son un truco para obtener elementos semánticos de HTML5 que funcionan en versiones de Internet Explorer antiguas -->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
+    <!-- Enlaza el archivo donde ustedes escribirán su propio CSS para la tipografía, efectos hover y colores específicos -->
+    <link rel="stylesheet" href="css/style_header_footer.css" />
+    <link rel="stylesheet" href="css/style_home.css" />
   </head>
-
   <body>
-    <!-- Aquí empieza el encabezado principal que se mantendrá en todas las páginas del sitio web -->
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="header-principal fixed-top bg-black text-white py-3">
+      <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+        <!-- Bloque izquierdo -->
+        <div class="header-left d-flex gap-3">
+          <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
+                      p-0: (padding 0) Elimina el espacio interno del botón para que su tamaño sea exactamente el de la imagen. -->
+          <button class="btn btn-link p-0" aria-label="Menú">
+            <!-- class="icono-nav": Clase creada por nosotros para controlar el tamaño desde el CSS. -->
+            <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
+          </button>
+          <button class="btn btn-link p-0" aria-label="Buscar">
+            <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
+          </button>
+        </div>
 
-    <header>
-      <h1>Encabezado</h1>
+        <!-- Bloque central: Logo y Eslogan -->
+        <div class="header-center text-center">
+          <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
+          <a href="home.html">
+            <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
+            <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
+          </a>
+          <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
+          <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+        </div>
+
+        <!-- Bloque derecho -->
+        <div class="header-right d-flex gap-3">
+          <button class="btn btn-link p-0" aria-label="Usuario">
+            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
+          </button>
+          <button class="btn btn-link p-0" aria-label="Carrito">
+            <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
+          </button>
+        </div>
+      </div>
     </header>
 
-    <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Nuestro equipo</a></li>
-        <li><a href="#">Proyectos</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-
-      <!-- Un formulario de búsqueda es una forma no-lineal de hacer búsquedas en un sitio web. -->
-
-      <form>
-        <input type="search" name="q" placeholder="Buscar" />
-        <input type="submit" value="¡Vamos!" />
-      </form>
-    </nav>
-
-    <!-- Aquí está el contenido principal de nuestra página -->
+    <!-- <main>: Etiqueta semántica que envuelve todo el contenido principal de la página, excluyendo header y footer -->
     <main>
-      <!-- Contiene un artículo -->
-      <article>
-        <h2>Título del artículo</h2>
+      <!-- ================= HERO SECTION ================= -->
+      <!-- align-items-end: Empuja el contenido interno (el texto) hacia la parte inferior del contenedor -->
+      <section class="hero-section d-flex align-items-end">
+        <!-- mb-5: Margin-bottom (margen inferior) de tamaño 5 para separar el texto del borde inferior de la foto -->
+        <div class="container mb-5">
+          <div class="hero-content text-white">
+            <!-- display-4: Hace el texto mucho más grande que un <h2> normal.
+                          fw-bold: Aplica "font-weight: bold" (negrita).
+                          mb-1: Un margen inferior pequeño para no separarlo mucho del párrafo de abajo. -->
+            <h2 class="display-4 fw-bold mb-1">La mochila perfecta</h2>
+            <!-- fs-5: "font-size: 5", un tamaño de texto ligeramente más grande que el normal -->
+            <p class="fs-5">para viajar, trabajar y explorar</p>
+          </div>
+        </div>
+      </section>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Donec a diam
-          lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam
-          viverra nec consectetur ant hendrerit. Donec et mollis dolor. Praesent
-          et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt
-          congue enim, ut porta lorem lacinia consectetur.
-        </p>
+    <!-- ================= PRODUCTOS ================= -->
+      <!-- py-5: Padding vertical amplio para dar respiro a la sección entera -->
+      <section class="productos-section py-5">
+        <div class="container">
+          <!-- text-uppercase: Convierte todo el texto a MAYÚSCULAS automáticamente -->
+          <h2 class="text-center fw-bold mb-5 text-uppercase titulo-pesado">
+            Explora nuestros productos
+          </h2>
 
-        <h3>Subsección</h3>
+          <!-- row: Inicia el sistema de grillas de Bootstrap.
+                      align-items-center: Centra el texto y las imágenes verticalmente.
+                      text-center text-md-start: En celulares centra el texto, en pantallas medianas (md) en adelante lo alinea a la izquierda. -->
+          <div class="row align-items-center text-center text-md-start">
+            <!-- col-md-3: En pantallas medianas, este bloque ocupa 3 de las 12 columnas disponibles.
+                          mb-4 mb-md-0: En celulares tiene margen inferior, en pantallas medianas ese margen se vuelve 0. -->
+            <div class="col-md-3 mb-4 mb-md-0">
+              <h3 class="fw-bold text-uppercase titulo-pesado lh-sm">
+                Selecciona el que mejor se ajuste a tus necesidades
+              </h3>
+            </div>
+            <!-- col-md-7: Este bloque (la galería) ocupa 7 de las 12 columnas, siendo el más ancho -->
+            <div class="col-md-7 mb-4 mb-md-0">
+              <div class="galeria-productos d-flex justify-content-between gap-2">
+                <!-- img-fluid: Hace que la imagen sea responsive (no se salga de su contenedor).
+                                  w-25: Obliga a cada imagen a ocupar exactamente el 25% del ancho disponible.
+                                  object-fit-cover: Recorta la imagen limpiamente si sus proporciones no encajan, evitando que se deforme o aplaste. -->
+                <img src="img/explora_1.png" alt="Explora 1" class="img-fluid w-25 object-fit-cover"/>
+                <img src="img/explora_2.png" alt="Explora 2" class="img-fluid w-25 object-fit-cover"/>
+                <img src="img/explora_3.png" alt="Explora 3" class="img-fluid w-25 object-fit-cover"/>
+              </div>
+            </div>
 
-        <p>
-          Donec ut librero sed accu vehicula ultricies a non tortor. Lorem ipsum
-          dolor sit amet, consectetur adipisicing elit. Aenean ut gravida lorem.
-          Ut turpis felis, pulvinar a semper sed, adipiscing id dolor.
-        </p>
+            <!-- col-md-2: Este bloque ocupa las 2 columnas restantes (3+7+2 = 12).
+                          text-md-end: Alinea el botón a la derecha en pantallas medianas. -->
+            <div class="col-md-2 text-center text-md-end">
+              <!-- btn-secondary: Aplica el color secundario de Bootstrap (suele ser gris). px-4 py-2 hace el botón más grande ajustando su padding interno. -->
+              <a href="catalogo.html" class="btn btn-secondary px-4 py-2">
+                Ver más ➔
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>  
 
-        <p>
-          Pelientesque auctor nisi id magna consequat sagittis. Curabitur
-          dapibus, enim sit amet elit pharetra tincidunt feugiat nist imperdiet.
-          Ut convallis libero in urna ultrices accumsan. Donec sed odio eros.
-        </p>
+    <!-- ================= REDES SOCIALES ================= -->
+      <section class="redes-section bg-black text-white py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- col-md-4: Ocupa 4 columnas -->
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h2 class="fw-bold text-uppercase titulo-pesado">
+                Síguenos en redes
+              </h2>
+              <!-- Fila de Instagram -->
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <!-- La etiqueta <a> envuelve a la imagen. href contiene la URL de destino -->
+                <a href="https://www.instagram.com/rectabags" target="_blank">
+                  <img src="img/icons8-instagram-50.png" alt="Instagram" class="icono-nav"/>
+                </a>
+                <!-- El texto queda fuera del enlace (no es cliqueable) -->
+                <p class="fs-5 m-0">@rectabags</p>
+              </div>
 
-        <h3>Otra subsección</h3>
+              <!-- Fila de TikTok -->
+              <div class="d-flex align-items-center gap-3">
+                <a href="https://www.tiktok.com/@rectabags" target="_blank">
+                  <img src="img/icons8-tiktok-50.png" alt="TikTok" class="icono-nav"/>
+                </a>
+                <p class="fs-5 m-0">@rectabags</p>
+              </div>
+            </div>
 
-        <p>
-          Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum
-          soclis natoque penatibus et manis dis parturient montes, nascetur
-          ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem
-          facilisis semper ac in est.
-        </p>
-
-        <p>
-          Vivamus fermentum semper porta. Nunc diam velit, adipscing ut
-          tristique vitae sagittis vel odio. Maecenas convallis ullamcorper
-          ultricied. Curabitur ornare, ligula semper consectetur sagittis, nisi
-          diam iaculis velit, is fringille sem nunc vet mi.
-        </p>
-      </article>
-
-      <!-- el contenido aparte también se puede anidar dentro del contenido principal -->
-      <aside>
-        <h2>Relacionado</h2>
-
-        <ul>
-          <li><a href="#">Oh, me gusta estar junto al mar</a></li>
-          <li><a href="#">Oh, me gusta estar junto al mar</a></li>
-          <li><a href="#">Aunque en el norte de Inglaterra</a></li>
-          <li><a href="#">Nunca deja de llover</a></li>
-          <li><a href="#">Oh, bueno...</a></li>
-        </ul>
-      </aside>
+            <!-- col-md-8: Las fotos de instagram ocupan 8 de 12 columnas -->
+            <div class="col-md-8">
+              <!-- row g-2: Crea una sub-grilla. g-2 (gutter 2) define el espacio/separación entre las fotos -->
+              <div class="row g-2">
+                <!-- col-6 col-md-3: En celulares, cada foto ocupa la mitad (6/12 = 2 fotos por fila). En PC, ocupan un cuarto (3/12 = 4 fotos por fila) -->
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_1.png" alt="Instagram 1" class="img-fluid" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_2.png" alt="Instagram 2" class="img-fluid" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_3.png" alt="Instagram 3" class="img-fluid" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_4.png" alt="Instagram 4" class="img-fluid" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Y aquí está nuestro pie de página principal que se utiliza en todas las páginas de nuestro sitio web -->
+    <!-- ================= FOOTER ================= -->
+    <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
+    <footer class="bg-black text-white py-5 border-top border-secondary">
+      <div class="container">
+        <div class="row">
+          <!-- d-flex: Activa flexbox.
+                  flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
+                  justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
+                  align-items-md-start: En PC, alinea el logo a la izquierda.
+                  align-items-center: En celulares, centra el logo en la pantalla. -->
+          <div class="col-md-4 columna-logo">
+            <img src="img/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
+          </div>
 
-    <footer>
-      <p>©Copyright 2050 de nadie. Todos los derechos revertidos.</p>
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h4 class="fw-bold mb-3">
+              INFORMACIÓN
+            </h4>
+            <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
+            <ul class="list-unstyled lh-lg">
+              <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
+              <li>
+                <a href="sobre_nosotros.html" class="text-white text-decoration-none">
+                  Sobre Nosotros
+                </a>
+              </li>
+              <li>
+                <a href="blog.html" class="text-white text-decoration-none">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="contacto.html" class="text-white text-decoration-none">
+                  Contactanos
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h4 class="fw-bold mb-3">
+              RETIRO EN TIENDA
+            </h4>
+            <p class="text-white text-decoration-none">
+              Monseñor Miller 22-B, Providencia, Chile
+            </p>
+            <div class="bg-secondary">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
+
+    <!-- Carga el JavaScript de Bootstrap. Necesario para que funcione el menú de hamburguesa en celulares (si deciden implementarlo más adelante) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous">
+    </script>  
+
   </body>
 </html>

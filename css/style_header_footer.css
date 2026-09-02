@@ -1,0 +1,69 @@
+/* ================= TAMAÑOS DE IMÁGENES DEL HEADER ================= */
+/* ================= HEADER ================= */
+body {
+    padding-top: 90px; /* Desplaza todo el contenido de la web hacia abajo para hacerle espacio al menú fijo */
+}
+
+/* Controla los íconos laterales (menú, buscar, usuario, carrito) */
+.icono-nav {
+    /* width: Define el ancho exacto. 24px o 28px es el estándar para íconos legibles en móviles y escritorio. */
+    width: 24px;
+    
+    /* height: Obliga a que la altura sea igual al ancho, asegurando que el espacio asignado sea un cuadrado perfecto. */
+    height: 24px;
+    
+    /* object-fit: contain; Previene que la imagen se estire o aplaste. Le dice al navegador "ajusta la imagen dentro de estos 24x24px manteniendo su proporción original". */
+    object-fit: contain;
+    
+    /* filter: invert(1); [TRUCO OPCIONAL] Si descargaste íconos que son de color negro, al estar sobre tu fondo negro desaparecerán. Esta línea de CSS los invierte a color blanco puro sin tener que editarlos en Photoshop. Si tus íconos ya son blancos, borra esta línea. */
+    filter: invert(1);
+    
+    /* transition: Prepara la imagen para que si le agregamos un efecto al pasar el mouse (hover), el cambio sea suave (0.2 segundos) y no de golpe. */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Controla el logo central */
+.logo-img {
+    /* height: Para los logos horizontales o cuadrados, es mejor fijar solo la altura (ej: 40px o 50px). Al no definir el 'width', el navegador calcula el ancho automáticamente manteniendo la proporción perfecta. */
+    height: 45px;
+    
+    /* max-width: 100%; Es una regla de seguridad. Si alguien abre la web en un celular antiquísimo y muy estrecho, evita que el logo se desborde fuera de la pantalla. */
+    max-width: 100%;
+    
+    object-fit: contain;
+}
+
+/* Efecto Hover para demostrar dominio de CSS */
+.icono-nav:hover {
+    /* transform: scale(1.1); Hace que el ícono crezca un 10% cuando el usuario pone el cursor encima, dando una sensación interactiva. */
+    transform: scale(1.1);
+}
+
+/* ================= FOOTER ================= */
+.columna-logo {
+    /* Reemplaza a d-flex y flex-column */
+    display: flex;
+    flex-direction: column;
+    
+    /* Reemplaza a justify-content-center y align-items-center (comportamiento móvil por defecto) */
+    justify-content: center;
+    align-items: center;
+    
+    /* Reemplaza a mb-4 (margen inferior en celulares) */
+    margin-bottom: 1.5rem; 
+}
+
+/* Imagen del logo (Reemplaza el style="" en línea y el img-fluid) */
+.logo-footer {
+    max-height: 100px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Query: Reemplaza a mb-md-0 y align-items-md-start (Comportamiento en pantallas de PC) */
+@media (min-width: 768px) {
+    .columna-logo {
+        margin-bottom: 0;
+        align-items: flex-start; /* Alinea el logo a la izquierda en PC */
+    }
+}
