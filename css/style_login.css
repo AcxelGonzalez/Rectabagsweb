@@ -3,6 +3,12 @@
 /* Fondo color durazno/crema pálido exacto al de la imagen */
 .login-section {
     background-color: #FAEFDF; 
+    
+    /* Le resta la altura exacta del header al total de la pantalla */
+    min-height: calc(100vh - 90px); 
+    
+    /* Agrega un poco de margen superior interno por si acaso */
+    padding-top: 2rem; 
 }
 
 /* Tipografía de los Títulos */

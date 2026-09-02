@@ -1,5 +1,9 @@
 /* ================= TAMAÑOS DE IMÁGENES DEL HEADER ================= */
 /* ================= HEADER ================= */
+body {
+    padding-top: 90px; /* Desplaza todo el contenido de la web hacia abajo para hacerle espacio al menú fijo */
+}
+
 /* Controla los íconos laterales (menú, buscar, usuario, carrito) */
 .icono-nav {
     /* width: Define el ancho exacto. 24px o 28px es el estándar para íconos legibles en móviles y escritorio. */
