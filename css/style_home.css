@@ -1,0 +1,19 @@
+.hero-section {
+    /* Llama a tu imagen */
+    background-image: url('../img/main.jpeg');
+    
+    /* cover: Obliga a la imagen a escalar hasta cubrir todo el ancho y alto del contenedor sin deformarse (recorta lo sobrante) */
+    background-size: cover;
+    
+    /* center: Asegura que el punto focal de la imagen sea el centro, así si se recorta, las personas siguen viéndose */
+    background-position: center;
+    
+    /* Evita que la imagen se repita como un mosaico si la pantalla es muy grande */
+    background-repeat: no-repeat;
+    
+    /* min-height: Define una altura mínima. 70vh significa que ocupará el 70% de la altura de la pantalla del dispositivo (celular o PC) */
+    min-height: 70vh;
+    
+    /* Asegura que tome todo el ancho disponible */
+    width: 100%;
+}
