@@ -1,21 +1,75 @@
-<!DOCTYPE html>
+<!-- Indica al navegador que este documento está escrito en HTML5 -->
+<!doctype html>
+<!-- Define el idioma principal de la página como español -->
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rectabags - De ciclista para ciclistas</title>
+  <head>
+    <!-- Define la codificación de caracteres para aceptar tildes y la letra ñ -->
+    <meta charset="UTF-8" />
+    <!-- CRUCIAL: Obliga a los dispositivos móviles a no alejar el zoom, ajustando el ancho de la web al ancho de la pantalla -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- El título que aparecerá en la pestaña del navegador -->
+    <title>Rectabags - De ciclista para ciclistas</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Carga Bootstrap 5 desde un servidor externo (CDN). Esto nos da acceso a las clases de layout (grillas, d-flex, paddings) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
 
-</head>
-<body>
-  <header class="header-principal fixed-top bg-black text-white py-3">
-    <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+    <!-- Enlaza el archivo donde ustedes escribirán su propio CSS para la tipografía, efectos hover y colores específicos -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style_home.css" />
+  </head>
+  <body>
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="header-principal fixed-top bg-black text-white py-3">
+      <div
+        class="container-fluid px-4 d-flex justify-content-between align-items-center"
+      >
+        <!-- Bloque izquierdo -->
+        <div class="header-left d-flex gap-3">
+          <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
+                      p-0: (padding 0) Elimina el espacio interno del botón para que su tamaño sea exactamente el de la imagen. -->
+          <button class="btn btn-link p-0" aria-label="Menú">
+            <!-- class="icono-nav": Clase creada por nosotros para controlar el tamaño desde el CSS. -->
+            <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
+          </button>
+          <button class="btn btn-link p-0" aria-label="Buscar">
+            <img
+              src="img/icons8-search-50.png"
+              alt="Buscar"
+              class="icono-nav"
+            />
+          </button>
+        </div>
 
-    </div>
-  </header>
+        <!-- Bloque central: Logo y Eslogan -->
+        <div class="header-center text-center">
+          <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
+          <a href="home.html">
+            <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
+            <img src="img/Logo R.jpg" alt="Recta" class="logo-img" />
+          </a>
+          <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
+          <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+        </div>
 
-
-</body>
+        <!-- Bloque derecho -->
+        <div class="header-right d-flex gap-3">
+          <button class="btn btn-link p-0" aria-label="Usuario">
+            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav" />
+          </button>
+          <button class="btn btn-link p-0" aria-label="Carrito">
+            <img
+              src="img/icons8-shopping-cart-50.png"
+              alt="Carrito"
+              class="icono-nav"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+  </body>
 </html>
