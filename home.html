@@ -179,7 +179,76 @@
       </section>
     </main>
 
-    
+    <!-- ================= FOOTER ================= -->
+    <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
+    <footer class="bg-black text-white py-5 border-top border-secondary">
+      <div class="container">
+        <div class="row">
+          <!-- d-flex: Activa flexbox.
+                  flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
+                  justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
+                  align-items-md-start: En PC, alinea el logo a la izquierda.
+                  align-items-center: En celulares, centra el logo en la pantalla. -->
+          <div class="col-md-4 columna-logo">
+            <img
+              src="img/Logo footer.png"
+              alt="Logo Recta"
+              class="logo-footer"
+            />
+          </div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
+            <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
+            <ul class="list-unstyled lh-lg">
+              <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
+              <li>
+                <a
+                  href="sobre_nosotros.html"
+                  class="text-white text-decoration-none"
+                  >Sobre Nosotros</a
+                >
+              </li>
+              <li>
+                <a href="blog.html" class="text-white text-decoration-none"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a href="contacto.html" class="text-white text-decoration-none"
+                  >Contactanos</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h4 class="fw-bold mb-3">RETIRO EN TIENDA</h4>
+            <p class="text-white text-decoration-none">
+              Monseñor Miller 22-B, Providencia, Chile
+            </p>
+            <div class="bg-secondary">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Carga el JavaScript de Bootstrap. Necesario para que funcione el menú de hamburguesa en celulares (si deciden implementarlo más adelante) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>  
 
   </body>
 </html>
