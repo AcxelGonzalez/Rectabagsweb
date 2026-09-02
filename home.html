@@ -19,15 +19,13 @@
     />
 
     <!-- Enlaza el archivo donde ustedes escribirán su propio CSS para la tipografía, efectos hover y colores específicos -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style_header_footer.css" />
     <link rel="stylesheet" href="css/style_home.css" />
   </head>
   <body>
     <!-- ================= HEADER / NAVBAR ================= -->
     <header class="header-principal fixed-top bg-black text-white py-3">
-      <div
-        class="container-fluid px-4 d-flex justify-content-between align-items-center"
-      >
+      <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
         <!-- Bloque izquierdo -->
         <div class="header-left d-flex gap-3">
           <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
@@ -37,11 +35,7 @@
             <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
           </button>
           <button class="btn btn-link p-0" aria-label="Buscar">
-            <img
-              src="img/icons8-search-50.png"
-              alt="Buscar"
-              class="icono-nav"
-            />
+            <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
           </button>
         </div>
 
@@ -50,7 +44,7 @@
           <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
           <a href="home.html">
             <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
-            <img src="img/Logo R.jpg" alt="Recta" class="logo-img" />
+            <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
           </a>
           <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
           <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
@@ -59,17 +53,79 @@
         <!-- Bloque derecho -->
         <div class="header-right d-flex gap-3">
           <button class="btn btn-link p-0" aria-label="Usuario">
-            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav" />
+            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
           </button>
           <button class="btn btn-link p-0" aria-label="Carrito">
-            <img
-              src="img/icons8-shopping-cart-50.png"
-              alt="Carrito"
-              class="icono-nav"
-            />
+            <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
           </button>
         </div>
       </div>
     </header>
+
+    <!-- <main>: Etiqueta semántica que envuelve todo el contenido principal de la página, excluyendo header y footer -->
+    <main>
+      <!-- ================= HERO SECTION ================= -->
+      <!-- align-items-end: Empuja el contenido interno (el texto) hacia la parte inferior del contenedor -->
+      <section class="hero-section d-flex align-items-end">
+        <!-- mb-5: Margin-bottom (margen inferior) de tamaño 5 para separar el texto del borde inferior de la foto -->
+        <div class="container mb-5">
+          <div class="hero-content text-white">
+            <!-- display-4: Hace el texto mucho más grande que un <h2> normal.
+                          fw-bold: Aplica "font-weight: bold" (negrita).
+                          mb-1: Un margen inferior pequeño para no separarlo mucho del párrafo de abajo. -->
+            <h2 class="display-4 fw-bold mb-1">La mochila perfecta</h2>
+            <!-- fs-5: "font-size: 5", un tamaño de texto ligeramente más grande que el normal -->
+            <p class="fs-5">para viajar, trabajar y explorar</p>
+          </div>
+        </div>
+      </section>
+
+  <!-- ================= PRODUCTOS ================= -->
+    <!-- py-5: Padding vertical amplio para dar respiro a la sección entera -->
+    <section class="productos-section py-5">
+      <div class="container">
+        <!-- text-uppercase: Convierte todo el texto a MAYÚSCULAS automáticamente -->
+        <h2 class="text-center fw-bold mb-5 text-uppercase titulo-pesado">
+          Explora nuestros productos
+        </h2>
+
+        <!-- row: Inicia el sistema de grillas de Bootstrap.
+                    align-items-center: Centra el texto y las imágenes verticalmente.
+                    text-center text-md-start: En celulares centra el texto, en pantallas medianas (md) en adelante lo alinea a la izquierda. -->
+        <div class="row align-items-center text-center text-md-start">
+          <!-- col-md-3: En pantallas medianas, este bloque ocupa 3 de las 12 columnas disponibles.
+                        mb-4 mb-md-0: En celulares tiene margen inferior, en pantallas medianas ese margen se vuelve 0. -->
+          <div class="col-md-3 mb-4 mb-md-0">
+            <h3 class="fw-bold text-uppercase titulo-pesado lh-sm">
+              Selecciona el que mejor se ajuste a tus necesidades
+            </h3>
+          </div>
+          <!-- col-md-7: Este bloque (la galería) ocupa 7 de las 12 columnas, siendo el más ancho -->
+          <div class="col-md-7 mb-4 mb-md-0">
+            <div
+              class="galeria-productos d-flex justify-content-between gap-2"
+            >
+              <!-- img-fluid: Hace que la imagen sea responsive (no se salga de su contenedor).
+                                w-25: Obliga a cada imagen a ocupar exactamente el 25% del ancho disponible.
+                                object-fit-cover: Recorta la imagen limpiamente si sus proporciones no encajan, evitando que se deforme o aplaste. -->
+              <img src="img/cilindros.jpg" alt="Cilindros" class="img-fluid w-25 object-fit-cover"/>
+              <img src="img/manillar.jpg" alt="Bolso Manillar" class="img-fluid w-25 object-fit-cover"/>
+              <img src="img/musette.jpg" alt="Musette" class="img-fluid w-25 object-fit-cover"/>
+              <img src="img/bandolera.jpg" alt="Bandolera" class="img-fluid w-25 object-fit-cover"/>
+            </div>
+          </div>
+
+          <!-- col-md-2: Este bloque ocupa las 2 columnas restantes (3+7+2 = 12).
+                        text-md-end: Alinea el botón a la derecha en pantallas medianas. -->
+          <div class="col-md-2 text-center text-md-end">
+            <!-- btn-secondary: Aplica el color secundario de Bootstrap (suele ser gris). px-4 py-2 hace el botón más grande ajustando su padding interno. -->
+            <a href="catalogo.html" class="btn btn-secondary px-4 py-2">
+              Ver más ➔
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>  
+
   </body>
 </html>
