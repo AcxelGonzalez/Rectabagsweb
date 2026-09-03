@@ -1,0 +1,149 @@
+/* Contenedor principal de la cuadrícula */
+    .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+    background-color: #fbeee6; /* Color de fondo similar a la imagen */
+    padding: 24px;
+    }
+    
+    /* Reiniciar el cuerpo de la página */
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #fbeee6; /* Usa el mismo código hex del fondo beige */
+    flex-direction: column;
+    justify-content: flex-start; /* Fuerza la alineación al inicio arriba */
+    }
+
+    /* Tarjeta individual */
+    .card {
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Estilo para los enlaces de la imagen */
+    .card a {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+    }
+
+    .card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    }
+
+    /* Efecto hover al pasar el cursor sobre la imagen */
+    .card img:hover {
+    transform: scale(1.03);
+    }
+
+    /* Ajusta los px según la altura exacta de tu barra negra */
+    section {
+    margin-top: 90px;
+    background-color: #fbeee6; 
+}
+
+
+    /* Estilos para el Menú Lateral */
+    .sidebar-main-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #000000;
+    }
+
+    .sidebar-menu {
+    font-family: monospace, 'Courier New', Courier;
+    }
+
+    .menu-group {
+    margin-bottom: 1.2rem;
+    }
+
+    .category-header {
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #111111;
+    cursor: pointer;
+    }
+
+    .sub-menu {
+    padding-left: 1rem;
+    }
+
+    .sub-menu li {
+    margin-bottom: 0.4rem;
+    }
+
+    .sub-menu a {
+    text-decoration: none;
+    color: #222222;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    }
+
+    .sub-menu a:hover {
+    color: #666666;
+    }
+
+    /* Retícula del catálogo ajustada a 3 columnas dentro de su contenedor */
+    .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    }
+
+    @media (max-width: 992px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+
+    @media (max-width: 576px) {
+    .catalog-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    }
+
+    /* Texto e información */
+    .card-content {
+    margin-top: 12px;
+    font-family: sans-serif;
+    }
+
+    .card-content h3 {
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+    color: #111111;
+    }
+
+    .card-content .price {
+    font-weight: bold;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 4px;
+    }
+
+    .card-content p {
+    font-size: 0.8rem;
+    color: #777777;
+    margin: 0;
+    }
+
+    /* Adaptación para pantallas pequeñas */
+    @media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

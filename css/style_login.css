@@ -5,7 +5,8 @@
     background-color: #FAEFDF; 
     
     /* Le resta la altura exacta del header al total de la pantalla */
-    min-height: calc(100vh - 90px); 
+    min-height: calc(100vh - 90px) !important;
+    height: auto !important; 
     
     /* Agrega un poco de margen superior interno por si acaso */
     padding-top: 2rem; 
