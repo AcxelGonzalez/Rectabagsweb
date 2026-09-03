@@ -28,17 +28,22 @@
         
         <!-- Bloque izquierdo: Menú y Buscador -->
         <div class="header-left d-flex align-items-center gap-3">
+          
           <button class="btn btn-link p-0" aria-label="Menú" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
             <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
           </button>
           
-          <!-- Buscador simplificado para no romper el layout en móviles -->
-          <form class="d-none d-md-flex" role="search">
-            <input class="form-control form-control-sm me-2 bg-dark border-secondary text-white" type="search" placeholder="Buscar..." aria-label="Search"/>
-            <button class="btn btn-link p-0" aria-label="Buscar" type="submit">
+          <!-- Buscador con IDs para conectar con JavaScript -->
+          <form id="form-buscar" class="d-flex align-items-center m-0" role="search">
+            
+            <input id="input-buscar" class="form-control form-control-sm me-2 bg-dark border-secondary text-white d-none d-md-block" type="search" placeholder="Buscar..." aria-label="Search"/>
+            
+            <button id="btn-buscar" class="btn btn-link p-0" aria-label="Buscar" type="submit">
                 <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
             </button>
+            
           </form>
+          
         </div>
 
         <!-- Bloque central: Logo y Eslogan -->
@@ -224,6 +229,8 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous">
     </script>  
+
+    <script src="js/buscador.js"></script>
 
   </body>
 </html>
