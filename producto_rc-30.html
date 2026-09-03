@@ -118,8 +118,29 @@
                             </p>
                         </div>
 
-                        <!-- Botón de Compra -->
-                        <button class="btn btn-dark w-100 py-3 rounded-4 fw-bold mb-3">Añadir al carro</button>
+                        <!-- Selector de Cantidad + Botón Añadir al Carro -->
+                        <div class="d-flex gap-2 mb-3">
+                            <!-- Selector - / Input / + -->
+                            <div class="input-group rounded-4 overflow-hidden border border-secondary-subtle bg-white" style="width: 140px; height: 50px;">
+                                <button class="btn btn-light border-0 fw-bold px-3" type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                                <input id="cant-rc30" type="number" class="form-control border-0 text-center fw-bold p-0" value="1" min="1" max="10" style="box-shadow: none;">
+                                <button class="btn btn-light border-0 fw-bold px-3" type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+                            </div>
+
+                            <!-- Botón de Compra -->
+                            <button class="btn btn-dark flex-grow-1 py-3 rounded-4 fw-bold" style="height: 50px;" 
+                                onclick="agregarAlCarrito({
+                                    id: 'mochila-rc30',
+                                    nombre: 'Mochila RC-30',
+                                    categoria: 'Mochilas',
+                                    precio: 45000,
+                                    medidas: '30 cm ancho x 45 cm alto x 15 cm largo',
+                                    imagen: 'img/Mochila RC-30/MOCHILA_MAIN.png',
+                                    cantidad: parseInt(document.getElementById('cant-rc30').value) || 1
+                                })">
+                            Añadir al carro
+                        </button>
+                        </div>
 
                         <!-- Tarjeta de Medidas -->
                         <div class="bg-white rounded-4 p-3 shadow-sm">
@@ -263,6 +284,9 @@
 
     <!-- JS de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- JS de Carrito -->
+    <script src="js/carrito.js"></script>
 
     <!-- JS Personalizado para cambiar la imagen grande al hacer clic en las miniaturas -->
     <script>
