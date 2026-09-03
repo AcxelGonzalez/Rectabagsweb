@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Título de la pestaña -->
-    <title>Rectabags - Mochila RC-30</title>
+    <title>Rectabags - Mochila - RC-30</title>
 
     <!-- Favicon (Opcional) -->
     <link rel="icon" type="image/x-icon" href="img/Logo R.jpg">
@@ -50,12 +50,9 @@
 
             <!-- Bloque central: Logo y Eslogan -->
             <div class="header-center text-center">
-                <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
                 <a href="home.html">
-                    <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
                     <img src="img/Logo R.jpg" alt="Recta" class="logo-img">
                 </a>
-                <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
                 <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
             </div>
 
@@ -72,27 +69,51 @@
         </div>
     </header>
 
-    <!-- <main>: Etiqueta semántica que envuelve todo el contenido principal de la página, excluyendo header y footer -->
+    <!-- ================= MAIN CONTENT ================= -->
     <main class="py-5 mt-5">
         <div class="container py-4">
 
+            <!-- Ficha de Producto Principal -->
             <section class="card border-0 rounded-5 p-4 mb-5 shadow-sm" style="background-color: #E8DED8;">
                 <div class="row g-4 align-items-start">
                     
+                    <!-- COLUMNA DE GALERÍA DE IMÁGENES (MINIATURAS + IMAGEN GRANDE) -->
                     <div class="col-lg-7 d-flex gap-3">
-                        <div class="rounded-4 overflow-hidden flex-shrink-0" style="width: 120px; height: 520px; background-color: #F1E4D6;">
-                            </div>
                         
-                        <div class="rounded-4 overflow-hidden flex-grow-1">
-                            <img src="img/IMAGEN_PRODUCTO_RC30.png" alt="Imagen producto" class="img-fluid w-100 object-fit-cover">
+                        <!-- Tira Vertical de Miniaturas (Thumbnails) -->
+                        <div class="d-flex flex-column gap-2 flex-shrink-0" style="width: 100px;">
+                            
+                            <!-- Miniatura 1 (Inicia con la clase 'active' porque es la primera vista) -->
+                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn active" onclick="cambiarImagen('img/Mochila RC-30/MOCHILA_MAIN.png', this)">
+                                <img src="img/Mochila RC-30/MOCHILA_MAIN.png" alt="Vista frontal" class="img-fluid w-100 object-fit-cover" style="height: 100px;">
+                            </button>
+
+                            <!-- Miniatura 2 -->
+                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn" onclick="cambiarImagen('img/Mochila RC-30/MOCHILA_MAIN2.png', this)">
+                                <img src="img/Mochila RC-30/MOCHILA_MAIN2.png" alt="Vista inferior" class="img-fluid w-100 object-fit-cover" style="height: 100px;">
+                            </button>
+
+                            <!-- Miniatura 3 (Puedes reemplazar por la ruta de tu tercera vista) -->
+                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn" onclick="cambiarImagen('img/Mochila RC-30/MOCHILA_MAIN3.png', this)">
+                                <img src="img/Mochila RC-30/MOCHILA_MAIN3.png" alt="Vista lateral" class="img-fluid w-100 object-fit-cover" style="height: 100px;">
+                            </button>
+
                         </div>
+                        
+                        <!-- Contenedor de la Imagen Principal (Lleva id="imagen-principal" para JS) -->
+                        <div class="rounded-4 overflow-hidden flex-grow-1" style="height: 520px;">
+                            <img id="imagen-principal" src="img/Mochila RC-30/MOCHILA_MAIN.png" alt="Mochila RC-30" class="img-fluid w-100 h-100 object-fit-cover">
+                        </div>
+
                     </div>
 
+                    <!-- COLUMNA DE INFORMACIÓN DE PRODUCTO -->
                     <div class="col-lg-5">
-                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 mb-2">Mochilas  </span>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 mb-2">Mochilas</span>
                         <h1 class="h2 fw-bold text-dark mb-1">Mochila RC-30</h1>
-                        <p class="display-6 fw-bold text-dark mb-4">$44.000</p>
+                        <p class="display-6 fw-bold text-dark mb-4">$45.000</p>
 
+                        <!-- Desplegable de Descripción -->
                         <div class="bg-white rounded-4 p-3 mb-3 shadow-sm">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <h2 class="h6 fw-bold m-0">Descripción</h2>
@@ -100,15 +121,18 @@
                             </div>
                             <p class="small text-secondary m-0">
                                 Mochila de 30 litros de capacidad, diseñada para un uso funcional y versátil. Incorpora bolsillos organizadores internos que optimizan el almacenamiento y una red frontal externa que permite ampliar la capacidad de carga. Ideal para actividades diarias, viajes cortos o uso outdoor.
+                            </p>
                         </div>
 
+                        <!-- Botón de Compra -->
                         <button class="btn btn-dark w-100 py-3 rounded-4 fw-bold mb-3">Añadir al carro</button>
 
+                        <!-- Tarjeta de Medidas -->
                         <div class="bg-white rounded-4 p-3 shadow-sm">
                             <h2 class="h6 fw-bold mb-2">Medidas</h2>
                             <ul class="list-unstyled small text-secondary m-0">
                                 <li><strong>30 cm</strong> de ancho</li>
-                                <li><strong>43 cm</strong> de alto</li>
+                                <li><strong>45 cm</strong> de alto</li>
                                 <li><strong>15 cm</strong> de largo</li>
                             </ul>
                         </div>
@@ -117,6 +141,7 @@
                 </div>
             </section>
 
+            <!-- Sección Inferior (Especificaciones / Opiniones) -->
             <section class="card border-0 rounded-5 p-4 shadow-sm" style="background-color: #E8DED8;">
                 <div class="row g-4">
                     
@@ -125,19 +150,19 @@
                             <span class="small text-muted d-block">Mochilas</span>
                             <h3 class="h5 fw-bold mb-3">Mochila RC-30</h3>
                             
-                            <img src="img/RC-30_BOTTOM.png" alt="Imagen-mochila" class="img-fluid mb-3">
+                            <img src="img/Mochila RC-30/RC-30_BOTTOM.png" alt="Imagen Cilindro" class="img-fluid mb-3">
                             
                             <div class="small text-muted">
                                 <p class="m-0"><strong>Medidas:</strong></p>
                                 <p class="m-0">30 cm de ancho</p>
-                                <p class="m-0">43 cm de alto</p>
+                                <p class="m-0">45 cm de alto</p>
                                 <p class="m-0">15 cm de largo</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-5">
-                        <h2 class="h5 fw-bold mb-3">Opiniones del producto: 'RC-30'</h2>
+                        <h2 class="h5 fw-bold mb-3">Opiniones del producto: 'Mochila RC-30'</h2>
                         
                         <div class="d-flex align-items-center gap-2 mb-3">
                             <span class="display-6 fw-bold">4,8</span>
@@ -146,7 +171,7 @@
 
                         <div class="d-flex flex-column gap-2">
                             <div class="d-flex align-items-center gap-2 small">
-                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 85%;"></div></div>
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 90%;"></div></div>
                                 <span>5 ★</span>
                             </div>
                             <div class="d-flex align-items-center gap-2 small">
@@ -154,7 +179,7 @@
                                 <span>4 ★</span>
                             </div>
                             <div class="d-flex align-items-center gap-2 small">
-                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 2%;"></div></div>
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 0%;"></div></div>
                                 <span>3 ★</span>
                             </div>
                             <div class="d-flex align-items-center gap-2 small">
@@ -162,7 +187,7 @@
                                 <span>2 ★</span>
                             </div>
                             <div class="d-flex align-items-center gap-2 small">
-                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 3%;"></div></div>
+                                <div class="progress flex-grow-1" style="height: 8px;"><div class="progress-bar bg-secondary" style="width: 0%;"></div></div>
                                 <span>1 ★</span>
                             </div>
                         </div>
@@ -171,7 +196,7 @@
                     <div class="col-md-4">
                         <h2 class="h5 fw-bold mb-3">Te podría interesar</h2>
                         <div class="rounded-4 h-75 overflow-hidden" style="background-color: #F1E4D6;">
-                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -254,28 +279,17 @@
 </div>
 
     <!-- ================= FOOTER ================= -->
-    <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
     <footer class="bg-black text-white py-5 border-top border-secondary">
         <div class="container">
             <div class="row">
 
-                <!-- d-flex: Activa flexbox.
-                  flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
-                  justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
-                  align-items-md-start: En PC, alinea el logo a la izquierda.
-                  align-items-center: En celulares, centra el logo en la pantalla. -->
-              <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column justify-content-center align-items-md-start align-items-center">
-  
-                  <!-- img-fluid: Hace que el logo sea responsivo y no se salga de la pantalla.
-                      style="max-height: 100px;": Controla que el logo no sea gigante, ajusta este valor de 100px según te guste. -->
-                  <img src="img/Logo footer.png" alt="Logo Recta" class="img-fluid" style="max-height: 100px;">
-              </div>
+                <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column justify-content-center align-items-md-start align-items-center">
+                    <img src="img/Logo footer.png" alt="Logo Recta" class="img-fluid" style="max-height: 100px;">
+                </div>
 
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
-                    <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
                     <ul class="list-unstyled lh-lg">
-                        <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
                         <li><a href="#" class="text-white text-decoration-none">Sobre Nosotros</a></li>
                         <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
                         <li><a href="#" class="text-white text-decoration-none">Contactanos</a></li>
@@ -285,14 +299,28 @@
                 <div class="col-md-4">
                     <h4 class="fw-bold mb-3">TIENDA</h4>
                     <p class="text-secondary">*Foto Mapa*</p>
-                    <!-- style="height: 150px;": Esto es CSS en línea provisional solo para darle forma al cuadrado gris donde irá el mapa más adelante -->
                     <div class="bg-secondary" style="height: 150px; width: 100%;"></div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Carga el JavaScript de Bootstrap. Necesario para que funcione el menú de hamburguesa en celulares (si deciden implementarlo más adelante) -->
+    <!-- JS de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- JS Personalizado para cambiar la imagen grande al hacer clic en las miniaturas -->
+    <script>
+        function cambiarImagen(rutaNueva, elementoBoton) {
+            // 1. Cambia la propiedad 'src' de la imagen grande con la nueva ruta
+            document.getElementById('imagen-principal').src = rutaNueva;
+
+            // 2. Remueve la clase 'active' de todas las miniaturas
+            const miniaturas = document.querySelectorAll('.thumbnail-btn');
+            miniaturas.forEach(btn => btn.classList.remove('active'));
+
+            // 3. Agrega la clase 'active' a la miniatura en la que se hizo clic para marcar el borde negro
+            elementoBoton.classList.add('active');
+        }
+    </script>
 </body>
 </html>

@@ -140,13 +140,13 @@
                     </div>
 
                     <!-- Términos y Condiciones -->
-                    <<div class="form-check mb-4">
+                    <div class="form-check mb-4">
                         <input 
                             class="form-check-input border-dark rounded-1" 
                             type="checkbox" 
                             id="terminos" 
                             required
-                            oninvalid="this.setCustomValidity('Debes aceptar los términos y condiciones para crear tu cuenta en Rectabags.')"
+                            oninvalid="this.setCustomValidity('Debes aceptar los términos y condiciones para crear tu cuenta.')"
                             oninput="this.setCustomValidity('')"
                         >
                         <label class="form-check-label small" for="terminos">
@@ -311,10 +311,60 @@
             </div>
         </footer>
 
+        <!--JavaScript de Bootstrap -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous">
+            crossorigin="anonymous">           
         </script>  
+
+        <!--JavaScript para Registro -->
+        <script>
+            document.getElementById('form-registro').addEventListener('submit', function(e) {
+                e.preventDefault(); // Evita recargar la página
+
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                const nombre = document.getElementById('nombre').value.trim();
+                const apellido = document.getElementById('apellido').value.trim();
+
+                // 1. Validar coincidencia de contraseñas
+                if (password !== confirmPassword) {
+                    alert('Las contraseñas no coinciden.');
+                    return;
+                }
+
+                // 2. Obtener la lista de usuarios existentes en LocalStorage o crear una vacía
+                const usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
+
+                // 3. Verificar si el correo ya está registrado
+                const existe = usuarios.some(u => u.email === email);
+                if (existe) {
+                    alert('Este correo ya está registrado.');
+                    return;
+                }
+
+                // 4. Crear el nuevo objeto usuario
+                const nuevoUsuario = {
+                    email: email,
+                    password: password,
+                    nombre: nombre,
+                    apellido: apellido,
+                    region: document.getElementById('region').value,
+                    ciudad: document.getElementById('ciudad').value,
+                    direccion: document.getElementById('direccion').value
+                };
+
+                // 5. Guardar en el arreglo y actualizar LocalStorage
+                usuarios.push(nuevoUsuario);
+                localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
+
+                alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
+                window.location.href = 'login.html';
+            });
+        </script>
+
+
     </body>
 </html>
