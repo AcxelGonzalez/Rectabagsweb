@@ -80,9 +80,7 @@ body {
   font-family: monospace, 'Courier New', Courier;
   text-align: center;
   font-size: 1.8rem;
-  margin-right: 250px; 
-
-  margin-bottom: 25px; 
+  margin: 0 0 25px 0;
 }
 
 /* Retícula de 3 productos */
@@ -90,8 +88,6 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  background-color: #fbeee6;
-  margin-top: 0;
 }
 
 /* Tarjetas individuales */
@@ -121,14 +117,26 @@ body {
   transform: scale(1.03);
 }
 
-/* Responsivo para celulares */
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 992px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celular */
+@media (max-width: 576px) {
   .layout-container {
     flex-direction: column;
+    padding: 100px 20px 40px;
+    gap: 20px;
   }
+
   .sidebar {
     width: 100%;
+    padding-top: 0;
   }
+
   .catalog-grid {
     grid-template-columns: 1fr;
   }
