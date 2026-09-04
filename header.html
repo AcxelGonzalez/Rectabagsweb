@@ -1,0 +1,74 @@
+<!-- ================= HEADER / NAVBAR ================= -->
+<header class="header-principal fixed-top bg-black text-white py-3">
+    <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+
+        <!-- 2. EL MENÚ LATERAL OCULTO -->
+        <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+            <div class="offcanvas-header border-bottom border-secondary">
+                <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            
+            <div class="offcanvas-body d-flex flex-column">
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"><a href="home.html" class="nav-link active bg-secondary text-white">Inicio</a></li>
+                    <li class="nav-item"><a href="catalogo.html" class="nav-link text-white">Catálogo</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link text-white">Blog</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link text-white">Contacto</a></li>
+                    <li class="nav-item"><a href="noticias.html" class="nav-link text-white">Noticias</a></li>
+                    <li class="nav-item"><a href="impacto_ambiental.html" class="nav-link text-white">Impacto Ambiental</a></li>
+                    <li class="nav-item"><a href="quienes_somos.html" class="nav-link text-white">Quiénes Somos</a></li>
+                </ul>
+
+                <hr class="border-secondary">
+
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item"><a href="login.html" class="nav-link text-white">Log in</a></li>
+                    <li class="nav-item"><a href="registro.html" class="nav-link text-white">Registro</a></li>
+                    <li class="nav-item"><a href="administrador_gestion_productos.html" class="nav-link text-white text-opacity-75">Admin / Productos</a></li>
+                    <li class="nav-item"><a href="administrador_gestion_usuarios.html" class="nav-link text-white text-opacity-75">Admin / Usuarios</a></li>
+                    <li class="nav-item"><a href="compras_admin.html" class="nav-link text-white text-opacity-75">Admin / Compras</a></li>
+                    <li class="nav-item"><a href="gestion_pedidos.html" class="nav-link text-white text-opacity-75">Admin / Pedidos</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bloque izquierdo: Menú y Buscador -->
+        <div class="header-left d-flex align-items-center gap-3">
+            
+            <button class="btn btn-link p-0" aria-label="Menú" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
+            <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
+            </button>
+            
+            <!-- Buscador con IDs para conectar con JavaScript -->
+            <form id="form-buscar" class="d-flex align-items-center m-0" role="search">
+            
+            <input id="input-buscar" class="form-control form-control-sm me-2 bg-dark border-secondary text-white d-none d-md-block" type="search" placeholder="Buscar..." aria-label="Search"/>
+            
+            <button id="btn-buscar" class="btn btn-link p-0" aria-label="Buscar" type="submit">
+                <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
+            </button>
+            
+            </form>
+            
+        </div>
+
+        <!-- Bloque central: Logo y Eslogan -->
+        <div class="header-center text-center">
+            <a href="home.html">
+            <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
+            </a>
+            <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+        </div>
+
+        <!-- Bloque derecho: Usuario y Carrito -->
+        <div class="header-right d-flex gap-3">
+            <a class="btn btn-link p-0" aria-label="Usuario" href="login.html">
+            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
+            </a>
+            <a class="btn btn-link p-0" aria-label="Carrito" href="carrito.html">
+            <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
+            </a>
+        </div>
+    </div>
+</header>
