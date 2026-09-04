@@ -1,0 +1,143 @@
+/* Reiniciar el cuerpo de la página */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbeee6;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title,
+.titulo-mono {
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.titulo-pantalla {
+  width: 100%;
+  text-align: center;
+  padding-top: 110px; /* Espacio para no quedar tapado por el header */
+  background-color: #fbeee6;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 120px 40px 50px 40px;
+  background-color: #fbeee6;
+}
+
+/* Ancho fijo para la barra lateral */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  padding-top: 60px;
+  font-family: monospace, 'Courier New', Courier;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* Aumentamos el margen inferior para empujar 'Categorías' hacia abajo */
+  margin-bottom: 10px;
+}
+
+.menu-group {
+  margin-bottom: 20px;
+}
+
+.category-title {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 15px;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 6px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #111;
+  font-size: 0.95rem;
+}
+
+/* Área del catálogo */
+.main-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.titulo-mono {
+  font-family: monospace, 'Courier New', Courier;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0 0 25px 0;
+}
+
+/* Retícula de 3 productos */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Tarjetas individuales */
+.card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card a {
+  display: block;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card img:hover {
+  transform: scale(1.03);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celular */
+@media (max-width: 576px) {
+  .layout-container {
+    flex-direction: column;
+    padding: 100px 20px 40px;
+    gap: 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}

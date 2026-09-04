@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro de Compras | Rectabags</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="img/Logo R.jpg">
+
+    <!-- Framework Bootstrap 5.3 CDN -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+        crossorigin="anonymous">
+
+    <!-- Estilos generales compartidos (Header y Footer) -->
+    <link rel="stylesheet" href="css/style_header_footer.css">
+        
+</head>
+<body>
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <div id="header-container">
+        <!-- El contenido del encabezado se insertará aquí -->
+    </div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="py-5 mt-5">
+        <div class="container py-4">
+
+            <!-- Contenedor Principal del Carrito -->
+            <section class="card border-0 rounded-5 p-4 p-md-5 shadow-sm" style="background-color: #E8DED8;">
+                
+                <h1 class="h2 fw-black mb-4 text-dark text-uppercase tracking-wider">
+                    Carro <span id="contador-productos-titulo" class="fs-4 fw-normal text-secondary">( 0 productos )</span>
+                </h1>
+
+                <div class="row g-4 align-items-start">
+                    
+                    <!-- COLUMNA IZQUIERDA: LISTA DE PRODUCTOS DINÁMICA -->
+                    <div class="col-lg-8">
+                        <div id="lista-productos-carrito" class="d-flex flex-column gap-3">
+                            <!-- JS insertará aquí las tarjetas de los productos -->
+                        </div>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: RESUMEN DE LA COMPRA -->
+                    <div class="col-lg-4">
+                        <div class="bg-white rounded-4 p-4 shadow-sm">
+                            <h2 class="h5 fw-bold mb-3 text-dark">Resumen de la compra</h2>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-secondary">Subtotal</span>
+                                <span id="resumen-subtotal" class="fw-bold">$0</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3 border-bottom pb-3">
+                                <span class="fw-bold text-dark">Total</span>
+                                <span id="resumen-total" class="h5 fw-bold text-dark mb-0">$0</span>
+                            </div>
+
+                            <!-- Métodos de Pago Aceptados -->
+                            <div class="d-flex justify-content-center gap-2 mb-3 py-2 bg-light rounded-3">
+                                <span class="badge bg-primary">Mastercard</span>
+                                <span class="badge bg-info text-dark">VISA</span>
+                                <span class="badge bg-primary-subtle text-primary">Webpay</span>
+                                <span class="badge bg-secondary">Mercado Pago</span>
+                            </div>
+
+                            <!-- Términos y Condiciones -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="aceptoTerminos">
+                                <label class="form-check-label extra-small text-secondary lh-xs" for="aceptoTerminos" style="font-size: 0.75rem;">
+                                    Acepto los Términos y Condiciones. Autorizo a Recta a procesar mis datos personales, de acuerdo con el Aviso de Privacidad de Recta.
+                                </label>
+                            </div>
+
+                            <!-- Botón Checkout -->
+                            <button class="btn btn-dark w-100 py-3 rounded-4 fw-bold">
+                                Proceder al pago
+                            </button>
+
+                            <p class="text-center text-muted mt-3 mb-0" style="font-size: 0.7rem;">
+                                Los precios y gastos de envío no están confirmados hasta que hayas llegado a completar la compra. ¿Necesitas ayuda? Ponte en contacto con el servicio de Atención al cliente.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <div id="footer-container">
+        <!-- El contenido del pie de página se insertará aquí -->
+    </div>
+
+    <!-- Pop up eliminación de producto carrito -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 p-3">
+        <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold text-dark">Confirmar eliminación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-3">
+            <p class="m-0 text-secondary" id="textoModalEliminar">¿Desea eliminar este producto del carrito?</p>
+        </div>
+        <div class="modal-footer border-0 pt-0 d-flex gap-2">
+            <button type="button" class="btn btn-light rounded-3 flex-grow-1 fw-bold" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger rounded-3 flex-grow-1 fw-bold" id="btnConfirmarEliminar">Eliminar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- JS de Lógica del Carrito de Compras -->
+    <script src="js/carrito.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

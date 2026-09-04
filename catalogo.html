@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Catálogo | Rectabags</title>
+
+<!-- Carga Bootstrap 5 desde un servidor externo (CDN). Esto nos da acceso a las clases de layout (grillas, d-flex, paddings) -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="css/style_header_footer.css" />
+        <link rel="stylesheet" href="css/style_catalogo.css">
+        
+    </head>
+    <body>
+        <!-- ================= HEADER / NAVBAR ================= -->
+        <div id="header-container">
+            <!-- El contenido del encabezado se insertará aquí -->
+        </div>
+
+        <!-- ================= CONTENEDOR PRINCIPAL ================= -->
+        <div class="layout-container">
+            <!-- MENÚ FILTRAR LATERAL -->
+            <aside class="sidebar">
+                <h2 class="sidebar-title">Productos</h2>
+                
+                <div class="menu-group">
+                    <span class="category-title">▼ Categorías</span>
+                    <ul>
+                        <li><a href="#" class="filter-link" data-filter="all">≡ Todos los productos</a></li>
+                        <li><a href="#" class="filter-link" data-filter="mochilas">≡ Mochilas</a></li>
+                        <li><a href="#" class="filter-link" data-filter="cilindro">≡ Cilindros</a></li>
+                        <li><a href="#" class="filter-link" data-filter="musette">≡ Musette</a></li>
+                    </ul>
+                </div>
+
+            </aside>
+
+            <main class="main-content">
+                <h1 class="titulo-mono">EXPLORA EL QUE SE ADAPTE A TI</h1>
+                
+                <div class="catalog-grid">
+                    <article class="card" data-category="cilindro">
+                        <a href="producto_cilindro.html">
+                            <img src="img/CILINDRO/CILINDRO_MAIN.png" alt="Cilindro">
+                        </a>
+                        <div class="card-content">
+                            <h3>Cilindro</h3>
+                            <span class="price">$32.000</span>
+                            <p>Cilindro customisable para bicicletas de RECTA.</p>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="musette">
+                        <a href="producto_musette.html">
+                            <img src="img/Musette/Musette_main.png" alt="Musette">
+                        </a>
+                        <div class="card-content">
+                            <h3>Musette</h3>
+                            <span class="price">$18.000</span>
+                            <p>Musette customisable de RECTA.</p>
+                        </div>
+                    </article>
+
+                    <article class="card" data-category="mochilas">
+                        <a href="producto_rc-30.html">
+                            <img src="img/Mochila RC-30/MOCHILA_MAIN3.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$44.000</span>
+                            <p>Mochila modelo RC-30 customisable de RECTA.</p>
+                        </div>
+                    </article>
+    
+                    <article class="card">
+                        <a href="producto-rc30.html">
+                            <img src="img/FOTOS_EJEMPLOS_TEMP/cilindro_th.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$35.000</span>
+                            <p>RC-30 pink-custom.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <a href="producto-rc30.html">
+                            <img src="img/FOTOS_EJEMPLOS_TEMP/cilindro_vd.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$35.000</span>
+                            <p>RC-30 pink-custom.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <a href="producto-rc30.html">
+                            <img src="img/FOTOS_EJEMPLOS_TEMP/hippopunch.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$35.000</span>
+                            <p>RC-30 pink-custom.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="card">
+                        <a href="producto-rc30.html">
+                            <img src="img/FOTOS_EJEMPLOS_TEMP/vea01.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$35.000</span>
+                            <p>RC-30 pink-custom.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <a href="producto-rc30.html">
+                            <img src="img/FOTOS_EJEMPLOS_TEMP/mochi.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$35.000</span>
+                            <p>RC-30 pink-custom.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <a href="producto-rc30.html">
+                            <img src="img/FOTOS_EJEMPLOS_TEMP/mochila_r.png" alt="RC-30">
+                        </a>
+                        <div class="card-content">
+                            <h3>RC-30</h3>
+                            <span class="price">$35.000</span>
+                            <p>RC-30 pink-custom.</p>
+                        </div>
+                    </article>
+                </div>
+            </main>
+        </div>
+
+        <!-- ================= FOOTER ================= -->
+        <div id="footer-container">
+            <!-- El contenido del pie de página se insertará aquí -->
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous">
+        </script>  
+        
+        <script src="js/filtro.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
