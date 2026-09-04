@@ -62,6 +62,18 @@
                         </div>
                     </div>
 
+                    <!-- RUT y Teléfono -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="rut" class="form-label small fw-semibold">RUT(*)</label>
+                            <input type="text" class="form-control rounded-3 border-secondary-subtle py-2" id="rut" placeholder="Ej: 12345678-9" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label small fw-semibold">Teléfono(*)</label>
+                            <input type="text" class="form-control rounded-3 border-secondary-subtle py-2" id="telefono" placeholder="+56 9 XXXX XXXX" required>
+                        </div>
+                    </div>
+
                     <!-- Contraseñas -->
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
@@ -157,52 +169,7 @@
 
         <script src="js/main.js"></script>
 
-        <!--JavaScript para Registro -->
-        <script>
-            document.getElementById('form-registro').addEventListener('submit', function(e) {
-                e.preventDefault(); // Evita recargar la página
-
-                const email = document.getElementById('email').value.trim();
-                const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirm-password').value;
-                const nombre = document.getElementById('nombre').value.trim();
-                const apellido = document.getElementById('apellido').value.trim();
-
-                // 1. Validar coincidencia de contraseñas
-                if (password !== confirmPassword) {
-                    alert('Las contraseñas no coinciden.');
-                    return;
-                }
-
-                // 2. Obtener la lista de usuarios existentes en LocalStorage o crear una vacía
-                const usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
-
-                // 3. Verificar si el correo ya está registrado
-                const existe = usuarios.some(u => u.email === email);
-                if (existe) {
-                    alert('Este correo ya está registrado.');
-                    return;
-                }
-
-                // 4. Crear el nuevo objeto usuario
-                const nuevoUsuario = {
-                    email: email,
-                    password: password,
-                    nombre: nombre,
-                    apellido: apellido,
-                    region: document.getElementById('region').value,
-                    ciudad: document.getElementById('ciudad').value,
-                    direccion: document.getElementById('direccion').value
-                };
-
-                // 5. Guardar en el arreglo y actualizar LocalStorage
-                usuarios.push(nuevoUsuario);
-                localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
-
-                alert('¡Cuenta creada con éxito! Ahora puedes iniciar sesión.');
-                window.location.href = 'login.html';
-            });
-        </script>
+        <script src="js/logica_rlc.js"></script>
 
     </body>
 </html>

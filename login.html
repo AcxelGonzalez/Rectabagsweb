@@ -109,36 +109,7 @@
 
         <script src="js/main.js"></script>
 
-        <!-- JavaScript para Login -->
-        <script>
-            document.getElementById('form-login').addEventListener('submit', function(e) {
-                e.preventDefault();
+        <script src="js/logica_rlc.js"></script>
 
-                const emailInput = document.getElementById('email').value.trim();
-                const passwordInput = document.getElementById('password').value;
-
-                // 1. Obtener la lista de usuarios desde LocalStorage
-                const usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
-
-                // 2. Buscar credenciales coincidentes
-                const usuarioValido = usuarios.find(u => u.email === emailInput && u.password === passwordInput);
-
-                if (usuarioValido) {
-                    // 3. Guardar la sesión activa
-                    const sesion = {
-                        email: usuarioValido.email,
-                        nombre: usuarioValido.nombre,
-                        apellido: usuarioValido.apellido
-                    };
-                    
-                    localStorage.setItem('usuario_sesion', JSON.stringify(sesion));
-
-                    alert(`¡Bienvenido/a ${usuarioValido.nombre}!`);
-                    window.location.href = 'home.html';
-                } else {
-                    alert('Correo o contraseña incorrectos.');
-                }
-            });
-        </script>
     </body>
 </html>
