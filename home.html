@@ -23,101 +23,46 @@
     <link rel="stylesheet" href="css/style_menu_lateral.css" />
   </head>
   <body>
+
     <!-- ================= HEADER / NAVBAR ================= -->
-    <header class="header-principal fixed-top bg-black text-white py-3">
-      <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
-        <!-- Bloque izquierdo -->
-        <div class="header-left d-flex gap-3">
-          <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
-                      p-0: (padding 0) Elimina el espacio interno del botón para que su tamaño sea exactamente el de la imagen. -->
-          
-          <button class="btn btn-link p-0" aria-label="Menú" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
-            <!-- class="icono-nav": Clase creada por nosotros para controlar el tamaño desde el CSS. -->
-            <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
-          </button>
-          
-          <button class="btn btn-link p-0" aria-label="Buscar">
-            <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
-          </button>
-        </div>
+    <div id="header-container">
+      <!-- El contenido del encabezado se insertará aquí -->
+    </div>
 
-        <!-- Bloque central: Logo y Eslogan -->
-        <div class="header-center text-center">
-          <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
-          <a href="home.html">
-            <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
-            <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
-          </a>
-          <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
-          <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
-        </div>
-
-        <!-- Bloque derecho -->
-        <div class="header-right d-flex gap-3">
-          <button class="btn btn-link p-0" aria-label="Usuario">
-            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
-          </button>
-          <button class="btn btn-link p-0" aria-label="Carrito">
-            <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- <main>: Etiqueta semántica que envuelve todo el contenido principal de la página, excluyendo header y footer -->
     <main>
       <!-- ================= HERO SECTION ================= -->
-      <!-- align-items-end: Empuja el contenido interno (el texto) hacia la parte inferior del contenedor -->
       <section class="hero-section d-flex align-items-end">
-        <!-- mb-5: Margin-bottom (margen inferior) de tamaño 5 para separar el texto del borde inferior de la foto -->
         <div class="container mb-5">
           <div class="hero-content text-white">
-            <!-- display-4: Hace el texto mucho más grande que un <h2> normal.
-                          fw-bold: Aplica "font-weight: bold" (negrita).
-                          mb-1: Un margen inferior pequeño para no separarlo mucho del párrafo de abajo. -->
             <h2 class="display-4 fw-bold mb-1">La mochila perfecta</h2>
-            <!-- fs-5: "font-size: 5", un tamaño de texto ligeramente más grande que el normal -->
             <p class="fs-5">para viajar, trabajar y explorar</p>
           </div>
         </div>
       </section>
 
-    <!-- ================= PRODUCTOS ================= -->
-      <!-- py-5: Padding vertical amplio para dar respiro a la sección entera -->
+      <!-- ================= PRODUCTOS ================= -->
       <section class="productos-section py-5">
         <div class="container">
-          <!-- text-uppercase: Convierte todo el texto a MAYÚSCULAS automáticamente -->
           <h2 class="text-center fw-bold mb-5 text-uppercase titulo-pesado">
             Explora nuestros productos
           </h2>
 
-          <!-- row: Inicia el sistema de grillas de Bootstrap.
-                      align-items-center: Centra el texto y las imágenes verticalmente.
-                      text-center text-md-start: En celulares centra el texto, en pantallas medianas (md) en adelante lo alinea a la izquierda. -->
           <div class="row align-items-center text-center text-md-start">
-            <!-- col-md-3: En pantallas medianas, este bloque ocupa 3 de las 12 columnas disponibles.
-                          mb-4 mb-md-0: En celulares tiene margen inferior, en pantallas medianas ese margen se vuelve 0. -->
             <div class="col-md-3 mb-4 mb-md-0">
               <h3 class="fw-bold text-uppercase titulo-pesado lh-sm">
                 Selecciona el que mejor se ajuste a tus necesidades
               </h3>
             </div>
-            <!-- col-md-7: Este bloque (la galería) ocupa 7 de las 12 columnas, siendo el más ancho -->
+            
             <div class="col-md-7 mb-4 mb-md-0">
               <div class="galeria-productos d-flex justify-content-between gap-2">
-                <!-- img-fluid: Hace que la imagen sea responsive (no se salga de su contenedor).
-                                  w-25: Obliga a cada imagen a ocupar exactamente el 25% del ancho disponible.
-                                  object-fit-cover: Recorta la imagen limpiamente si sus proporciones no encajan, evitando que se deforme o aplaste. -->
                 <img src="img/explora_1.png" alt="Explora 1" class="img-fluid w-25 object-fit-cover"/>
                 <img src="img/explora_2.png" alt="Explora 2" class="img-fluid w-25 object-fit-cover"/>
                 <img src="img/explora_3.png" alt="Explora 3" class="img-fluid w-25 object-fit-cover"/>
               </div>
             </div>
 
-            <!-- col-md-2: Este bloque ocupa las 2 columnas restantes (3+7+2 = 12).
-                          text-md-end: Alinea el botón a la derecha en pantallas medianas. -->
             <div class="col-md-2 text-center text-md-end">
-              <!-- btn-secondary: Aplica el color secundario de Bootstrap (suele ser gris). px-4 py-2 hace el botón más grande ajustando su padding interno. -->
               <a href="catalogo.html" class="btn btn-secondary px-4 py-2">
                 Ver más ➔
               </a>
@@ -126,26 +71,21 @@
         </div>
       </section>  
 
-    <!-- ================= REDES SOCIALES ================= -->
+      <!-- ================= REDES SOCIALES ================= -->
       <section class="redes-section bg-black text-white py-5">
         <div class="container">
           <div class="row align-items-center">
-            <!-- col-md-4: Ocupa 4 columnas -->
+            
             <div class="col-md-4 mb-4 mb-md-0">
-              <h2 class="fw-bold text-uppercase titulo-pesado">
-                Síguenos en redes
-              </h2>
-              <!-- Fila de Instagram -->
-              <div class="d-flex align-items-center gap-3 mb-3">
-                <!-- La etiqueta <a> envuelve a la imagen. href contiene la URL de destino -->
+              <h2 class="fw-bold text-uppercase titulo-pesado">Síguenos en redes</h2>
+              
+              <div class="d-flex align-items-center gap-3 mb-3 mt-4">
                 <a href="https://www.instagram.com/rectabags" target="_blank">
                   <img src="img/icons8-instagram-50.png" alt="Instagram" class="icono-nav"/>
                 </a>
-                <!-- El texto queda fuera del enlace (no es cliqueable) -->
                 <p class="fs-5 m-0">@rectabags</p>
               </div>
 
-              <!-- Fila de TikTok -->
               <div class="d-flex align-items-center gap-3">
                 <a href="https://www.tiktok.com/@rectabags" target="_blank">
                   <img src="img/icons8-tiktok-50.png" alt="TikTok" class="icono-nav"/>
@@ -154,11 +94,8 @@
               </div>
             </div>
 
-            <!-- col-md-8: Las fotos de instagram ocupan 8 de 12 columnas -->
             <div class="col-md-8">
-              <!-- row g-2: Crea una sub-grilla. g-2 (gutter 2) define el espacio/separación entre las fotos -->
               <div class="row g-2">
-                <!-- col-6 col-md-3: En celulares, cada foto ocupa la mitad (6/12 = 2 fotos por fila). En PC, ocupan un cuarto (3/12 = 4 fotos por fila) -->
                 <div class="col-6 col-md-3">
                   <img src="img/explora_1.png" alt="Instagram 1" class="img-fluid" />
                 </div>
@@ -173,6 +110,7 @@
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </section>
@@ -246,72 +184,10 @@
         <a href="gestion_pedidos.html" class="nav-link">Admin / Gestionar pedidos</a>
       </li>
 
-    </ul>
-    
-  </div>
-</div>
-</div>
     <!-- ================= FOOTER ================= -->
-    <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
-    <footer class="bg-black text-white py-5 border-top border-secondary">
-      <div class="container">
-        <div class="row">
-          <!-- d-flex: Activa flexbox.
-                  flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
-                  justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
-                  align-items-md-start: En PC, alinea el logo a la izquierda.
-                  align-items-center: En celulares, centra el logo en la pantalla. -->
-          <div class="col-md-4 columna-logo">
-            <img src="img/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
-          </div>
-
-          <div class="col-md-4 mb-4 mb-md-0">
-            <h4 class="fw-bold mb-3">
-              INFORMACIÓN
-            </h4>
-            <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
-            <ul class="list-unstyled lh-lg">
-              <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
-              <li>
-                <a href="sobre_nosotros.html" class="text-white text-decoration-none">
-                  Sobre Nosotros
-                </a>
-              </li>
-              <li>
-                <a href="blog.html" class="text-white text-decoration-none">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="contacto.html" class="text-white text-decoration-none">
-                  Contactanos
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-4">
-            <h4 class="fw-bold mb-3">
-              RETIRO EN TIENDA
-            </h4>
-            <p class="text-white text-decoration-none">
-              Monseñor Miller 22-B, Providencia, Chile
-            </p>
-            <div class="bg-secondary">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
-                width="100%"
-                height="300"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin">
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-container">
+      <!-- El contenido del pie de página se insertará aquí -->
+    </div>
 
     <!-- Carga el JavaScript de Bootstrap. Necesario para que funcione el menú de hamburguesa en celulares  -->
     <script
@@ -319,6 +195,8 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous">
     </script>  
+
+    <script src="js/main.js"></script>
 
   </body>
 </html>

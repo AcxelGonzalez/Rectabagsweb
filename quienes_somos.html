@@ -1,11 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiénes Somos - Rectabags</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"/>
+
+    <!-- Archivos CSS de Home/Header/Footer -->
+    <link rel="stylesheet" href="css/style_header_footer.css" />
+    <link rel="stylesheet" href="css/style_home.css" />
+  </head>
+  <body class="bg-light">
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="header-principal fixed-top bg-black text-white py-3">
+      <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+        
+        <!-- Bloque izquierdo: Menú y Buscador -->
+        <div class="header-left d-flex align-items-center gap-3">
+          <button class="btn btn-link p-0" aria-label="Menú" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
+            <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
+          </button>
+          
+          <form id="form-buscar" class="d-flex align-items-center m-0" role="search">
+            <input id="input-buscar" class="form-control form-control-sm me-2 bg-dark border-secondary text-white d-none d-md-block" type="search" placeholder="Buscar..." aria-label="Search"/>
+            <button id="btn-buscar" class="btn btn-link p-0" aria-label="Buscar" type="submit">
+                <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
+            </button>
+          </form>
+        </div>
+
+        <!-- Bloque central: Logo y Eslogan -->
+        <div class="header-center text-center">
+          <a href="home.html">
+            <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
+          </a>
+          <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+        </div>
+
+        <!-- Bloque derecho: Usuario y Carrito -->
+        <div class="header-right d-flex gap-3">
+          <a class="btn btn-link p-0" aria-label="Usuario" href="login.html">
+            <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
+          </a>
+          <a class="btn btn-link p-0" aria-label="Carrito" href="carrito.html">
+            <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= CONTENIDO PRINCIPAL ================= -->
+    <main style="padding-top: 100px;">
+     
+      <!-- ENCABEZADO SECCIÓN -->
+      <section class="py-5 bg-white border-bottom">
+        <div class="container text-center">
+          <h1 class="display-5 fw-bold text-uppercase titulo-pesado mb-3">Quiénes Somos</h1>
+          <p class="lead text-secondary mx-auto" style="max-width: 700px;">
+            Diseñamos y confeccionamos equipamiento de alta resistencia pensado por y para la comunidad ciclista urbana.
+          </p>
+        </div>
+      </section>
+
+      <!-- HISTORIA Y VALORES -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row g-4 align-items-center mb-5">
+            <div class="col-md-6">
+              <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border h-100">
+                <h2 class="h3 fw-bold text-uppercase titulo-pesado mb-3">Nuestro Origen</h2>
+                <p class="text-secondary mb-3">
+                  Rectabags nace de la necesidad real en la ruta: contar con productos funcionales y capaces de resistir el uso diario en la ciudad y competitivo.
+                </p>
+                <p class="text-secondary m-0">
+                  Apostamos por la confección local y consciente, puliendo cada detalle de agarre, costura y materiales impermeables para acompañarte en cada viaje.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="bg-white p-4 rounded-4 shadow-sm border">
+                    <h3 class="h5 fw-bold text-dark mb-1">Durabilidad </h3>
+                    <p class="text-secondary small mb-0">Materiales seleccionados que resisten la fricción, la lluvia y el peso diario.</p>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="bg-white p-4 rounded-4 shadow-sm border">
+                    <h3 class="h5 fw-bold text-dark mb-1">Diseño Funcional</h3>
+                    <p class="text-secondary small mb-0">Sistemas de ajuste rápido adaptados a múltiples tipos de marcos y manubrios.</p>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="bg-white p-4 rounded-4 shadow-sm border">
+                    <h3 class="h5 fw-bold text-dark mb-1">Hecho a Mano</h3>
+                    <p class="text-secondary small mb-0">Proceso artesanal detallado en Santiago de Chile garantizando estándar técnico.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BANNER CATÁLOGO -->
+          <div class="bg-black text-white rounded-4 p-5 text-center shadow mb-5">
+            <h2 class="h3 fw-bold text-uppercase titulo-pesado mb-3">¿Buscas el bolso ideal para tu bicicleta?</h2>
+            <p class="text-secondary-light mb-4">Revisa nuestras líneas de Mochilas, cilindros accesorios y todo lo que necesitas.</p>
+            <a href="catalogo.html" class="btn btn-secondary px-4 py-2 text-white text-decoration-none fw-bold">
+              Explorar Catálogo ➔
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= REDES SOCIALES ================= -->
+      <section class="redes-section bg-black text-white py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h2 class="fw-bold text-uppercase titulo-pesado">Síguenos en redes</h2>
+              
+              <div class="d-flex align-items-center gap-3 mb-3 mt-4">
+                <a href="https://www.instagram.com/rectabags/?hl=es" target="_blank">
+                  <img src="img/icons8-instagram-50.png" alt="Instagram" class="icono-nav"/>
+                </a>
+                <a href="https://www.instagram.com/rectabags/?hl=es" target="_blank" class="text-white text-decoration-none fs-5">
+                  @rectabags
+                </a>
+              </div>
+
+              <div class="d-flex align-items-center gap-3">
+                <a href="https://www.tiktok.com/@rectabags" target="_blank">
+                  <img src="img/icons8-tiktok-50.png" alt="TikTok" class="icono-nav"/>
+                </a>
+                <a href="https://www.tiktok.com/@rectabags" target="_blank" class="text-white text-decoration-none fs-5">
+                  @rectabags
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="row g-2">
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_1.png" alt="Instagram 1" class="img-fluid" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_2.png" alt="Instagram 2" class="img-fluid" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_3.png" alt="Instagram 3" class="img-fluid" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <img src="img/explora_4.png" alt="Instagram 4" class="img-fluid" />
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-black text-white py-5 border-top border-secondary">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-4 columna-logo">
+            <img src="img/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
+          </div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
+            <ul class="list-unstyled lh-lg">
+              <li><a href="quienes_somos.html" class="text-white text-decoration-none">Sobre Nosotros</a></li>
+              <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+              <li><a href="contacto.html" class="text-white text-decoration-none">Contáctanos</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h4 class="fw-bold mb-3">RETIRO EN TIENDA</h4>
+            <p class="text-white text-decoration-none">Monseñor Miller 22-B, Providencia, Chile</p>
+            <div class="bg-secondary">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= MENÚ LATERAL OCULTO (OFFCANVAS) ================= -->
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+      <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="offcanvas-body d-flex flex-column">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item"><a href="home.html" class="nav-link text-white">Inicio</a></li>
+          <li class="nav-item"><a href="catalogo.html" class="nav-link text-white">Catálogo</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link text-white">Blog</a></li>
+          <li class="nav-item"><a href="contacto.html" class="nav-link text-white">Contacto</a></li>
+          <li class="nav-item"><a href="noticias.html" class="nav-link text-white">Noticias</a></li>
+          <li class="nav-item"><a href="impacto_ambiental.html" class="nav-link text-white">Impacto Ambiental</a></li>
+          <li class="nav-item"><a href="quienes_somos.html" class="nav-link active bg-secondary text-white">Quiénes Somos</a></li>
+        </ul>
+
+        <hr class="border-secondary">
+
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item"><a href="login.html" class="nav-link text-white">Log in</a></li>
+          <li class="nav-item"><a href="registro.html" class="nav-link text-white">Registro</a></li>
+          <li class="nav-item"><a href="administrador_gestion_productos.html" class="nav-link text-white text-opacity-75">Admin / Productos</a></li>
+          <li class="nav-item"><a href="administrador_gestion_usuarios.html" class="nav-link text-white text-opacity-75">Admin / Usuarios</a></li>
+          <li class="nav-item"><a href="compras_admin.html" class="nav-link text-white text-opacity-75">Admin / Compras</a></li>
+          <li class="nav-item"><a href="gestion_pedidos.html" class="nav-link text-white text-opacity-75">Admin / Pedidos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Scripts Bootstrap y Buscador -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous">
+    </script>  
+
+    <script src="js/buscador.js"></script>
+
+  </body>
 </html>
