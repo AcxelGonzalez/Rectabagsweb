@@ -20,6 +20,7 @@
     <!-- Enlaza el archivo donde ustedes escribirán su propio CSS para la tipografía, efectos hover y colores específicos -->
     <link rel="stylesheet" href="css/style_header_footer.css" />
     <link rel="stylesheet" href="css/style_home.css" />
+    <link rel="stylesheet" href="css/style_menu_lateral.css" />
   </head>
   <body>
 
@@ -114,6 +115,74 @@
         </div>
       </section>
     </main>
+<!-- MENÚ LATERAL OCULTO (OFFCANVAS) -->
+<!-- para cambiarle el color de fondo o las letras de arriba de la barra lateral -->
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+  
+  <div class="offcanvas-header border-bottom border-secondary">
+    <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+  </div>
+  
+  <div class="offcanvas-body d-flex flex-column">
+    
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="home.html" class="nav-link active">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a href="catalogo.html" class="nav-link">Catálogo</a>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html" class="nav-link">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </li>
+      <li class="nav-item">
+        <a href="noticias.html" class="nav-link">Noticias</a>
+      </li>
+      <li class="nav-item">
+        <a href="impacto_ambiental.html" class="nav-link">Impacto Ambiental</a>
+      </li>
+      <li class="nav-item">
+        <a href="quienes_somos.html" class="nav-link">Quiénes Somos</a>
+      </li>
+      <li class="nav-item">
+        <a href="compra.html" class="nav-link">Compra</a>
+      </li>
+      <li class="nav-item">
+        <a href="resumen_compra.html" class="nav-link">Resumen Compra</a>
+      </li>
+    </ul>
+
+    <hr class="border-secondary">
+
+    <ul class="nav nav-pills flex-column">
+      
+      <li class="nav-item">
+        <a href="login.html" class="nav-link">Log in</a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="registro.html" class="nav-link">Registro</a>
+      </li>
+    
+      <li class="nav-item">
+        <a href="administrador_gestion_productos.html" class="nav-link">Admin / Administrar productos</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="administrador_gestion_usuarios.html" class="nav-link">Admin / Administrar usuarios</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="compras_admin.html" class="nav-link">Admin / Administrar compras </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="gestion_pedidos.html" class="nav-link">Admin / Gestionar pedidos</a>
+      </li>
 
     <!-- ================= FOOTER ================= -->
     <div id="footer-container">
