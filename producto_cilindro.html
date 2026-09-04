@@ -40,31 +40,35 @@
                 <div class="row g-4 align-items-start">
                     
                     <!-- COLUMNA DE GALERÍA DE IMÁGENES (MINIATURAS + IMAGEN GRANDE) -->
-                    <div class="col-lg-7 d-flex gap-3">
+                    <!-- flex-column-reverse (móvil: miniaturas abajo) | flex-lg-row (PC: miniaturas a la izquierda) -->
+                    <div class="col-lg-7 d-flex flex-column-reverse flex-lg-row gap-3">
                         
-                        <!-- Tira Vertical de Miniaturas (Thumbnails) -->
-                        <div class="d-flex flex-column gap-2 flex-shrink-0" style="width: 100px;">
+                        <!-- Tira de Miniaturas (Thumbnails) -->
+                        <!-- flex-row (móvil: horizontal) | flex-lg-column (PC: vertical) -->
+                        <div class="d-flex flex-row flex-lg-column gap-2 flex-shrink-0 overflow-x-auto" style="max-height: 520px;">
                             
-                            <!-- Miniatura 1 (Inicia con la clase 'active' porque es la primera vista) -->
-                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn active" onclick="cambiarImagen('img/CILINDRO/CILINDRO_MAIN.png', this)">
-                                <img src="img/CILINDRO/CILINDRO_MAIN.png" alt="Vista frontal" class="img-fluid w-100 object-fit-cover" style="height: 100px;">
+                            <!-- Miniatura 1 -->
+                            <!-- Fijamos un tamaño cuadrado (ej: 80x80) con flex-shrink-0 para que no se aplasten en móvil -->
+                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn active flex-shrink-0" style="width: 80px; height: 80px;" onclick="cambiarImagen('img/CILINDRO/CILINDRO_MAIN.png', this)">
+                                <img src="img/CILINDRO/CILINDRO_MAIN.png" alt="Vista frontal" class="img-fluid w-100 h-100 object-fit-cover">
                             </button>
 
                             <!-- Miniatura 2 -->
-                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn" onclick="cambiarImagen('img/CILINDRO/CILINDRO_MAIN2.png', this)">
-                                <img src="img/CILINDRO/CILINDRO_MAIN2.png" alt="Vista inferior" class="img-fluid w-100 object-fit-cover" style="height: 100px;">
+                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn flex-shrink-0" style="width: 80px; height: 80px;" onclick="cambiarImagen('img/CILINDRO/CILINDRO_MAIN2.png', this)">
+                                <img src="img/CILINDRO/CILINDRO_MAIN2.png" alt="Vista inferior" class="img-fluid w-100 h-100 object-fit-cover">
                             </button>
 
-                            <!-- Miniatura 3 (Puedes reemplazar por la ruta de tu tercera vista) -->
-                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn" onclick="cambiarImagen('img/CILINDRO/CILINDRO_MAIN3.png', this)">
-                                <img src="img/CILINDRO/CILINDRO_MAIN3.png" alt="Vista lateral" class="img-fluid w-100 object-fit-cover" style="height: 100px;">
+                            <!-- Miniatura 3 -->
+                            <button class="btn p-0 border-0 rounded-4 overflow-hidden thumbnail-btn flex-shrink-0" style="width: 80px; height: 80px;" onclick="cambiarImagen('img/CILINDRO/CILINDRO_MAIN3.png', this)">
+                                <img src="img/CILINDRO/CILINDRO_MAIN3.png" alt="Vista lateral" class="img-fluid w-100 h-100 object-fit-cover">
                             </button>
 
                         </div>
                         
-                        <!-- Contenedor de la Imagen Principal (Lleva id="imagen-principal" para JS) -->
-                        <div class="rounded-4 overflow-hidden flex-grow-1" style="height: 520px;">
-                            <img id="imagen-principal" src="img/CILINDRO/CILINDRO_MAIN.png" alt="Mochila RC-30" class="img-fluid w-100 h-100 object-fit-cover">
+                        <!-- Contenedor de la Imagen Principal -->
+                        <!-- Usamos aspect-ratio: 1/1 para un cuadrado perfecto en móvil, limitando el alto a 520px en PC -->
+                        <div class="rounded-4 overflow-hidden flex-grow-1 bg-white" style="aspect-ratio: 1 / 1; max-height: 520px;">
+                            <img id="imagen-principal" src="img/CILINDRO/CILINDRO_MAIN.png" alt="Cilindro L" class="img-fluid w-100 h-100 object-fit-contain">
                         </div>
 
                     </div>
