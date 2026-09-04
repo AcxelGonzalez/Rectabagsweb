@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi perfil</title>
+    <title>Mi Perfil | Rectabags</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -21,6 +21,142 @@
     <div id="header-container">
         <!-- El contenido del encabezado se insertará aquí -->
     </div>
+
+    <!-- ================= CONTENIDO DEL PERFIL ================= -->
+    <main class="py-5 mt-5">
+        <div class="container py-4">
+            
+            <!-- Título de Bienvenida -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h1 class="display-5 fw-bold text-dark">Mi Cuenta</h1>
+                    <p class="text-secondary">Bienvenido de vuelta, Marco Carrasco.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- ================= MENÚ LATERAL DEL PERFIL ================= -->
+                <div class="col-lg-3">
+                    <div class="card border-0 rounded-4 shadow-sm">
+                        <div class="list-group list-group-flush rounded-4">
+                            <!-- Agregamos la clase 'tab-btn' para que JS los reconozca y 'data-target' para saber qué abrir -->
+                            <button class="list-group-item list-group-item-action active bg-dark text-white border-dark py-3 fw-bold tab-btn" data-target="seccion-datos">
+                                Mis Datos
+                            </button>
+                            <button class="list-group-item list-group-item-action py-3 tab-btn" data-target="seccion-pedidos">
+                                Mis Pedidos
+                            </button>
+                            <button class="list-group-item list-group-item-action py-3 tab-btn" data-target="seccion-direcciones">
+                                Direcciones Guardadas
+                            </button>
+                            <!-- Cerrar sesión sigue siendo un enlace normal <a> porque debe redirigir a otra página -->
+                            <a href="login.html" class="list-group-item list-group-item-action text-danger py-3 fw-bold">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= PANEL DE CONTENIDO ================= -->
+                <div class="col-lg-9">
+                    
+                    <!-- SECCIÓN 1: Mis Datos (Visible por defecto) -->
+                    <!-- Agregamos la clase 'tab-content' -->
+                    <div id="seccion-datos" class="tab-content">
+                        <div class="card border-0 rounded-4 shadow-sm p-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="h4 fw-bold m-0">Datos Personales</h2>
+                                    <button class="btn btn-outline-dark btn-sm rounded-pill px-3">Editar</button>
+                                </div>
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label small text-secondary fw-bold">Nombre Completo</label>
+                                            <input type="text" class="form-control bg-light border-0" value="Marco Antonio Carrasco Zabalaga" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small text-secondary fw-bold">RUT</label>
+                                            <input type="text" class="form-control bg-light border-0" value="21.XXX.XXX-X" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small text-secondary fw-bold">Correo Electrónico</label>
+                                            <input type="email" class="form-control bg-light border-0" value="marco.carrasco@ejemplo.com" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small text-secondary fw-bold">Teléfono</label>
+                                            <input type="text" class="form-control bg-light border-0" value="+56 9 XXXX XXXX" readonly>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN 2: Mis Pedidos (Oculta por defecto con d-none) -->
+                    <div id="seccion-pedidos" class="tab-content d-none">
+                        <div class="card border-0 rounded-4 shadow-sm p-4">
+                            <div class="card-body">
+                                <h2 class="h4 fw-bold mb-4">Historial de Pedidos</h2>
+                                
+                                <!-- Pedido 1 -->
+                                <div class="d-flex align-items-center justify-content-between border p-3 rounded-4 mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-light rounded-3 p-2" style="width: 60px; height: 60px;">
+                                            <img src="img/Mochila RC-30/MOCHILA_MAIN.png" alt="Mochila" class="img-fluid object-fit-contain h-100">
+                                        </div>
+                                        <div>
+                                            <h3 class="h6 fw-bold m-0">Mochila RC-30</h3>
+                                            <p class="small text-secondary m-0">Fecha: 15 Oct 2026 | Orden #RTB-0042</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2 mb-1">Entregado</span>
+                                        <p class="fw-bold m-0">$45.000</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pedido 2 (Ejemplo de uno en camino) -->
+                                <div class="d-flex align-items-center justify-content-between border p-3 rounded-4">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-light rounded-3 p-2" style="width: 60px; height: 60px;">
+                                            <img src="img/Mochila RC-30/MOCHILA_MAIN2.png" alt="Mochila" class="img-fluid object-fit-contain h-100">
+                                        </div>
+                                        <div>
+                                            <h3 class="h6 fw-bold m-0">Bolso Manillar</h3>
+                                            <p class="small text-secondary m-0">Fecha: 22 Oct 2026 | Orden #RTB-0089</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-2 mb-1">En Tránsito</span>
+                                        <p class="fw-bold m-0">$25.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN 3: Direcciones (Oculta por defecto con d-none) -->
+                    <div id="seccion-direcciones" class="tab-content d-none">
+                        <div class="card border-0 rounded-4 shadow-sm p-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="h4 fw-bold m-0">Mis Direcciones</h2>
+                                    <button class="btn btn-dark btn-sm rounded-pill px-3">+ Nueva Dirección</button>
+                                </div>
+                                <div class="border p-3 rounded-4 mb-3 position-relative border-dark">
+                                    <span class="position-absolute top-0 translate-middle badge rounded-pill bg-dark" style="left: 20px;">Predeterminada</span>
+                                    <h3 class="h6 fw-bold mt-2">Casa</h3>
+                                    <p class="small text-secondary m-0">Lo Prado, Región Metropolitana, Chile</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
     
 
     <!-- ================= FOOTER ================= -->
@@ -36,5 +172,8 @@
     </script> 
 
     <script src="js/main.js"></script>
+
+    <script src="js/perfil_usuario.js"></script>
+    
 </body>
 </html>
