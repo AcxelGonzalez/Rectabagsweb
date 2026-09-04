@@ -88,7 +88,7 @@ function renderizarCarrito() {
             <div class="bg-white rounded-4 p-5 text-center shadow-sm">
                 <p class="h5 fw-bold text-dark mb-2">Tu carrito está vacío</p>
                 <p class="text-secondary small mb-4">Parece que aún no has añadido productos a tu compra.</p>
-                <a href="home.html" class="btn btn-dark px-4 py-2 rounded-4 fw-bold">Descubrir productos</a>
+                <a href="catalogo.html" class="btn btn-dark px-4 py-2 rounded-4 fw-bold">Descubrir productos</a>
             </div>
         `;
         return;

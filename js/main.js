@@ -1,4 +1,125 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    // ==========================================
+    // COMPONENTES MODULARES (MODO OFFLINE)
+    // ==========================================
+
+    const componenteHeader = `
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="header-principal fixed-top bg-black text-white py-3">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+
+            <!-- Bloque izquierdo: Menú y Buscador -->
+            <div class="header-left d-flex align-items-center gap-3">
+                <button class="btn btn-link p-0" aria-label="Menú" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
+                    <img src="img/HEADER/icons8-menu-50.png" alt="Menú" class="icono-nav" />
+                </button>
+                <form id="form-buscar" class="d-flex align-items-center m-0" role="search">
+                    <input id="input-buscar" class="form-control form-control-sm me-2 bg-dark border-secondary text-white d-none d-md-block" type="search" placeholder="Buscar..." aria-label="Search"/>
+                    <button id="btn-buscar" class="btn btn-link p-0" aria-label="Buscar" type="submit">
+                        <img src="img/HEADER/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Bloque central: Logo y Eslogan -->
+            <div class="header-center text-center">
+                <a href="home.html">
+                    <img src="img/HEADER/Logo R.jpg" alt="Recta" class="logo-img"/>
+                </a>
+                <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
+            </div>
+
+            <!-- Bloque derecho: Usuario y Carrito -->
+            <div class="header-right d-flex gap-3">
+                <!-- Se agregó el ID "enlace-usuario-header" -->
+                <a id="enlace-usuario-header" class="btn btn-link p-0" aria-label="Usuario" href="login.html">
+                    <img src="img/HEADER/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
+                </a>
+                <a class="btn btn-link p-0" aria-label="Carrito" href="carrito.html">
+                    <img src="img/HEADER/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
+                </a>
+            </div>
+
+            <!-- EL MENÚ LATERAL OCULTO -->
+            <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+                </div>
+                
+                <div class="offcanvas-body d-flex flex-column">
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item"><a href="home.html" class="nav-link active bg-secondary text-white">Inicio</a></li>
+                        <li class="nav-item"><a href="catalogo.html" class="nav-link text-white">Catálogo</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link text-white">Blog</a></li>
+                        <li class="nav-item"><a href="contacto.html" class="nav-link text-white">Contacto</a></li>
+                        <li class="nav-item"><a href="impacto_ambiental.html" class="nav-link text-white">Impacto Ambiental</a></li>
+                        <li class="nav-item"><a href="quienes_somos.html" class="nav-link text-white">Quiénes Somos</a></li>
+                    </ul>
+
+                    <hr class="border-secondary">
+
+                    <!-- ENLACES DINÁMICOS DE SESIÓN -->
+                    <div id="menu-visitante">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item"><a href="login.html" class="nav-link text-white">Log in</a></li>
+                            <li class="nav-item"><a href="registro.html" class="nav-link text-white">Registro</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="menu-usuario" class="d-none">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item"><a href="perfil_usuario.html" class="nav-link text-white fw-bold">Mi Perfil</a></li>
+                            <li class="nav-item"><a href="#" id="btn-logout" class="nav-link text-danger fw-bold">Cerrar Sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    `;
+
+    const componenteFooter = `
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-black text-white py-5 border-top border-secondary">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-4 columna-logo">
+                <img src="img/FOOTER/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
+                </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
+                <ul class="list-unstyled lh-lg">
+                    <li><a href="quienes_somos.html" class="text-white text-decoration-none">Sobre Nosotros</a></li>
+                    <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="contacto.html" class="text-white text-decoration-none">Contáctanos</a></li>
+                </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h4 class="fw-bold mb-3">RETIRO EN TIENDA</h4>
+                    <p class="text-white text-decoration-none">Monseñor Miller 22-B, Providencia, Chile</p>
+                    <div class="bg-secondary">
+                        <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
+                        width="100%"
+                        height="300"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+    `;
     
     // ==========================================
     // 0. CREAR USUARIO ADMIN Y FUNCIÓN DE DOMINIOS
@@ -29,30 +150,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 1. CARGA DE HEADER/FOOTER Y SESIÓN
     // ==========================================
-    fetch('header.html')
-        .then(respuesta => respuesta.text())
-        .then(html => {
-            document.getElementById('header-container').innerHTML = html;
-            
-            const sesionActiva = localStorage.getItem('sesion_rectabags');
-            const enlaceUsuario = document.getElementById('enlace-usuario-header');
+    // 1. INYECTAR COMPONENTES (Reemplazo del Fetch)
+    const headerContainer = document.getElementById('header-container');
+    const footerContainer = document.getElementById('footer-container');
 
-            if (sesionActiva) {
-                document.getElementById('menu-visitante')?.classList.add('d-none');
-                document.getElementById('menu-usuario')?.classList.remove('d-none');
-                if (enlaceUsuario) enlaceUsuario.href = 'perfil_usuario.html';
-            } else {
-                if (enlaceUsuario) enlaceUsuario.href = 'login.html';
-            }
+    if (headerContainer) headerContainer.innerHTML = componenteHeader;
+    if (footerContainer) footerContainer.innerHTML = componenteFooter;
 
-            activarBuscador(); 
-        })
-        .catch(error => console.warn('Aviso: header no inyectado', error));
+    // 2. VALIDAR SESIÓN ACTIVA (Igual que antes)
+    const sesionActiva = localStorage.getItem('sesion_rectabags');
+    const enlaceUsuario = document.getElementById('enlace-usuario-header');
 
-    fetch('footer.html')
-        .then(respuesta => respuesta.text())
-        .then(html => document.getElementById('footer-container').innerHTML = html)
-        .catch(error => console.warn('Aviso: footer no inyectado', error));
+    if (sesionActiva) {
+        document.getElementById('menu-visitante')?.classList.add('d-none');
+        document.getElementById('menu-usuario')?.classList.remove('d-none');
+        if (enlaceUsuario) enlaceUsuario.href = 'perfil_usuario.html';
+    } else {
+        if (enlaceUsuario) enlaceUsuario.href = 'login.html';
+    }
+
+    // Activar la lupa del buscador
+    activarBuscador();
 
     // ==========================================
     // 2. LÓGICA DE REGISTRO
