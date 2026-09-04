@@ -106,12 +106,12 @@ function renderizarCarrito() {
         const subtotalItem = item.precio * item.cantidad;
         sumaSubtotal += subtotalItem;
 
-        // Regla 2: Solo mostrar el botón (-) si la cantidad es mayor a 1
+        // Solo mostrar el botón (-) si la cantidad es mayor a 1
         const botonMenos = item.cantidad > 1 
             ? `<button class="btn btn-light border-0 fw-bold px-2 py-0" type="button" onclick="cambiarCantidad('${item.id}', -1)">-</button>` 
             : `<div style="width: 28px;"></div>`;
 
-        // Regla 1: Alineación, precio corrido a la izquierda y botón "Eliminar" en texto a la derecha
+        // Alineación, precio corrido a la izquierda y botón "Eliminar" en texto a la derecha
         htmlProductos += `
             <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
                 <div class="row g-3 align-items-center">
@@ -162,7 +162,7 @@ function renderizarCarrito() {
     if (elTotal) elTotal.innerText = formatearPrecio(sumaSubtotal);
 }
 
-// 8. EConfirmación para eliminación desde el Pop Up
+// 8. Confirmación para eliminación desde el Pop Up
 document.addEventListener('DOMContentLoaded', () => {
     const btnConfirmar = document.getElementById('btnConfirmarEliminar');
     if (btnConfirmar) {
