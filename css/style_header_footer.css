@@ -1,5 +1,35 @@
 /* ================= TAMAÑOS DE IMÁGENES DEL HEADER ================= */
 /* ================= HEADER ================= */
+
+/* 1. Cambiar el fondo del menú lateral */
+#menuLateral {
+    background-color: #1A1A1A !important;
+}
+
+/* 2. Color del texto del título de RectaBags */
+#menuLateral .offcanvas-title {
+    color: #FFFFFF;
+}
+
+/* 3. Estilo para los enlaces INACTIVOS (Catálogo, Blog, Contacto) */
+#menuLateral .nav-link {
+    color: #A3A3A3 !important;
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+    margin-bottom: 5px;
+}
+
+/* 4. Efecto al pasar el mouse por encima de los enlaces inactivos */
+#menuLateral .nav-link:hover {
+    color: #FFFFFF !important;
+    background-color: rgba(255, 255, 255, 0.05); /* Un brillito muy sutil */
+}
+
+/* 5. Estilo para el enlace ACTIVO (Inicio - El Verde Oliva) */
+#menuLateral .nav-pills .nav-link.active {
+    background-color: #556040 !important;
+    color: #FFFFFF !important;
+}
+
 body {
     padding-top: 90px; /* Desplaza todo el contenido de la web hacia abajo para hacerle espacio al menú fijo */
 }

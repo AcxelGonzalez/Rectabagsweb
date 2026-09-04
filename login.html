@@ -3,59 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ingresa a tu cuenta</title>
+        <title>Ingresa a tu cuenta | Rectabags</title>
 
         <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous"/>
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"/>
 
         <link rel="stylesheet" href="css/style_header_footer.css" />
         <link rel="stylesheet" href="css/style_login.css" />
-        <link rel="stylesheet" href="css/style_menu_lateral.css" />
     </head>
     <body>
         <!-- ================= HEADER / NAVBAR ================= -->
-        <header class="header-principal fixed-top bg-black text-white py-3">
-            <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
-                <!-- Bloque izquierdo -->
-                <div class="header-left d-flex gap-3">
-                    <!-- btn-link: Transforma el botón de Bootstrap para quitarle el fondo sólido y el borde.
-                        p-0: (padding 0) Elimina el espacio interno del botón para que su tamaño sea exactamente el de la imagen. -->
-                                
-                    <button class="btn btn-link p-0" aria-label="Menú" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
-                        <!-- class="icono-nav": Clase creada por nosotros para controlar el tamaño desde el CSS. -->
-                        <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav" />
-                    </button>
-                                
-                    <button class="btn btn-link p-0" aria-label="Buscar">
-                        <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav"/>
-                    </button>
-                </div>
-
-                <!-- Bloque central: Logo y Eslogan -->
-                <div class="header-center text-center">
-                    <!-- Envolvemos el logo en una etiqueta <a> para que al hacerle clic lleve al inicio -->
-                    <a href="home.html">
-                        <!-- class="logo-img": Clase específica para manejar las proporciones del logo. -->
-                        <img src="img/Logo R.jpg" alt="Recta" class="logo-img"/>
-                    </a>
-                    <!-- mt-1: (margin-top 1) Añade una separación muy sutil entre la imagen del logo y el eslogan -->
-                    <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
-                </div>
-
-                <!-- Bloque derecho -->
-                <div class="header-right d-flex gap-3">
-                    <button class="btn btn-link p-0" aria-label="Usuario">
-                    <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
-                    </button>
-                    <button class="btn btn-link p-0" aria-label="Carrito">
-                    <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav"/>
-                    </button>
-                </div>
-            </div>
-        </header>
+        <div id="header-container">
+            <!-- El contenido del encabezado se insertará aquí -->
+        </div>
 
         <!-- Se asume que el header ya está cargado arriba -->
         <section class="login-section d-flex align-items-center py-5">
@@ -131,143 +94,11 @@
                 </div>
             </div>
         </section>
-        <!-- Se asume que el footer cargará aquí abajo -->
-        <!-- MENÚ LATERAL OCULTO (OFFCANVAS) -->
-<!-- para cambiarle el color de fondo o las letras de arriba de la barra lateral -->
- <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
-  
-  <div class="offcanvas-header border-bottom border-secondary">
-    <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-  </div>
-  
-  <div class="offcanvas-body d-flex flex-column">
-    
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="home.html" class="nav-link active">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a href="catalogo.html" class="nav-link">Catálogo</a>
-      </li>
-      <li class="nav-item">
-        <a href="blog.html" class="nav-link">Blog</a>
-      </li>
-      <li class="nav-item">
-        <a href="contacto.html" class="nav-link">Contacto</a>
-      </li>
-      <li class="nav-item">
-        <a href="noticias.html" class="nav-link">Noticias</a>
-      </li>
-      <li class="nav-item">
-        <a href="impacto_ambiental.html" class="nav-link">Impacto Ambiental</a>
-      </li>
-      <li class="nav-item">
-        <a href="quienes_somos.html" class="nav-link">Quiénes Somos</a>
-      </li>
-      <li class="nav-item">
-        <a href="compra.html" class="nav-link">Compra</a>
-      </li>
-      <li class="nav-item">
-        <a href="resumen_compra.html" class="nav-link">Resumen Compra</a>
-      </li>
-    </ul>
-
-    <hr class="border-secondary">
-
-    <ul class="nav nav-pills flex-column">
-      
-      <li class="nav-item">
-        <a href="login.html" class="nav-link">Log in</a>
-      </li>
-      
-      <li class="nav-item">
-        <a href="registro.html" class="nav-link">Registro</a>
-      </li>
-    
-      <li class="nav-item">
-        <a href="administrador_gestion_productos.html" class="nav-link">Admin / Administrar productos</a>
-      </li>
-
-      <li class="nav-item">
-        <a href="administrador_gestion_usuarios.html" class="nav-link">Admin / Administrar usuarios</a>
-      </li>
-
-      <li class="nav-item">
-        <a href="compras_admin.html" class="nav-link">Admin / Administrar compras </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="gestion_pedidos.html" class="nav-link">Admin / Gestionar pedidos</a>
-      </li>
-
-    </ul>
-    
-  </div>
-</div>
-
-
 
         <!-- ================= FOOTER ================= -->
-        <!-- border-top border-secondary: Agrega una línea gris tenue en la parte superior para separar el footer visualmente -->
-        <footer class="bg-black text-white py-5 border-top border-secondary">
-            <div class="container">
-                <div class="row">
-                    <!-- d-flex: Activa flexbox.
-                            flex-column: Ordena los elementos en columna (útil si luego agregas texto bajo el logo).
-                            justify-content-center: Centra el logo verticalmente respecto a las otras columnas del footer.
-                            align-items-md-start: En PC, alinea el logo a la izquierda.
-                            align-items-center: En celulares, centra el logo en la pantalla. -->
-                    <div class="col-md-4 columna-logo">
-                        <img src="img/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
-                    </div>
-
-                    <div class="col-md-4 mb-4 mb-md-0">
-                        <h4 class="fw-bold mb-3">
-                            INFORMACIÓN
-                        </h4>
-                        <!-- list-unstyled: Quita las viñetas (puntos) de la lista <ul>. lh-lg: Line-height large, separa más las líneas de texto haciéndolas más legibles. -->
-                        <ul class="list-unstyled lh-lg">
-                            <!-- text-decoration-none: Quita el subrayado clásico de los links <a> -->
-                            <li>
-                                <a href="sobre_nosotros.html" class="text-white text-decoration-none">
-                                    Sobre Nosotros
-                                </a>
-                            </li>
-                            <li>
-                                <a href="blog.html" class="text-white text-decoration-none">
-                                    Blog
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contacto.html" class="text-white text-decoration-none">
-                                    Contactanos
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4">
-                        <h4 class="fw-bold mb-3">
-                            RETIRO EN TIENDA
-                        </h4>
-                        <p class="text-white text-decoration-none">
-                            Monseñor Miller 22-B, Providencia, Chile
-                        </p>
-                        <div class="bg-secondary">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
-                                width="100%"
-                                height="300"
-                                style="border: 0"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="strict-origin-when-cross-origin">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <div id="footer-container">
+            <!-- El contenido del pie de página se insertará aquí -->
+        </div>
 
         <!--JavaScript de Bootstrap -->
         <script
@@ -275,6 +106,8 @@
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous">
         </script>  
+
+        <script src="js/main.js"></script>
 
         <!-- JavaScript para Login -->
         <script>

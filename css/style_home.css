@@ -1,6 +1,6 @@
 .hero-section {
     /* Llama a tu imagen */
-    background-image: url('../img/main.jpeg');
+    background-image: url('../img/HOME/main.jpeg');
     
     /* cover: Obliga a la imagen a escalar hasta cubrir todo el ancho y alto del contenedor sin deformarse (recorta lo sobrante) */
     background-size: cover;

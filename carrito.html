@@ -3,60 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rectabags - Carro de Compras</title>
+    <title>Carro de Compras | Rectabags</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="img/Logo R.jpg">
 
     <!-- Framework Bootstrap 5.3 CDN -->
     <link 
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-      rel="stylesheet" 
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
-      crossorigin="anonymous">
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+        crossorigin="anonymous">
 
     <!-- Estilos generales compartidos (Header y Footer) -->
     <link rel="stylesheet" href="css/style_header_footer.css">
-
-    <!-- Estilos específicos de la tienda -->
-    <link rel="stylesheet" href="css/style.css">
+        
 </head>
 <body>
 
     <!-- ================= HEADER / NAVBAR ================= -->
-    <header class="header-principal fixed-top bg-black text-white py-3">
-        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
-            
-            <!-- Bloque izquierdo -->
-            <div class="header-left d-flex gap-3">
-                <button class="btn btn-link p-0" aria-label="Menú">
-                    <img src="img/icons8-menu-50.png" alt="Menú" class="icono-nav">
-                </button>
-                <button class="btn btn-link p-0" aria-label="Buscar">
-                    <img src="img/icons8-search-50.png" alt="Buscar" class="icono-nav">
-                </button>
-            </div>
-
-            <!-- Bloque central: Logo y Eslogan -->
-            <div class="header-center text-center">
-                <a href="home.html">
-                    <img src="img/Logo R.jpg" alt="Recta" class="logo-img">
-                </a>
-                <p class="eslogan m-0 small mt-1">“De ciclista para ciclistas”</p>
-            </div>
-
-            <!-- Bloque derecho -->
-            <div class="header-right d-flex gap-3">
-                <a href="login.html" class="btn btn-link p-0" aria-label="Usuario">
-                    <img src="img/icons8-user-50.png" alt="Usuario" class="icono-nav">
-                </a>
-                <a href="carrito.html" class="btn btn-link p-0" aria-label="Carrito">
-                    <img src="img/icons8-shopping-cart-50.png" alt="Carrito" class="icono-nav">
-                </a>
-            </div>
-            
-        </div>
-    </header>
+    <div id="header-container">
+        <!-- El contenido del encabezado se insertará aquí -->
+    </div>
 
     <!-- ================= MAIN CONTENT ================= -->
     <main class="py-5 mt-5">
@@ -128,42 +96,9 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-black text-white py-5 border-top border-secondary">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 columna-logo">
-            <img src="img/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
-          </div>
-
-          <div class="col-md-4 mb-4 mb-md-0">
-            <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
-            <ul class="list-unstyled lh-lg">
-              <li><a href="sobre_nosotros.html" class="text-white text-decoration-none">Sobre Nosotros</a></li>
-              <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
-              <li><a href="contacto.html" class="text-white text-decoration-none">Contactanos</a></li>
-            </ul>
-          </div>
-
-          <div class="col-md-4">
-            <h4 class="fw-bold mb-3">RETIRO EN TIENDA</h4>
-            <p class="text-white text-decoration-none">
-              Monseñor Miller 22-B, Providencia, Chile
-            </p>
-            <div class="bg-secondary">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
-                width="100%"
-                height="300"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin">
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-container">
+        <!-- El contenido del pie de página se insertará aquí -->
+    </div>
 
     <!-- Pop up eliminación de producto carrito -->
     <div class="modal fade" id="modalEliminar" tabindex="-1" aria-hidden="true">
@@ -189,5 +124,7 @@
 
     <!-- JS de Lógica del Carrito de Compras -->
     <script src="js/carrito.js"></script>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
