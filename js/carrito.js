@@ -2,21 +2,52 @@
 
 let productoIdAEliminar = null;
 
-// 1. Leer el carrito desde LocalStorage
+// Helper: Buscar la sesión activa alineada con main.js
+function obtenerUsuarioActivo() {
+    const item = localStorage.getItem('sesion_rectabags');
+    if (item) {
+        try {
+            const sesion = JSON.parse(item);
+            if (sesion && sesion.email) {
+                return sesion;
+            }
+        } catch (e) {
+            console.error("Error al parsear sesion_rectabags:", e);
+        }
+    }
+    return null;
+}
+
+// Helper: Generar una clave de carrito única por usuario
+function obtenerClaveCarrito() {
+    const usuario = obtenerUsuarioActivo();
+    if (usuario && usuario.email) {
+        return `recta_carrito_${usuario.email}`;
+    }
+    return 'recta_carrito_invitado';
+}
+
+// 1. Leer el carrito
 function obtenerCarrito() {
-    const carrito = localStorage.getItem('recta_carrito');
-    return carrito ? JSON.parse(carrito) : [];
+    const clave = obtenerClaveCarrito();
+    const carrito = localStorage.getItem(clave);
+    try {
+        return carrito ? JSON.parse(carrito) : [];
+    } catch (e) {
+        console.error("Error al leer el carrito:", e);
+        return [];
+    }
 }
 
-// 2. Guardar el carrito en LocalStorage
+// 2. Guardar el carrito
 function guardarCarrito(carrito) {
-    localStorage.setItem('recta_carrito', JSON.stringify(carrito));
+    const clave = obtenerClaveCarrito();
+    localStorage.setItem(clave, JSON.stringify(carrito));
 }
 
-// 3. Agregar un producto al carrito (usado desde las fichas de producto)
+// 3. Agregar producto
 function agregarAlCarrito(producto) {
     let carrito = obtenerCarrito();
-    
     const index = carrito.findIndex(item => item.id === producto.id);
     
     if (index !== -1) {
@@ -29,30 +60,27 @@ function agregarAlCarrito(producto) {
     alert(`¡${producto.nombre} añadido al carrito!`);
 }
 
-// 4. Formatear valores numéricos a pesos chilenos ($15.000)
+// 4. Formatear precio
 function formatearPrecio(precio) {
-    return '$' + precio.toLocaleString('es-CL');
+    return '$' + Number(precio).toLocaleString('es-CL');
 }
 
-// 5. Cambiar la cantidad (+ / -) desde la vista del carrito
+// 5. Cambiar cantidad
 function cambiarCantidad(id, cambio) {
     let carrito = obtenerCarrito();
     const index = carrito.findIndex(item => item.id === id);
     
     if (index !== -1) {
         carrito[index].cantidad += cambio;
-        
-        // Evita que la cantidad sea menor a 1
         if (carrito[index].cantidad < 1) {
             carrito[index].cantidad = 1;
         }
-        
         guardarCarrito(carrito);
         renderizarCarrito();
     }
 }
 
-// 6. Confirmar eliminación mediante Modal Pop-up
+// 6. Modal de Eliminación
 function solicitarEliminación(id, nombreProducto) {
     productoIdAEliminar = id;
     
@@ -63,12 +91,12 @@ function solicitarEliminación(id, nombreProducto) {
     
     const modalElement = document.getElementById('modalEliminar');
     if (modalElement) {
-        const modal = new bootstrap.Modal(modalElement);
+        const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
         modal.show();
     }
 }
 
-// 7. Dibujar y actualizar los elementos dinámicamente en carrito.html
+// 7. Renderizar vista del carrito
 function renderizarCarrito() {
     const contenedorLista = document.getElementById('lista-productos-carrito');
     const badgeContador = document.getElementById('contador-productos-titulo');
@@ -106,50 +134,36 @@ function renderizarCarrito() {
         const subtotalItem = item.precio * item.cantidad;
         sumaSubtotal += subtotalItem;
 
-        // Solo mostrar el botón (-) si la cantidad es mayor a 1
         const botonMenos = item.cantidad > 1 
             ? `<button class="btn btn-light border-0 fw-bold px-2 py-0" type="button" onclick="cambiarCantidad('${item.id}', -1)">-</button>` 
             : `<div style="width: 28px;"></div>`;
 
-        // Alineación, precio corrido a la izquierda y botón "Eliminar" en texto a la derecha
         htmlProductos += `
             <div class="bg-white rounded-4 p-3 shadow-sm mb-3">
                 <div class="row g-3 align-items-center">
-                    <!-- Imagen -->
                     <div class="col-4 col-sm-3">
                         <img src="${item.imagen}" alt="${item.nombre}" class="img-fluid rounded-3 object-fit-cover w-100" style="height: 100px;">
                     </div>
-
-                    <!-- Detalles -->
                     <div class="col-8 col-sm-4">
                         <h2 class="h6 fw-bold mb-1 text-dark">${item.nombre}</h2>
-                        <span class="badge bg-light text-secondary border mb-1">${item.categoria}</span>
+                        <span class="badge bg-light text-secondary border mb-1">${item.categoria || 'Producto'}</span>
                         <div class="small text-secondary lh-sm" style="font-size: 0.8rem;">
-                            <p class="m-0"><strong>Detalles:</strong> ${item.medidas}</p>
+                            <p class="m-0"><strong>Detalles:</strong> ${item.medidas || 'Estándar'}</p>
                         </div>
                     </div>
-
-                    <!-- Selector de Cantidad, Precio y Botón Eliminar -->
                     <div class="col-12 col-sm-5 d-flex align-items-center justify-content-end gap-3 mt-2 mt-sm-0 ms-auto">
-                        
-                        <!-- Selector de Cantidad -->
                         <div class="input-group rounded-3 overflow-hidden border border-secondary-subtle align-items-center" style="width: 105px; height: 38px;">
                             ${botonMenos}
                             <input type="number" class="form-control border-0 text-center fw-bold p-0 bg-white" value="${item.cantidad}" readonly>
                             <button class="btn btn-light border-0 fw-bold px-2 py-0" type="button" onclick="cambiarCantidad('${item.id}', 1)">+</button>
                         </div>
-
-                        <!-- Precio corrido a la izquierda -->
                         <p class="h6 fw-bold text-dark m-0 text-end" style="min-width: 85px;">
                             ${formatearPrecio(subtotalItem)}
                         </p>
-
-                        <!-- Botón de Eliminar en Texto -->
                         <button class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold" 
                                 onclick="solicitarEliminación('${item.id}', '${item.nombre}')">
                             Eliminar
                         </button>
-
                     </div>
                 </div>
             </div>
@@ -157,29 +171,126 @@ function renderizarCarrito() {
     });
 
     contenedorLista.innerHTML = htmlProductos;
-
     if (elSubtotal) elSubtotal.innerText = formatearPrecio(sumaSubtotal);
     if (elTotal) elTotal.innerText = formatearPrecio(sumaSubtotal);
 }
 
-// 8. Confirmación para eliminación desde el Pop Up
+// 8. Registra la orden en el usuario activo dentro de LocalStorage
+function procesarRegistroPedido() {
+    const sesion = obtenerUsuarioActivo();
+    if (!sesion) return false;
+
+    let usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
+    let indexUsuario = usuarios.findIndex(u => u.email === sesion.email);
+
+    if (indexUsuario === -1) return false;
+
+    const carrito = obtenerCarrito();
+    if (carrito.length === 0) return false;
+
+    const totalCompra = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+
+    const nuevoPedido = {
+        id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+        fecha: new Date().toLocaleDateString('es-CL'),
+        total: formatearPrecio(totalCompra),
+        productos: carrito.map(p => ({
+            nombre: p.nombre,
+            cantidad: p.cantidad,
+            precio: formatearPrecio(p.precio)
+        }))
+    };
+
+    if (!usuarios[indexUsuario].pedidos) {
+        usuarios[indexUsuario].pedidos = [];
+    }
+
+    usuarios[indexUsuario].pedidos.push(nuevoPedido);
+    localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
+
+    // Vaciar el carrito actual
+    const clave = obtenerClaveCarrito();
+    localStorage.removeItem(clave);
+
+    return true;
+}
+
+// 9. Inicialización de eventos
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Confirmar eliminación
     const btnConfirmar = document.getElementById('btnConfirmarEliminar');
     if (btnConfirmar) {
-        btnConfirmar.addEventListener('click', () => {
+        btnConfirmar.onclick = () => {
             if (productoIdAEliminar) {
                 let carrito = obtenerCarrito();
                 carrito = carrito.filter(item => item.id !== productoIdAEliminar);
                 guardarCarrito(carrito);
 
                 const modalElement = document.getElementById('modalEliminar');
-                const modal = bootstrap.Modal.getInstance(modalElement);
-                if (modal) modal.hide();
+                if (modalElement) {
+                    const modal = bootstrap.Modal.getInstance(modalElement);
+                    if (modal) modal.hide();
+                }
 
                 productoIdAEliminar = null;
                 renderizarCarrito();
             }
-        });
+        };
+    }
+
+    // Botón "Proceder al Pago"
+    const btnProcederPago = document.getElementById('btnProcederPago');
+    const aceptoTerminos = document.getElementById('aceptoTerminos');
+
+    if (btnProcederPago) {
+        btnProcederPago.onclick = () => {
+            const carrito = obtenerCarrito();
+            const usuarioActivo = obtenerUsuarioActivo();
+
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío. Agrega productos para continuar.');
+                return;
+            }
+
+            if (!usuarioActivo) {
+                alert('Debes iniciar sesión para poder realizar una compra.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            if (!aceptoTerminos || !aceptoTerminos.checked) {
+                alert('Debes aceptar los Términos y Condiciones para proceder al pago.');
+                return;
+            }
+
+            const modalPagoElement = document.getElementById('modalConfirmarPago');
+            if (modalPagoElement) {
+                const modalPago = bootstrap.Modal.getOrCreateInstance(modalPagoElement);
+                modalPago.show();
+            }
+        };
+    }
+
+    // Botón "SÍ" de confirmación final
+    const btnConfirmarPagoFinal = document.getElementById('btnConfirmarPagoFinal');
+    if (btnConfirmarPagoFinal) {
+        btnConfirmarPagoFinal.onclick = () => {
+            const exito = procesarRegistroPedido();
+
+            const modalPagoElement = document.getElementById('modalConfirmarPago');
+            if (modalPagoElement) {
+                const modalPago = bootstrap.Modal.getInstance(modalPagoElement);
+                if (modalPago) modalPago.hide();
+            }
+
+            if (exito) {
+                alert('¡Gracias por tu compra! Tu pedido ha sido procesado exitosamente.');
+                window.location.href = 'perfil_usuario.html';
+            } else {
+                alert('Hubo un error al procesar tu compra. Por favor reintenta.');
+            }
+        };
     }
 
     renderizarCarrito();

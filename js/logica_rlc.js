@@ -6,50 +6,62 @@ document.addEventListener("DOMContentLoaded", () => {
     const formRegistro = document.getElementById('form-registro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', (e) => {
-            e.preventDefault(); // Evita recargar la página
+            e.preventDefault();
             
-            const email = document.getElementById('email-reg').value;
-            const pass = document.getElementById('pass-reg').value;
+            const email = document.getElementById('email').value.trim();
+            const pass = document.getElementById('password').value;
+            const confirmPass = document.getElementById('confirm-password').value;
 
-            // Traer usuarios existentes o crear un array vacío
+            if (pass !== confirmPass) {
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+
             let usuarios = JSON.parse(localStorage.getItem('rectabags_usuarios')) || [];
 
-            // Validar si el correo ya existe
             const usuarioExiste = usuarios.find(u => u.email === email);
             if (usuarioExiste) {
                 alert("Este correo ya está registrado.");
                 return;
             }
 
-            // Guardar nuevo usuario
-            usuarios.push({ email: email, pass: pass });
+            // Guardar objeto con la clave 'email' garantizada
+            const nuevoUsuario = { 
+                email: email, 
+                pass: pass,
+                nombre: document.getElementById('nombre')?.value || '',
+                apellido: document.getElementById('apellido')?.value || ''
+            };
+
+            usuarios.push(nuevoUsuario);
             localStorage.setItem('rectabags_usuarios', JSON.stringify(usuarios));
             
             alert("Cuenta creada con éxito. Ahora puedes iniciar sesión.");
-            window.location.href = 'login.html'; // Redirigir al login
+            window.location.href = 'login.html';
         });
     }
 
     // ==========================================
-    // 2. LÓGICA DE LOGIN
+    // 2. LÓGICA DE LOGIN (IDs Corregidos)
     // ==========================================
     const formLogin = document.getElementById('form-login');
     if (formLogin) {
         formLogin.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const email = document.getElementById('email-login').value;
-            const pass = document.getElementById('pass-login').value;
+            // Corrige los IDs coincidentes con login.html ('email' y 'password')
+            const email = document.getElementById('email').value.trim();
+            const pass = document.getElementById('password').value;
 
             let usuarios = JSON.parse(localStorage.getItem('rectabags_usuarios')) || [];
             
-            // Buscar si coincide correo y contraseña
             const usuarioValido = usuarios.find(u => u.email === email && u.pass === pass);
 
             if (usuarioValido) {
-                // Crear la sesión activa
+                // Guarda la sesión activa en LocalStorage
                 localStorage.setItem('rectabags_sesion', JSON.stringify(usuarioValido));
-                window.location.href = 'perfil_usuario.html'; // Redirigir al perfil
+                alert("¡Sesión iniciada con éxito!");
+                window.location.href = 'carrito.html'; // Redirige directamente al carrito para probar
             } else {
                 alert("Correo o contraseña incorrectos.");
             }
@@ -59,12 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 3. LÓGICA DE CERRAR SESIÓN
     // ==========================================
-    // Usamos delegación de eventos porque el botón podría inyectarse dinámicamente
     document.body.addEventListener('click', (e) => {
-        if (e.target && e.target.id === 'btn-logout') {
+        if (e.target && (e.target.id === 'btn-logout' || e.target.id === 'btn-logout-perfil')) {
             e.preventDefault();
-            localStorage.removeItem('rectabags_sesion'); // Borramos la sesión
-            window.location.href = 'home.html'; // Redirigir al inicio
+            localStorage.removeItem('rectabags_sesion');
+            window.location.href = 'home.html';
         }
     });
 
