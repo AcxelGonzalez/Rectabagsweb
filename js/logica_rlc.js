@@ -4,6 +4,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
     const paginaActual = path.substring(path.lastIndexOf('/') + 1) || 'home.html';
 
+    // HTML del Footer por defecto (respaldo)
+    const componenteFooter = `
+    <footer class="bg-black text-white py-5 border-top border-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 columna-logo">
+                    <img src="img/FOOTER/Logo footer.png" alt="Logo Recta" class="logo-footer"/>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="fw-bold mb-3">INFORMACIÓN</h4>
+                    <ul class="list-unstyled lh-lg">
+                        <li><a href="quienes_somos.html" class="text-white text-decoration-none">Sobre Nosotros</a></li>
+                        <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+                        <li><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="fw-bold mb-3">RETIRO EN TIENDA</h4>
+                    <p class="text-white text-decoration-none">Monseñor Miller 22-B, Providencia, Chile</p>
+                    <div class="bg-secondary">
+                        <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.3676318605725!2d-70.63000433043375!3d-33.43704579833717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5847589b685%3A0xec7382a19710d0cb!2sFrutas%20%26%20Verduras%20Minimarket!5e0!3m2!1ses-419!2scl!4v1788302948622!5m2!1ses-419!2scl"
+                        width="100%"
+                        height="300"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    `;
+
     // ==========================================
     // 1. PROTECCIÓN DE RUTAS
     // ==========================================
@@ -18,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 2. CARGA DINÁMICA DE HEADER.HTML
+    // 2. CARGA DINÁMICA DE HEADER Y FOOTER
     // ==========================================
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
@@ -31,12 +67,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 headerContainer.innerHTML = data;
                 actualizarVisibilidadMenu();
             })
-            .catch(error => {
-                console.error('Error al cargar el header:', error);
+            .catch(() => {
                 actualizarVisibilidadMenu();
             });
     } else {
         actualizarVisibilidadMenu();
+    }
+
+    const footerContainer = document.getElementById('footer-container');
+    if (footerContainer) {
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error("No existe footer.html");
+                return response.text();
+            })
+            .then(data => {
+                footerContainer.innerHTML = data;
+            })
+            .catch(() => {
+                // Inyecta el componente HTML si no hay archivo footer.html
+                footerContainer.innerHTML = componenteFooter;
+            });
     }
 
     // ==========================================
@@ -101,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (inputRut) inputRut.value = datosUsuario.rut || '';
         if (inputTelefono) inputTelefono.value = datosUsuario.telefono || '';
 
-        // Botón Editar Perfil
         let btnEditarTarget = document.getElementById('btn-editar-perfil');
         if (!btnEditarTarget) {
             const todosLosBotones = document.querySelectorAll('button');
@@ -155,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Pestañas
         const botonesTab = document.querySelectorAll('.tab-btn, [data-target]');
         botonesTab.forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -199,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 6. REGISTRO DE USUARIOS (PREVIENE DUPLICADOS)
+    // 6. REGISTRO DE USUARIOS
     // ==========================================
     const formRegistro = document.getElementById('form-registro');
     if (formRegistro && !formRegistro.dataset.initialized) {
@@ -259,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 7. INGRESO / LOGIN (PREVIENE DUPLICADOS)
+    // 7. INGRESO / LOGIN
     // ==========================================
     const formLogin = document.getElementById('form-login');
     if (formLogin && !formLogin.dataset.initialized) {
