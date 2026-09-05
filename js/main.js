@@ -287,6 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('perfil-telefono').value = datosUsuario.telefono || "";
             
             renderizarDirecciones(datosUsuario);
+            renderizarPedidos(datosUsuario); // <-- RENDERIZA LOS PEDIDOS
         }
 
         inicializarTabsPerfil();
@@ -463,7 +464,6 @@ function renderizarDirecciones(usuario) {
     }
 
     usuario.direcciones.forEach((dir, index) => {
-        // Agregamos el botón de ELIMINAR llamando a la función global
         contenedor.innerHTML += `
             <div class="border p-3 rounded-4 mb-3 position-relative border-dark d-flex justify-content-between align-items-center">
                 <div>
@@ -476,6 +476,44 @@ function renderizarDirecciones(usuario) {
     });
 }
 
+function renderizarPedidos(usuario) {
+    const contenedor = document.querySelector('#seccion-pedidos .card-body');
+    if (!contenedor) return;
+
+    if (!usuario.pedidos || usuario.pedidos.length === 0) {
+        contenedor.innerHTML = `
+            <h2 class="h4 fw-bold mb-4">Historial de Pedidos</h2>
+            <p class="text-secondary">Aún no tienes pedidos registrados en tu cuenta.</p>
+        `;
+        return;
+    }
+
+    let htmlPedidos = `<h2 class="h4 fw-bold mb-4">Historial de Pedidos</h2>`;
+
+    usuario.pedidos.forEach(pedido => {
+        let detalleProductos = pedido.productos.map(p => 
+            `<li class="small text-secondary">${p.nombre} (x${p.cantidad || 1}) - $${p.precio}</li>`
+        ).join('');
+
+        htmlPedidos += `
+            <div class="border p-3 rounded-4 mb-3 border-dark">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold">${pedido.id}</span>
+                    <span class="badge bg-dark">${pedido.fecha}</span>
+                </div>
+                <ul class="mb-2 ps-3">
+                    ${detalleProductos}
+                </ul>
+                <div class="fw-bold text-end">
+                    Total: $${pedido.total}
+                </div>
+            </div>
+        `;
+    });
+
+    contenedor.innerHTML = htmlPedidos;
+}
+
 // Función global para eliminar una dirección
 window.eliminarDireccion = function(index) {
     if(!confirm("¿Estás seguro de eliminar esta dirección?")) return;
@@ -484,10 +522,8 @@ window.eliminarDireccion = function(index) {
     let usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags'));
     let indexUsuario = usuarios.findIndex(u => u.email === sesionActiva.email);
 
-    // Cortar 1 elemento desde el índice especificado
     usuarios[indexUsuario].direcciones.splice(index, 1);
     
-    // Guardar y refrescar pantalla
     localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
     renderizarDirecciones(usuarios[indexUsuario]);
 };
