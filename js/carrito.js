@@ -2,7 +2,7 @@
 
 let productoIdAEliminar = null;
 
-// Helper: Buscar la sesión activa alineada con main.js
+// Buscar la sesión activa alineada con main.js
 function obtenerUsuarioActivo() {
     const item = localStorage.getItem('sesion_rectabags');
     if (item) {
@@ -18,7 +18,7 @@ function obtenerUsuarioActivo() {
     return null;
 }
 
-// Helper: Generar una clave de carrito única por usuario
+// Generar una clave de carrito única por usuario
 function obtenerClaveCarrito() {
     const usuario = obtenerUsuarioActivo();
     if (usuario && usuario.email) {
@@ -65,7 +65,7 @@ function formatearPrecio(precio) {
     return '$' + Number(precio).toLocaleString('es-CL');
 }
 
-// 5. Cambiar cantidad
+// 5. Cambiar cantidad desde carrito
 function cambiarCantidad(id, cambio) {
     let carrito = obtenerCarrito();
     const index = carrito.findIndex(item => item.id === id);
@@ -80,7 +80,7 @@ function cambiarCantidad(id, cambio) {
     }
 }
 
-// 6. Modal de Eliminación
+// 6. Borrar producto del carrito (Si-No)
 function solicitarEliminación(id, nombreProducto) {
     productoIdAEliminar = id;
     
