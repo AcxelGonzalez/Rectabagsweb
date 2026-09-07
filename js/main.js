@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <!-- Bloque derecho: Usuario y Carrito -->
             <div class="header-right d-flex gap-3">
-                <!-- Se agregó el ID "enlace-usuario-header" -->
                 <a id="enlace-usuario-header" class="btn btn-link p-0" aria-label="Usuario" href="login.html">
                     <img src="img/HEADER/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
                 </a>
@@ -142,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validador de dominios permitidos
     function correoValido(email) {
-        if (email === 'admin') return true; // Excepción para el login de admin
+        if (email === 'admin') return true;
         const dominios = ['@duocuc.cl', '@gmail.com', '@profesor.duoc.cl'];
         return dominios.some(dominio => email.toLowerCase().endsWith(dominio));
     }
@@ -150,14 +149,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // 1. CARGA DE HEADER/FOOTER Y SESIÓN
     // ==========================================
-    // 1. INYECTAR COMPONENTES (Reemplazo del Fetch)
     const headerContainer = document.getElementById('header-container');
     const footerContainer = document.getElementById('footer-container');
 
     if (headerContainer) headerContainer.innerHTML = componenteHeader;
     if (footerContainer) footerContainer.innerHTML = componenteFooter;
 
-    // 2. VALIDAR SESIÓN ACTIVA (Igual que antes)
+    // Validar Sesión Activa
     const sesionActiva = localStorage.getItem('sesion_rectabags');
     const enlaceUsuario = document.getElementById('enlace-usuario-header');
 
@@ -188,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const rut = document.getElementById('rut').value.trim();
             const telefono = document.getElementById('telefono').value.trim();
             
-            // Validar Dominio de Correo
             if (!correoValido(email)) {
                 alert('Solo se permiten correos @duocuc.cl, @profesor.duoc.cl o @gmail.com');
                 return;
@@ -199,7 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Recargar usuarios por si hubo cambios
             usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
             if (usuarios.some(u => u.email === email)) {
                 alert('Este correo ya está registrado.');
@@ -252,7 +248,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================
-    // 4. LÓGICA DE CERRAR SESIÓN GLOBAL
+    // 4. LÓGICA DE RECUPERACIÓN DE CONTRASEÑA
+    // ==========================================
+    const formRecuperar = document.getElementById('form-recuperar');
+    if (formRecuperar) {
+        formRecuperar.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const emailInput = document.getElementById('recuperar-email').value.trim();
+            const rutInput = document.getElementById('recuperar-rut').value.trim();
+            const nuevaPass = document.getElementById('nueva-pass').value;
+            const confirmPass = document.getElementById('confirm-nueva-pass').value;
+
+            if (nuevaPass !== confirmPass) {
+                alert('Las contraseñas no coinciden.');
+                return;
+            }
+
+            usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
+            const indexUsuario = usuarios.findIndex(u => u.email === emailInput && u.rut === rutInput);
+
+            if (indexUsuario !== -1) {
+                usuarios[indexUsuario].password = nuevaPass;
+                localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
+
+                alert('¡Tu contraseña ha sido actualizada exitosamente! Ahora puedes iniciar sesión.');
+                window.location.href = 'login.html';
+            } else {
+                alert('El correo y RUT ingresados no coinciden con ninguna cuenta registrada.');
+            }
+        });
+    }
+
+    // ==========================================
+    // 5. LÓGICA DE CERRAR SESIÓN GLOBAL
     // ==========================================
     document.body.addEventListener('click', (e) => {
         if (e.target && (e.target.id === 'btn-logout' || e.target.id === 'btn-logout-perfil')) {
@@ -263,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // 5. CARGA, PROTECCIÓN Y EDICIÓN DEL PERFIL
+    // 6. CARGA, PROTECCIÓN Y EDICIÓN DEL PERFIL
     // ==========================================
     const textoBienvenida = document.getElementById('texto-bienvenida');
     if (textoBienvenida) {
@@ -287,11 +316,12 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('perfil-telefono').value = datosUsuario.telefono || "";
             
             renderizarDirecciones(datosUsuario);
+            renderizarPedidos(datosUsuario);
         }
 
         inicializarTabsPerfil();
 
-        // --- LÓGICA DE EDICIÓN ---
+        // --- LÓGICA DE EDICIÓN DE PERFIL ---
         const btnEditar = document.getElementById('btn-editar-perfil');
         const btnGuardar = document.getElementById('btn-guardar-perfil');
         const btnCancelar = document.getElementById('btn-cancelar-perfil');
@@ -309,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     input.classList.remove('bg-light', 'border-0');
                     input.classList.add('border-dark', 'bg-white'); 
                 });
-                divPassword.classList.remove('d-none'); // Mostrar campos de password
+                divPassword.classList.remove('d-none');
                 inputNombre.focus();
 
                 btnEditar.classList.add('d-none');
@@ -318,7 +348,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             btnCancelar.addEventListener('click', () => {
-                // Restaurar
                 inputNombre.value = datosUsuario.nombre;
                 inputApellido.value = datosUsuario.apellido;
                 inputTelefono.value = datosUsuario.telefono || "";
@@ -326,7 +355,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById('perfil-pass-nueva').value = "";
                 document.getElementById('perfil-pass-conf').value = "";
 
-                // Bloquear
                 [inputNombre, inputApellido, inputTelefono, inputEmail].forEach(input => {
                     input.setAttribute('readonly', true);
                     input.classList.add('bg-light', 'border-0');
@@ -349,7 +377,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                // Verificar si cambió el correo y si ya existe en otro usuario
                 if (nuevoEmail !== datosUsuario.email && usuarios.some(u => u.email === nuevoEmail)) {
                     alert('Este correo ya está en uso por otra cuenta.');
                     return;
@@ -370,12 +397,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 usuarios[indexUsuario] = datosUsuario;
                 localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
-                
-                // Actualizar la sesión si cambió el email
                 localStorage.setItem('sesion_rectabags', JSON.stringify({ email: nuevoEmail }));
                 
                 textoBienvenida.textContent = `Bienvenido de vuelta, ${datosUsuario.nombre} ${datosUsuario.apellido}.`;
-                btnCancelar.click(); // Simula cancelar para bloquear los inputs
+                btnCancelar.click();
                 alert("Tus datos han sido actualizados exitosamente.");
             });
         }
@@ -403,7 +428,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
                 renderizarDirecciones(usuarios[indexUsuario]);
                 
-                // Cerrar modal
                 const modalElement = document.getElementById('modalDireccion');
                 const modalInstancia = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
                 modalInstancia.hide();
@@ -414,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// 6. FUNCIONES AUXILIARES GLOBALES
+// 7. FUNCIONES AUXILIARES GLOBALES
 // ==========================================
 function activarBuscador() {
     const btnBuscar = document.getElementById('btn-buscar');
@@ -463,7 +487,6 @@ function renderizarDirecciones(usuario) {
     }
 
     usuario.direcciones.forEach((dir, index) => {
-        // Agregamos el botón de ELIMINAR llamando a la función global
         contenedor.innerHTML += `
             <div class="border p-3 rounded-4 mb-3 position-relative border-dark d-flex justify-content-between align-items-center">
                 <div>
@@ -476,7 +499,45 @@ function renderizarDirecciones(usuario) {
     });
 }
 
-// Función global para eliminar una dirección
+function renderizarPedidos(usuario) {
+    const contenedor = document.querySelector('#seccion-pedidos .card-body');
+    if (!contenedor) return;
+
+    if (!usuario.pedidos || usuario.pedidos.length === 0) {
+        contenedor.innerHTML = `
+            <h2 class="h4 fw-bold mb-4">Historial de Pedidos</h2>
+            <p class="text-secondary">Aún no tienes pedidos registrados en tu cuenta.</p>
+        `;
+        return;
+    }
+
+    let htmlPedidos = `<h2 class="h4 fw-bold mb-4">Historial de Pedidos</h2>`;
+
+    usuario.pedidos.forEach(pedido => {
+        let detalleProductos = pedido.productos.map(p => 
+            `<li class="small text-secondary">${p.nombre} (x${p.cantidad || 1}) - $${p.precio}</li>`
+        ).join('');
+
+        htmlPedidos += `
+            <div class="border p-3 rounded-4 mb-3 border-dark">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold">${pedido.id}</span>
+                    <span class="badge bg-dark">${pedido.fecha}</span>
+                </div>
+                <ul class="mb-2 ps-3">
+                    ${detalleProductos}
+                </ul>
+                <div class="fw-bold text-end">
+                    Total: $${pedido.total}
+                </div>
+            </div>
+        `;
+    });
+
+    contenedor.innerHTML = htmlPedidos;
+}
+
+// Eliminar una dirección
 window.eliminarDireccion = function(index) {
     if(!confirm("¿Estás seguro de eliminar esta dirección?")) return;
 
@@ -484,10 +545,8 @@ window.eliminarDireccion = function(index) {
     let usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags'));
     let indexUsuario = usuarios.findIndex(u => u.email === sesionActiva.email);
 
-    // Cortar 1 elemento desde el índice especificado
     usuarios[indexUsuario].direcciones.splice(index, 1);
     
-    // Guardar y refrescar pantalla
     localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
     renderizarDirecciones(usuarios[indexUsuario]);
 };
