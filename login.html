@@ -44,29 +44,31 @@
                             <div class="card-body">
                                 <h2 class="text-center mb-4 titulo-mono">Ingresar</h2>
                                 
-                                <form id="form-login">
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label small text-secondary">Correo electrónico</label>
-                                        <!-- rounded-0 quita los bordes redondeados para que sea cuadrado como en el mockup -->
-                                        <input type="email" class="form-control rounded-0 border-dark" id="email" required>
+                            <form id="form-login">
+                                <div class="mb-3">
+                                    <label for="email-login" class="form-label small text-secondary">Correo electrónico o Usuario</label>
+                                    <!-- type="text" permite escribir "admin" sin pedir signo @ -->
+                                    <!-- id="email-login" coincide con la lectura de JavaScript -->
+                                    <input type="text" class="form-control rounded-0 border-dark" id="email-login" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="pass-login" class="form-label small text-secondary">Contraseña</label>
+                                    <!-- id="pass-login" coincide con la lectura de JavaScript -->
+                                    <input type="password" class="form-control rounded-0 border-dark" id="pass-login" required>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-4 mt-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input border-dark rounded-0" id="recordarme">
+                                        <label class="form-check-label small" for="recordarme">Recuerdame</label>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label small text-secondary">Contraseña</label>
-                                        <input type="password" class="form-control rounded-0 border-dark" id="password" required>
-                                    </div>
-                                    
-                                    <!-- Opciones de contraseña y recordar -->
-                                    <div class="d-flex justify-content-between align-items-center mb-4 mt-2">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input border-dark rounded-0" id="recordarme">
-                                            <label class="form-check-label small" for="recordarme">Recuerdame</label>
-                                        </div>
-                                        <a href="recuperar_contrasena.html" class="small text-secondary text-decoration-underline">¿Olvidaste tu contraseña?</a>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn btn-dark w-100 rounded-0 py-2">Ingresar</button>
-                                </form>
-                            </div>
+                                    <a href="#" class="small text-secondary text-decoration-underline">¿Olvidaste tu contraseña?</a>
+                                </div>
+
+                                <button type="submit" class="btn btn-dark w-100 rounded-0 py-2">Ingresar</button>
+                            </form>
+                        </div>
                         </div>
                     </div>
 
@@ -107,7 +109,7 @@
             crossorigin="anonymous">
         </script>  
 
-        <script src="js/main.js"></script>
+        <script src="js/logica_rlc.js"></script>
 
     </body>
 </html>
