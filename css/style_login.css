@@ -1,45 +1,49 @@
-/* ================= LOGIN SECTION ================= */
+/* ==========================================================================
+HOJA DE ESTILOS: VISTAS LOGIN Y REGISTRO
+========================================================================== */
 
-/* Fondo color durazno/crema pálido exacto al de la imagen */
+/* Fondo color durazno/crema pálido exacto al mockup */
 .login-section {
     background-color: #FAEFDF; 
     
-    /* Le resta la altura exacta del header al total de la pantalla */
+    /* Defensa: calc() permite hacer matemáticas en CSS. 
+       Aquí tomamos el alto total (100vh) y le restamos los 90px del header. */
     min-height: calc(100vh - 90px) !important;
     height: auto !important; 
     
-    /* Agrega un poco de margen superior interno por si acaso */
     padding-top: 2rem; 
 }
 
-/* Tipografía de los Títulos */
+/* ==========================================================================
+TIPOGRAFÍAS CORPORATIVAS
+========================================================================== */
 .titulo-mono {
-    /* Usamos fuentes del sistema para no sobrecargar la carga, priorizando las monoespaciadas */
+    /* Familia tipográfica monoespaciada para estética técnica/urbana */
     font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', monospace;
     font-weight: 500;
     letter-spacing: -1px;
 }
 
-/* Tipografía del texto descriptivo en "Crear cuenta" */
 .texto-mono {
     font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', monospace;
 }
 
-/* ================= MODIFICACIÓN DE FORMULARIOS BOOTSTRAP ================= */
-
-/* Hace que el fondo de los inputs sea transparente o blanco puro */
+/* ==========================================================================
+MODIFICACIÓN DE FORMULARIOS BOOTSTRAP (FLAT DESIGN)
+========================================================================== */
 .login-section .form-control {
     background-color: #fff;
 }
 
-/* Efecto al hacer clic en un input (quita el brillo azul por defecto de Bootstrap y pone un borde negro intenso) */
+/* Defensa: Modificamos el estado :focus para eliminar el "halo azul" nativo de 
+   Bootstrap y reemplazarlo por un borde negro sólido, más acorde a la marca. */
 .login-section .form-control:focus {
     box-shadow: none;
     border-color: #000;
     border-width: 2px;
 }
 
-/* Efecto hover en los botones negros para dar feedback de interacción */
+/* Efecto hover en los botones negros para dar feedback al usuario */
 .login-section .btn-dark {
     background-color: #000;
     border: none;
@@ -48,5 +52,5 @@
 
 .login-section .btn-dark:hover {
     background-color: #333;
-    transform: translateY(-2px); /* Levanta el botón ligeramente */
+    transform: translateY(-2px); /* Desplazamiento sutil en el eje Y */
 }

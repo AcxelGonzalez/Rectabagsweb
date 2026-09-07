@@ -3,36 +3,36 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fbeee6;
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Define un contenedor flexible. Si lo cambias a 'block', no podrás usar flex-direction para alinear fácilmente el header y main. */
+  flex-direction: column; /* Apila elementos verticalmente. Si lo cambias a 'row', el contenido se pondrá al lado del header. */
 }
 
 .sidebar-title,
 .titulo-mono {
   margin-top: 0;
-  line-height: 1.2;
+  line-height: 1.2; /* Interlineado. Si pones '2.0', las líneas de texto quedarán muy separadas. */
 }
 
 .titulo-pantalla {
   width: 100%;
   text-align: center;
-  padding-top: 110px; /* Espacio para no quedar tapado por el header */
+  padding-top: 110px; /* Margen superior interno. Si pones '0px', el header fijo (fixed-top) tapará el título. */
   background-color: #fbeee6;
 }
 
 .layout-container {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 40px;
+  flex-direction: row; /* Coloca la barra lateral y los productos lado a lado. Si pones 'column', la barra lateral se irá arriba de los productos. */
+  align-items: flex-start; /* Alinea todo arriba. Si pones 'center', la barra lateral bajará hasta el centro de la grilla de productos. */
+  gap: 40px; /* Espacio entre columnas. Si pones '0px', los productos chocarán con las categorías. */
   padding: 120px 40px 50px 40px;
   background-color: #fbeee6;
 }
 
 /* Ancho fijo para la barra lateral */
 .sidebar {
-  width: 240px;
-  flex-shrink: 0;
+  width: 240px; /* Ancho duro. Si pones '100%', destruirá la grilla empujando los productos abajo. */
+  flex-shrink: 0; /* IMPIDE que el navegador encoja este div. Si pones '1', la barra se aplastará si hay muchos productos. */
   padding-top: 60px;
   font-family: monospace, 'Courier New', Courier;
 }
@@ -40,7 +40,6 @@ body {
 .sidebar-title {
   font-size: 1.5rem;
   font-weight: bold;
-  /* Aumentamos el margen inferior para empujar 'Categorías' hacia abajo */
   margin-bottom: 10px;
 }
 
@@ -50,12 +49,12 @@ body {
 
 .category-title {
   font-weight: bold;
-  display: block;
+  display: block; /* Obliga a que ocupe toda la línea. Si pones 'inline', los textos siguientes se pegarán a su lado. */
   margin-bottom: 8px;
 }
 
 .sidebar ul {
-  list-style: none;
+  list-style: none; /* Oculta las viñetas (puntos). Si lo borras, aparecerán los puntos feos por defecto del navegador. */
   padding-left: 15px;
   margin: 0;
 }
@@ -65,15 +64,15 @@ body {
 }
 
 .sidebar a {
-  text-decoration: none;
+  text-decoration: none; /* Quita el subrayado. Si lo borras, los enlaces aparecerán con la línea inferior clásica. */
   color: #111;
   font-size: 0.95rem;
 }
 
 /* Área del catálogo */
 .main-content {
-  flex-grow: 1;
-  min-width: 0;
+  flex-grow: 1; /* Le dice que ocupe todo el ancho sobrante. Si pones '0', el catálogo quedará pegado a la izquierda. */
+  min-width: 0; /* Previene desbordamiento en Flexbox. Si lo quitas y una imagen es muy grande, romperá el diseño en móviles. */
 }
 
 .titulo-mono {
@@ -85,8 +84,8 @@ body {
 
 /* Retícula de 3 productos */
 .catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: grid; /* Activa CSS Grid. Si pones 'flex', tendrías que calcular los anchos manualmente con porcentajes. */
+  grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas iguales. Si pones 'repeat(4, 1fr)', se verán 4 productos por fila (muy apretados). */
   gap: 20px;
 }
 
@@ -95,49 +94,49 @@ body {
   background-color: #ffffff;
   border-radius: 6px;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Sombra difuminada. Si cambias el último valor '0.05' a '1', la sombra será negra sólida. */
 }
 
 .card a {
   display: block;
-  overflow: hidden;
+  overflow: hidden; /* Corta lo que sobresalga. Si lo quitas, la imagen al hacer 'hover' se saldrá de los bordes redondeados de la tarjeta. */
   border-radius: 4px;
 }
 
 .card img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  aspect-ratio: 4 / 3; /* Fuerza la proporción. Si lo borras, si subes una foto vertical, la tarjeta será enorme. */
+  object-fit: cover; /* Llena el espacio recortando sobrantes. Si pones 'contain', se verán franjas blancas a los lados de la foto. */
   display: block;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out; /* Prepara la animación. Si pones '0s', el zoom será instantáneo y brusco. */
 }
 
 .card img:hover {
-  transform: scale(1.03);
+  transform: scale(1.03); /* Acerca un 3%. Si pones '1.5', la imagen se agrandará un 50% tapando todo. */
 }
 
 /* Tablet */
 @media (max-width: 992px) {
   .catalog-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Breakpoint: A menos de 992px, obliga a 2 columnas. */
   }
 }
 
 /* Celular */
 @media (max-width: 576px) {
   .layout-container {
-    flex-direction: column;
+    flex-direction: column; /* En móvil, apila de arriba a abajo. Si dejas 'row', se verá enano. */
     padding: 100px 20px 40px;
     gap: 20px;
   }
 
   .sidebar {
-    width: 100%;
+    width: 100%; /* El sidebar ahora usa todo el ancho del celular. */
     padding-top: 0;
   }
 
   .catalog-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* En móvil, 1 solo producto por fila. */
   }
 }
