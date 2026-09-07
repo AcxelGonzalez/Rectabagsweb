@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = inputEmail.value.trim().toLowerCase();
             const pass = inputPass.value.trim();
 
-            if ((email === 'admin' || email === 'admin@rectabags.com') && pass === 'admin123') {
+            if ((email === 'admin' || email === 'admin@rectabags.com') && pass === 'admin') {
                 const sesionAdmin = { email: email, nombre: 'Administrador', rol: 'admin' };
                 localStorage.setItem('rectabags_sesion', JSON.stringify(sesionAdmin));
                 window.location.href = 'perfil_usuario.html';
