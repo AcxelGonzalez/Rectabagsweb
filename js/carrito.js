@@ -80,6 +80,26 @@ function cambiarCantidad(id, cambio) {
     }
 }
 
+// 5.1 Actualizar cantidad desde el input
+
+function actualizarCantidadInput(id, nuevoValor) {
+    let cantidad = parseInt(nuevoValor, 10);
+    
+    // Si la entrada no es un número válido o es menor a 1, se fuerza a 1
+    if (isNaN(cantidad) || cantidad < 1) {
+        cantidad = 1;
+    }
+
+    let carrito = obtenerCarrito();
+    const index = carrito.findIndex(item => item.id === id);
+    
+    if (index !== -1) {
+        carrito[index].cantidad = cantidad;
+        guardarCarrito(carrito);
+        renderizarCarrito();
+    }
+}
+
 // 6. Borrar producto del carrito (Si-No)
 function solicitarEliminación(id, nombreProducto) {
     productoIdAEliminar = id;
@@ -154,7 +174,11 @@ function renderizarCarrito() {
                     <div class="col-12 col-sm-5 d-flex align-items-center justify-content-end gap-3 mt-2 mt-sm-0 ms-auto">
                         <div class="input-group rounded-3 overflow-hidden border border-secondary-subtle align-items-center" style="width: 105px; height: 38px;">
                             ${botonMenos}
-                            <input type="number" class="form-control border-0 text-center fw-bold p-0 bg-white" value="${item.cantidad}" readonly>
+                            <input type="number" 
+       min="1" 
+       class="form-control border-0 text-center fw-bold p-0 bg-white" 
+       value="${item.cantidad}" 
+       onchange="actualizarCantidadInput('${item.id}', this.value)">
                             <button class="btn btn-light border-0 fw-bold px-2 py-0" type="button" onclick="cambiarCantidad('${item.id}', 1)">+</button>
                         </div>
                         <p class="h6 fw-bold text-dark m-0 text-end" style="min-width: 85px;">
