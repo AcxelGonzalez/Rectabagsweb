@@ -25,8 +25,8 @@
 
         <!-- Bloque derecho: Usuario y Carrito -->
         <div class="header-right d-flex gap-3">
-            <!-- Se agregó el ID "enlace-usuario-header" -->
-            <a id="enlace-usuario-header" class="btn btn-link p-0" aria-label="Usuario" href="login.html">
+            <!-- Cambia href="login.html" por href="#" -->
+            <a id="enlace-usuario-header" class="btn btn-link p-0" aria-label="Usuario" href="#">
                 <img src="img/HEADER/icons8-user-50.png" alt="Usuario" class="icono-nav"/>
             </a>
             <a class="btn btn-link p-0" aria-label="Carrito" href="carrito.html">
@@ -34,41 +34,54 @@
             </a>
         </div>
 
-        <!-- EL MENÚ LATERAL OCULTO -->
-        <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
-            <div class="offcanvas-header border-bottom border-secondary">
-                <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-            </div>
-            
-            <div class="offcanvas-body d-flex flex-column">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item"><a href="home.html" class="nav-link active bg-secondary text-white">Inicio</a></li>
-                    <li class="nav-item"><a href="catalogo.html" class="nav-link text-white">Catálogo</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link text-white">Blog</a></li>
-                    <li class="nav-item"><a href="contacto.html" class="nav-link text-white">Contacto</a></li>
-                    <li class="nav-item"><a href="impacto_ambiental.html" class="nav-link text-white">Impacto Ambiental</a></li>
-                    <li class="nav-item"><a href="quienes_somos.html" class="nav-link text-white">Quiénes Somos</a></li>
-                </ul>
+      <!-- EL MENÚ LATERAL OCULTO -->
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+    <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title fw-bold" id="menuLateralLabel">RectaBags</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    
+    <div class="offcanvas-body d-flex flex-column">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item"><a href="home.html" class="nav-link active bg-secondary text-white">Inicio</a></li>
+            <li class="nav-item"><a href="catalogo.html" class="nav-link text-white">Catálogo</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link text-white">Blog</a></li>
+            <li class="nav-item"><a href="contacto.html" class="nav-link text-white">Contacto</a></li>
+            <li class="nav-item"><a href="impacto_ambiental.html" class="nav-link text-white">Impacto Ambiental</a></li>
+            <li class="nav-item"><a href="quienes_somos.html" class="nav-link text-white">Quiénes Somos</a></li>
+        </ul>
 
-                <hr class="border-secondary">
+        <hr class="border-secondary">
 
-                <!-- ENLACES DINÁMICOS DE SESIÓN -->
-                <div id="menu-visitante">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item"><a href="login.html" class="nav-link text-white">Log in</a></li>
-                        <li class="nav-item"><a href="registro.html" class="nav-link text-white">Registro</a></li>
-                    </ul>
-                </div>
-
-                <div id="menu-usuario" class="d-none">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item"><a href="perfil_usuario.html" class="nav-link text-white fw-bold">Mi Perfil</a></li>
-                        <li class="nav-item"><a href="#" id="btn-logout" class="nav-link text-danger fw-bold">Cerrar Sesión</a></li>
-                    </ul>
-                </div>
-            </div>
+        <!-- 1. VISITANTE -->
+        <div id="menu-visitante">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item"><a href="login.html" class="nav-link text-white">Log in</a></li>
+                <li class="nav-item"><a href="registro.html" class="nav-link text-white">Registro</a></li>
+            </ul>
         </div>
+
+        <!-- 2. CLIENTE NORMAL -->
+        <div id="menu-usuario" class="d-none">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item"><a href="perfil_usuario.html" class="nav-link text-white fw-bold">Mi Perfil</a></li>
+                <li class="nav-item"><a href="#" id="btn-logout" class="nav-link text-danger fw-bold">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+
+<!-- 3. ADMINISTRADOR -->
+        <div id="menu-admin" class="d-none">
+            <div class="text-warning fw-bold small mb-2">▼ ADMINISTRACIÓN</div>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item"><a href="perfil_usuario.html" class="nav-link text-white fw-bold">Mi Perfil (Admin)</a></li>
+                <li class="nav-item"><a href="administrador_gestion_productos.html" class="nav-link text-warning">≡ Gestión de Productos</a></li>
+                <li class="nav-item"><a href="administrador_gestion_usuarios.html" class="nav-link text-warning">≡ Gestión de Usuarios</a></li>
+                <li class="nav-item"><a href="#" id="btn-logout" class="nav-link text-danger fw-bold">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
 
     </div>
 </header>
