@@ -2,9 +2,10 @@
 
 let productoIdAEliminar = null;
 
-// Buscar la sesión activa alineada con main.js
+// Buscar la sesión activa alineada con logica_rlc.js
 function obtenerUsuarioActivo() {
-    const item = localStorage.getItem('sesion_rectabags');
+    // Se usa 'rectabags_sesion' para estar en sintonía con el resto de scripts
+    const item = localStorage.getItem('rectabags_sesion') || localStorage.getItem('sesion_rectabags');
     if (item) {
         try {
             const sesion = JSON.parse(item);
@@ -12,7 +13,7 @@ function obtenerUsuarioActivo() {
                 return sesion;
             }
         } catch (e) {
-            console.error("Error al parsear sesion_rectabags:", e);
+            console.error("Error al parsear la sesión activa:", e);
         }
     }
     return null;
@@ -199,13 +200,14 @@ function renderizarCarrito() {
     if (elTotal) elTotal.innerText = formatearPrecio(sumaSubtotal);
 }
 
-// 8. Registra la orden en el usuario activo dentro de LocalStorage
+// Registra la orden en el usuario activo dentro de LocalStorage
 function procesarRegistroPedido() {
     const sesion = obtenerUsuarioActivo();
     if (!sesion) return false;
 
-    let usuarios = JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
-    let indexUsuario = usuarios.findIndex(u => u.email === sesion.email);
+    // Buscar lista de usuarios compatible con ambas llaves por respaldo
+    let usuarios = JSON.parse(localStorage.getItem('rectabags_usuarios')) || JSON.parse(localStorage.getItem('usuarios_rectabags')) || [];
+    let indexUsuario = usuarios.findIndex(u => u.email.toLowerCase() === sesion.email.toLowerCase());
 
     if (indexUsuario === -1) return false;
 
@@ -230,6 +232,9 @@ function procesarRegistroPedido() {
     }
 
     usuarios[indexUsuario].pedidos.push(nuevoPedido);
+    
+    // Guardar en la clave oficial
+    localStorage.setItem('rectabags_usuarios', JSON.stringify(usuarios));
     localStorage.setItem('usuarios_rectabags', JSON.stringify(usuarios));
 
     // Vaciar el carrito actual
