@@ -294,7 +294,7 @@ En la carpeta `docs/` se incluyen los documentos desarrollados durante el proyec
 **Equipo de desarrollo – Ingeniería en Informática, Duoc UC**
 
 * Marco Carrasco Zabalaga
-* Acxel Gonzales Osorio
+* Acxel Gonzalez Osorio
 * Fabian Cornejo Morales
 
 **Asignatura:** Desarrollo Fullstack II
