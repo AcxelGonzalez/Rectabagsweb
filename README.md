@@ -237,20 +237,6 @@ Por este motivo, se recomienda ejecutar el proyecto mediante un **servidor local
 3. Hacer clic derecho sobre `home.html`.
 4. Seleccionar **Open with Live Server**.
 
-### Python
-
-Desde la carpeta raíz:
-
-```bash
-python -m http.server 8000
-```
-
-Luego acceder a:
-
-```text
-http://localhost:8000/home.html
-```
-
 ## 9. Credenciales de demostración
 
 Para las pruebas del flujo administrativo en el entorno académico:
@@ -307,11 +293,11 @@ En la carpeta `docs/` se incluyen los documentos desarrollados durante el proyec
 
 **Equipo de desarrollo – Ingeniería en Informática, Duoc UC**
 
-* Marco Carrasco
-* Integrante 2
-* Integrante 3
+* Marco Carrasco Zabalaga
+* Acxel Gonzales Osorio
+* Fabian Cornejo Morales
 
-**Asignatura:** Fullstack II
+**Asignatura:** Desarrollo Fullstack II
 **Institución:** Duoc UC
 **Proyecto:** Rectabags Web
 
