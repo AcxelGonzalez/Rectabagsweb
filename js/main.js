@@ -30,6 +30,7 @@ Las funcionalidades específicas se separan en otros archivos:
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    migrarAlmacenamientoLegacy();
     inicializarComponentes();
     inicializarNavegacion();
     actualizarSesionHeader();
@@ -122,7 +123,7 @@ async function cargarComponente(archivo, idContenedor) {
  */
 function obtenerSesion() {
 
-    const sesion = localStorage.getItem("sesion_rectabags");
+    const sesion = localStorage.getItem("rectabags_sesion");
 
     if (!sesion) {
         return null;
@@ -136,7 +137,7 @@ function obtenerSesion() {
 
         console.error("La sesión almacenada no es válida.");
 
-        localStorage.removeItem("sesion_rectabags");
+        localStorage.removeItem("rectabags_sesion");
 
         return null;
 
@@ -233,7 +234,7 @@ function inicializarNavegacion() {
  */
 function cerrarSesion() {
 
-    localStorage.removeItem("sesion_rectabags");
+    localStorage.removeItem("rectabags_sesion");
 
     window.location.href = "login.html";
 
@@ -414,7 +415,7 @@ function obtenerUsuarios() {
 
     const usuarios =
         localStorage.getItem(
-            "usuarios_rectabags"
+            "rectabags_usuarios"
         );
 
     if (!usuarios) {
@@ -446,8 +447,32 @@ function obtenerUsuarios() {
 function guardarUsuarios(usuarios) {
 
     localStorage.setItem(
-        "usuarios_rectabags",
+        "rectabags_usuarios",
         JSON.stringify(usuarios)
     );
+
+}
+
+function migrarAlmacenamientoLegacy() {
+
+    const migraciones = [
+        { antigua: "usuarios_rectabags", actual: "rectabags_usuarios" },
+        { antigua: "sesion_rectabags", actual: "rectabags_sesion" }
+    ];
+
+    migraciones.forEach(({ antigua, actual }) => {
+
+        const valorAntiguo = localStorage.getItem(antigua);
+        const valorActual = localStorage.getItem(actual);
+
+        if (valorAntiguo !== null && valorActual === null) {
+            localStorage.setItem(actual, valorAntiguo);
+        }
+
+        if (valorAntiguo !== null) {
+            localStorage.removeItem(antigua);
+        }
+
+    });
 
 }

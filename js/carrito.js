@@ -982,6 +982,15 @@ function iniciarProcesoCompra() {
             "Debes iniciar sesión para poder realizar una compra."
         );
 
+        /*
+        * Guardamos el destino para regresar automáticamente
+        * al carrito después de un login exitoso.
+        */
+        sessionStorage.setItem(
+            "rectabags_redireccion_login",
+            "carrito.html"
+        );
+
         window.location.href =
             "login.html";
 

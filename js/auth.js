@@ -11,9 +11,10 @@ Responsabilidad:
 - Gestión de sesión mediante localStorage.
 - Gestión básica de usuarios.
 - Protección de páginas relacionadas con autenticación.
+- Migración del carrito invitado después del inicio de sesión.
 
 NO contiene:
-- Carrito.
+- Gestión general del carrito.
 - Catálogo.
 - Perfil.
 - Direcciones.
@@ -162,6 +163,95 @@ function eliminarSesion() {
 function usuarioAutenticado() {
 
     return obtenerSesionActiva() !== null;
+
+}
+
+/**
+ * Migra los productos agregados como invitado al carrito
+ * del usuario que acaba de iniciar sesión.
+ *
+ * Si el usuario ya tenía productos guardados, ambos carritos
+ * se combinan sin duplicar productos.
+ *
+ * @param {string} email - Correo del usuario autenticado.
+ */
+function migrarCarritoInvitadoAUsuario(email) {
+
+    if (!email) {
+        return;
+    }
+
+    const claveInvitado =
+        "recta_carrito_invitado";
+
+    const claveUsuario =
+        `recta_carrito_${email.toLowerCase()}`;
+
+    const datosInvitado =
+        localStorage.getItem(claveInvitado);
+
+    if (!datosInvitado) {
+        return;
+    }
+
+    try {
+
+        const carritoInvitado =
+            JSON.parse(datosInvitado);
+
+        const datosUsuario =
+            localStorage.getItem(claveUsuario);
+
+        const carritoUsuario =
+            datosUsuario
+                ? JSON.parse(datosUsuario)
+                : [];
+
+        const invitadoValido =
+            Array.isArray(carritoInvitado)
+                ? carritoInvitado
+                : [];
+
+        const usuarioValido =
+            Array.isArray(carritoUsuario)
+                ? carritoUsuario
+                : [];
+
+        invitadoValido.forEach(producto => {
+
+            const productoExistente =
+                usuarioValido.find(
+                    item => item.id === producto.id
+                );
+
+            if (productoExistente) {
+
+                productoExistente.cantidad =
+                    Number(productoExistente.cantidad || 0) +
+                    Number(producto.cantidad || 0);
+
+            } else {
+
+                usuarioValido.push(producto);
+
+            }
+
+        });
+
+        localStorage.setItem(
+            claveUsuario,
+            JSON.stringify(usuarioValido)
+        );
+
+        localStorage.removeItem(claveInvitado);
+
+    } catch (error) {
+
+        console.error(
+            "No fue posible migrar el carrito de invitado."
+        );
+
+    }
 
 }
 
@@ -653,13 +743,31 @@ function inicializarLogin() {
             sesionCliente
         );
 
+        
+        /*
+        * Si el usuario agregó productos antes de iniciar
+        * sesión, los trasladamos a su carrito personal.
+        */
+        migrarCarritoInvitadoAUsuario(
+            sesionCliente.email
+        );
+
 
         /* ---------------------------------------------
-           Redirección
+            Redirección
            --------------------------------------------- */
 
+        const destinoDespuesLogin =
+            sessionStorage.getItem(
+                "rectabags_redireccion_login"
+            ) || "perfil_usuario.html";
+
+        sessionStorage.removeItem(
+            "rectabags_redireccion_login"
+        );
+
         window.location.href =
-            "perfil_usuario.html";
+            destinoDespuesLogin;
 
     });
 
@@ -667,7 +775,7 @@ function inicializarLogin() {
 
 
 /* =========================================================
-   7. CERRAR SESIÓN
+    7. CERRAR SESIÓN
    ========================================================= */
 
 /**
