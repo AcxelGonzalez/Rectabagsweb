@@ -26,7 +26,7 @@ NO contiene:
 
 
 /* =========================================================
-   1. CONFIGURACIÓN
+    1. CONFIGURACIÓN
    ========================================================= */
 
 /*
@@ -41,7 +41,7 @@ const CLAVE_SESION = "rectabags_sesion";
 
 
 /* =========================================================
-   2. GESTIÓN DE USUARIOS
+    2. GESTIÓN DE USUARIOS
    ========================================================= */
 
 /**
@@ -94,7 +94,7 @@ function guardarUsuarios(usuarios) {
 
 
 /* =========================================================
-   3. GESTIÓN DE SESIÓN
+    3. GESTIÓN DE SESIÓN
    ========================================================= */
 
 /**
@@ -257,7 +257,7 @@ function migrarCarritoInvitadoAUsuario(email) {
 
 
 /* =========================================================
-   4. VALIDACIONES BÁSICAS
+    4. VALIDACIONES BÁSICAS
    ========================================================= */
 
 /**
@@ -325,7 +325,7 @@ function validarPassword(password) {
 
 
 /* =========================================================
-   5. REGISTRO
+    5. REGISTRO
    ========================================================= */
 
 /**
@@ -356,7 +356,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Obtener elementos del formulario
+            Obtener elementos del formulario
            --------------------------------------------- */
 
         const inputEmail =
@@ -384,7 +384,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Obtener valores
+            Obtener valores
            --------------------------------------------- */
 
         const email =
@@ -415,7 +415,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Validación de correo
+            Validación de correo
            --------------------------------------------- */
 
         if (!validarEmail(email)) {
@@ -444,7 +444,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Validación de contraseña
+            Validación de contraseña
            --------------------------------------------- */
 
         if (!validarPassword(password)) {
@@ -460,7 +460,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Obtener usuarios existentes
+            Obtener usuarios existentes
            --------------------------------------------- */
 
         const usuarios =
@@ -468,7 +468,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Comprobar correo duplicado
+            Comprobar correo duplicado
            --------------------------------------------- */
 
         const usuarioExistente =
@@ -492,7 +492,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Dirección inicial
+            Dirección inicial
            --------------------------------------------- */
 
         const direcciones = [];
@@ -543,7 +543,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Crear nuevo usuario
+            Crear nuevo usuario
            --------------------------------------------- */
 
         const nuevoUsuario = {
@@ -572,7 +572,7 @@ function inicializarRegistro() {
 
 
         /* ---------------------------------------------
-           Guardar usuario
+            Guardar usuario
            --------------------------------------------- */
 
         usuarios.push(nuevoUsuario);
@@ -595,7 +595,7 @@ function inicializarRegistro() {
 
 
 /* =========================================================
-   6. INICIO DE SESIÓN
+    6. INICIO DE SESIÓN
    ========================================================= */
 
 /**
@@ -623,7 +623,7 @@ function inicializarLogin() {
 
 
         /* ---------------------------------------------
-           Obtener campos
+            Obtener campos
            --------------------------------------------- */
 
         const inputEmail =
@@ -648,7 +648,7 @@ function inicializarLogin() {
 
 
         /* ---------------------------------------------
-           Cuenta administrativa de demostración
+            Cuenta administrativa de demostración
            --------------------------------------------- */
 
         if (
@@ -688,7 +688,7 @@ function inicializarLogin() {
 
 
         /* ---------------------------------------------
-           Buscar usuario
+            Buscar usuario
            --------------------------------------------- */
 
         const usuarios =
@@ -704,7 +704,7 @@ function inicializarLogin() {
 
 
         /* ---------------------------------------------
-           Validar credenciales
+            Validar credenciales
            --------------------------------------------- */
 
         if (
@@ -721,7 +721,7 @@ function inicializarLogin() {
 
 
         /* ---------------------------------------------
-           Crear sesión
+            Crear sesión
            --------------------------------------------- */
 
         const sesionCliente = {
@@ -815,9 +815,278 @@ function inicializarLogout() {
 
 }
 
+/* =========================================================
+    8. RECUPERACIÓN DE CONTRASEÑA
+   ========================================================= */
+
+/**
+ * Normaliza un RUT para poder compararlo
+ * sin importar puntos, espacios o K minúscula.
+ *
+ * @param {string} rut
+ * @returns {string}
+ */
+function normalizarRut(rut) {
+
+    return String(rut || "")
+        .replace(/\./g, "")
+        .replace(/\s/g, "")
+        .toUpperCase();
+
+}
+
+
+/**
+ * Inicializa el formulario de recuperación de contraseña.
+ */
+function inicializarRecuperacionContrasena() {
+
+    const formulario =
+        document.getElementById(
+            "form-recuperar"
+        );
+
+    /*
+     * Si estamos en otra página,
+     * el formulario no existirá.
+     */
+    if (!formulario) {
+        return;
+    }
+
+    /*
+     * Evitar inicialización duplicada.
+     */
+    if (
+        formulario.dataset.initialized ===
+        "true"
+    ) {
+        return;
+    }
+
+    formulario.dataset.initialized =
+        "true";
+
+
+    formulario.addEventListener(
+        "submit",
+        (evento) => {
+
+            evento.preventDefault();
+
+
+            const inputEmail =
+                document.getElementById(
+                    "recuperar-email"
+                );
+
+            const inputRut =
+                document.getElementById(
+                    "recuperar-rut"
+                );
+
+            const inputNuevaPassword =
+                document.getElementById(
+                    "nueva-pass"
+                );
+
+            const inputConfirmacion =
+                document.getElementById(
+                    "confirm-nueva-pass"
+                );
+
+
+            if (
+                !inputEmail ||
+                !inputRut ||
+                !inputNuevaPassword ||
+                !inputConfirmacion
+            ) {
+
+                console.error(
+                    "No se encontraron todos los campos de recuperación."
+                );
+
+                return;
+            }
+
+
+            const email =
+                inputEmail.value
+                    .trim()
+                    .toLowerCase();
+
+            const rut =
+                normalizarRut(
+                    inputRut.value
+                );
+
+            const nuevaPassword =
+                inputNuevaPassword.value.trim();
+
+            const confirmacion =
+                inputConfirmacion.value.trim();
+
+
+            /* VALIDAR EMAIL */
+
+            if (
+                !validarEmail(email)
+            ) {
+
+                alert(
+                    "Ingresa un correo electrónico válido."
+                );
+
+                inputEmail.focus();
+
+                return;
+            }
+
+
+            /* VALIDAR RUT */
+
+            if (
+                rut === ""
+            ) {
+
+                alert(
+                    "Ingresa el RUT asociado a tu cuenta."
+                );
+
+                inputRut.focus();
+
+                return;
+            }
+
+
+            /* VALIDAR CONTRASEÑA */
+
+            if (
+                !validarPassword(
+                    nuevaPassword
+                )
+            ) {
+
+                alert(
+                    "La nueva contraseña debe tener entre 4 y 10 caracteres."
+                );
+
+                inputNuevaPassword.focus();
+
+                return;
+            }
+
+
+            /* COMPARAR CONTRASEÑAS */
+
+            if (
+                nuevaPassword !==
+                confirmacion
+            ) {
+
+                alert(
+                    "Las contraseñas no coinciden."
+                );
+
+                inputConfirmacion.focus();
+
+                return;
+            }
+
+
+            /* BUSCAR USUARIO */
+
+            const usuarios =
+                obtenerUsuarios();
+
+
+            const indiceUsuario =
+                usuarios.findIndex(
+                    (usuario) => {
+
+                        const mismoEmail =
+                            usuario.email &&
+                            usuario.email
+                                .toLowerCase() ===
+                            email;
+
+                        const mismoRut =
+                            normalizarRut(
+                                usuario.rut
+                            ) === rut;
+
+                        return (
+                            mismoEmail &&
+                            mismoRut
+                        );
+
+                    }
+                );
+
+
+            if (
+                indiceUsuario === -1
+            ) {
+
+                alert(
+                    "Los datos ingresados no coinciden con una cuenta registrada."
+                );
+
+                return;
+            }
+
+
+            /* ACTUALIZAR CONTRASEÑA */
+
+            usuarios[
+                indiceUsuario
+            ].password =
+                nuevaPassword;
+
+
+            guardarUsuarios(
+                usuarios
+            );
+
+
+            /*
+             * Si casualmente existía una sesión de
+             * ese mismo usuario, la cerramos.
+             */
+            const sesion =
+                obtenerSesionActiva();
+
+
+            if (
+                sesion &&
+                sesion.email &&
+                sesion.email
+                    .toLowerCase() ===
+                email
+            ) {
+
+                eliminarSesion();
+
+            }
+
+
+            alert(
+                "Contraseña actualizada correctamente. Ahora puedes iniciar sesión."
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+}
+
 
 /* =========================================================
-   8. PROTECCIÓN DE PÁGINAS
+    9. PROTECCIÓN DE PÁGINAS
    ========================================================= */
 
 /**
@@ -874,7 +1143,7 @@ function obtenerPaginaActual() {
 
 
 /* =========================================================
-   9. INICIALIZACIÓN
+    10. INICIALIZACIÓN
    ========================================================= */
 
 document.addEventListener(
@@ -886,6 +1155,8 @@ document.addEventListener(
         inicializarRegistro();
 
         inicializarLogin();
+
+        inicializarRecuperacionContrasena();
 
         inicializarLogout();
 

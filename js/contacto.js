@@ -21,7 +21,7 @@ Página:
 
 
 /* =========================================================
-   1. INICIALIZACIÓN
+    1. INICIALIZACIÓN
    ========================================================= */
 
 document.addEventListener(
@@ -35,7 +35,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   2. FORMULARIO DE CONTACTO
+    2. FORMULARIO DE CONTACTO
    ========================================================= */
 
 /**
@@ -84,7 +84,7 @@ function inicializarFormularioContacto() {
 
 
 /* =========================================================
-   3. ENVÍO DEL FORMULARIO
+    3. ENVÍO DEL FORMULARIO
    ========================================================= */
 
 /**
@@ -103,42 +103,46 @@ function manejarEnvioContacto(
 
 
     /* -----------------------------------------------------
-       OBTENER CAMPOS
+        OBTENER CAMPOS
        ----------------------------------------------------- */
 
     const nombre =
-        document
-            .getElementById(
-                "nombre-contacto"
-            );
+        document.getElementById(
+            "nombre"
+        );
 
 
     const email =
-        document
-            .getElementById(
-                "email-contacto"
-            );
+        document.getElementById(
+            "correo"
+        );
+
+
+    const asunto =
+        document.getElementById(
+            "asunto"
+        );
 
 
     const mensaje =
-        document
-            .getElementById(
-                "mensaje-contacto"
-            );
+        document.getElementById(
+            "mensaje"
+        );
 
 
     /* -----------------------------------------------------
-       VALIDACIÓN DE ELEMENTOS
+        VALIDACIÓN DE ELEMENTOS
        ----------------------------------------------------- */
 
     if (
         !nombre ||
         !email ||
+        !asunto ||
         !mensaje
     ) {
 
         console.error(
-            "No se encontraron todos los campos del formulario."
+            "No se encontraron todos los campos del formulario de contacto."
         );
 
         return;
@@ -147,7 +151,7 @@ function manejarEnvioContacto(
 
 
     /* -----------------------------------------------------
-       OBTENER VALORES
+        OBTENER VALORES
        ----------------------------------------------------- */
 
     const nombreValor =
@@ -160,12 +164,16 @@ function manejarEnvioContacto(
             .toLowerCase();
 
 
+    const asuntoValor =
+        asunto.value;
+
+
     const mensajeValor =
         mensaje.value.trim();
 
 
     /* -----------------------------------------------------
-       VALIDAR NOMBRE
+        VALIDAR NOMBRE
        ----------------------------------------------------- */
 
     if (
@@ -184,7 +192,7 @@ function manejarEnvioContacto(
 
 
     /* -----------------------------------------------------
-       VALIDAR EMAIL
+        VALIDAR EMAIL
        ----------------------------------------------------- */
 
     if (
@@ -251,9 +259,26 @@ function manejarEnvioContacto(
 
     }
 
+    /* -----------------------------------------------------
+        VALIDAR ASUNTO
+       ----------------------------------------------------- */
+
+    if (
+        asuntoValor === ""
+    ) {
+
+        alert(
+            "Por favor, selecciona un asunto."
+        );
+
+        asunto.focus();
+
+        return;
+
+    }
 
     /* -----------------------------------------------------
-       VALIDAR MENSAJE
+        VALIDAR MENSAJE
        ----------------------------------------------------- */
 
     if (
@@ -290,27 +315,23 @@ function manejarEnvioContacto(
 
 
     /* -----------------------------------------------------
-       MOSTRAR CONFIRMACIÓN
+        MOSTRAR CONFIRMACIÓN
        ----------------------------------------------------- */
 
     mostrarConfirmacionContacto();
 
 
     /* -----------------------------------------------------
-       LIMPIAR FORMULARIO
+        LIMPIAR FORMULARIO
        ----------------------------------------------------- */
 
-    formularioResetContacto(
-        nombre,
-        email,
-        mensaje
-    );
+    formularioResetContacto();
 
 }
 
 
 /* =========================================================
-   4. CONFIRMACIÓN
+    4. CONFIRMACIÓN
    ========================================================= */
 
 /**
@@ -377,50 +398,26 @@ function mostrarConfirmacionContacto() {
 
 
 /* =========================================================
-   5. LIMPIEZA DEL FORMULARIO
+    5. LIMPIEZA DEL FORMULARIO
    ========================================================= */
 
 /**
- * Limpia los campos del formulario.
- *
- * @param {HTMLElement} nombre
- * @param {HTMLElement} email
- * @param {HTMLElement} mensaje
+ * Restablece todos los campos del formulario
+ * después de un envío exitoso.
  */
-function formularioResetContacto(
-    nombre,
-    email,
-    mensaje
-) {
+function formularioResetContacto() {
 
-    nombre.value =
-        "";
-
-    email.value =
-        "";
-
-    mensaje.value =
-        "";
-
-
-    /*
-     * El formulario HTML5 puede restaurarse
-     * completamente si se agregan nuevos campos.
-     */
     const formulario =
         document.getElementById(
             "form-contacto"
         );
 
 
-    if (formulario) {
-
-        /*
-         * No utilizamos formulario.reset()
-         * directamente antes de mostrar la confirmación
-         * para evitar alterar otros controles de la interfaz.
-         */
-
+    if (!formulario) {
+        return;
     }
+
+
+    formulario.reset();
 
 }
