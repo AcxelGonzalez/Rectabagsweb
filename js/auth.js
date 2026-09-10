@@ -293,7 +293,7 @@ function validarDominioEmail(email) {
     const dominiosPermitidos = [
         "@gmail.com",
         "@profesor.duoc.cl",
-        "@duocuc.cl"
+        "@duocuc.cl",
     ];
 
     const correoNormalizado =
