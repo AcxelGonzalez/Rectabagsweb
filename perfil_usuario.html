@@ -162,16 +162,21 @@
                             <div class="mb-3">
                                 <label class="form-label small fw-bold">Región</label>
                                 <select class="form-select bg-light border-0" id="nueva-dir-region" required>
-                                    <option value="" selected disabled>Selecciona...</option>
-                                    <option value="Región Metropolitana">Región Metropolitana</option>
-                                    <option value="Valparaíso">Valparaíso</option>
-                                    <option value="Biobío">Biobío</option>
+                                    <option value="">
+                                        Selecciona una región
+                                    </option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Ciudad / Comuna</label>
-                                <input type="text" class="form-control bg-light border-0" id="nueva-dir-ciudad" required>
+                                <label class="form-label small fw-bold">Comuna</label>
+                                <select class="form-select bg-light border-0" id="nueva-dir-comuna" required disabled>
+                                    <option value="">
+                                        Selecciona una comuna
+                                    </option>
+                                </select>
                             </div>
+                            
                             <div class="mb-4">
                                 <label class="form-label small fw-bold">Calle y Número</label>
                                 <input type="text" class="form-control bg-light border-0" id="nueva-dir-calle" required>

@@ -25,7 +25,7 @@ Las funcionalidades específicas se separan en otros archivos:
 
 
 /* =========================================================
-   1. INICIALIZACIÓN GENERAL
+    1. INICIALIZACIÓN GENERAL
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -36,11 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarSesionHeader();
     activarBuscador();
 
+    inicializarSelectoresUbicacion();
+
 });
 
 
 /* =========================================================
-   2. CARGA DE COMPONENTES
+    2. CARGA DE COMPONENTES
    ========================================================= */
 
 /**
@@ -113,7 +115,7 @@ async function cargarComponente(archivo, idContenedor) {
 
 
 /* =========================================================
-   3. SESIÓN Y NAVEGACIÓN
+    3. SESIÓN Y NAVEGACIÓN
    ========================================================= */
 
 /**
@@ -160,45 +162,123 @@ function obtenerSesion() {
  */
 function actualizarSesionHeader() {
 
-    const sesion = obtenerSesion();
+    const sesion =
+        obtenerSesion();
 
     const menuVisitante =
-        document.getElementById("menu-visitante");
+        document.getElementById(
+            "menu-visitante"
+        );
 
     const menuUsuario =
-        document.getElementById("menu-usuario");
+        document.getElementById(
+            "menu-usuario"
+        );
+
+    const menuAdmin =
+        document.getElementById(
+            "menu-admin"
+        );
 
     const enlaceUsuario =
-        document.getElementById("enlace-usuario-header");
+        document.getElementById(
+            "enlace-usuario-header"
+        );
 
-    if (sesion) {
+
+    /* -----------------------------------------
+        SIN SESIÓN
+       ----------------------------------------- */
+
+    if (!sesion) {
 
         if (menuVisitante) {
-            menuVisitante.classList.add("d-none");
+            menuVisitante.classList.remove(
+                "d-none"
+            );
         }
 
         if (menuUsuario) {
-            menuUsuario.classList.remove("d-none");
+            menuUsuario.classList.add(
+                "d-none"
+            );
+        }
+
+        if (menuAdmin) {
+            menuAdmin.classList.add(
+                "d-none"
+            );
         }
 
         if (enlaceUsuario) {
-            enlaceUsuario.href = "perfil_usuario.html";
+            enlaceUsuario.href =
+                "login.html";
         }
 
-    } else {
+        return;
+    }
+
+
+    /* -----------------------------------------
+        ADMINISTRADOR
+       ----------------------------------------- */
+
+    if (
+        sesion.rol === "admin"
+    ) {
 
         if (menuVisitante) {
-            menuVisitante.classList.remove("d-none");
+            menuVisitante.classList.add(
+                "d-none"
+            );
         }
 
         if (menuUsuario) {
-            menuUsuario.classList.add("d-none");
+            menuUsuario.classList.add(
+                "d-none"
+            );
+        }
+
+        if (menuAdmin) {
+            menuAdmin.classList.remove(
+                "d-none"
+            );
         }
 
         if (enlaceUsuario) {
-            enlaceUsuario.href = "login.html";
+            enlaceUsuario.href =
+                "administrador_gestion_productos.html";
         }
 
+        return;
+    }
+
+
+    /* -----------------------------------------
+        CLIENTE
+       ----------------------------------------- */
+
+    if (menuVisitante) {
+        menuVisitante.classList.add(
+            "d-none"
+        );
+    }
+
+    if (menuUsuario) {
+        menuUsuario.classList.remove(
+            "d-none"
+        );
+    }
+
+    if (menuAdmin) {
+        menuAdmin.classList.add(
+            "d-none"
+        );
+    }
+
+    if (enlaceUsuario) {
+        enlaceUsuario.href =
+            "perfil_usuario.html";
     }
 
 }
@@ -214,7 +294,7 @@ function inicializarNavegacion() {
 
     document.body.addEventListener("click", (evento) => {
 
-        const elemento = evento.target.closest("#btn-logout");
+        const elemento = evento.target.closest(".btn-logout, #btn-logout-perfil");
 
         if (!elemento) {
             return;
@@ -242,7 +322,7 @@ function cerrarSesion() {
 
 
 /* =========================================================
-   4. BUSCADOR GENERAL
+    4. BUSCADOR GENERAL
    ========================================================= */
 
 /**
@@ -352,9 +432,269 @@ function activarBuscador() {
 
 }
 
+/* =========================================================
+    REGIONES Y COMUNAS
+   ========================================================= */
+
+/**
+ * Regiones y comunas disponibles en el prototipo.
+ *
+ * La estructura permite agregar nuevas regiones
+ * sin modificar la lógica de los formularios.
+ */
+const REGIONES_COMUNAS = {
+
+    metropolitana: {
+
+        nombre:
+            "Región Metropolitana",
+
+        comunas: [
+            "Santiago",
+            "Providencia",
+            "Ñuñoa",
+            "Las Condes",
+            "La Florida",
+            "Maipú",
+            "Puente Alto"
+        ]
+
+    },
+
+    valparaiso: {
+
+        nombre:
+            "Región de Valparaíso",
+
+        comunas: [
+            "Valparaíso",
+            "Viña del Mar",
+            "Concón",
+            "Quilpué",
+            "Villa Alemana",
+            "Quillota",
+            "San Antonio"
+        ]
+
+    },
+
+    biobio: {
+
+        nombre:
+            "Región del Biobío",
+
+        comunas: [
+            "Concepción",
+            "Talcahuano",
+            "San Pedro de la Paz",
+            "Chiguayante",
+            "Hualpén",
+            "Coronel",
+            "Los Ángeles"
+        ]
+
+    }
+
+};
+
+
+/**
+ * Inicializa todos los selectores Región → Comuna
+ * presentes en la página actual.
+ */
+function inicializarSelectoresUbicacion() {
+
+    /*
+     * Registro de usuario.
+     */
+    configurarSelectorRegionComuna(
+        "region",
+        "comuna"
+    );
+
+
+    /*
+     * Nueva dirección desde el perfil.
+     */
+    configurarSelectorRegionComuna(
+        "nueva-dir-region",
+        "nueva-dir-comuna"
+    );
+
+}
+
+
+/**
+ * Configura un par de selects Región → Comuna.
+ *
+ * @param {string} idRegion
+ * @param {string} idComuna
+ */
+function configurarSelectorRegionComuna(
+    idRegion,
+    idComuna
+) {
+
+    const selectRegion =
+        document.getElementById(
+            idRegion
+        );
+
+    const selectComuna =
+        document.getElementById(
+            idComuna
+        );
+
+
+    /*
+     * Si esta página no contiene estos elementos,
+     * no hacemos nada.
+     */
+    if (
+        !selectRegion ||
+        !selectComuna
+    ) {
+        return;
+    }
+
+
+    /* -----------------------------------------
+        CARGAR REGIONES
+       ----------------------------------------- */
+
+    selectRegion.innerHTML =
+        '<option value="">Selecciona una región</option>';
+
+
+    Object.entries(
+        REGIONES_COMUNAS
+    ).forEach(
+        ([valor, datos]) => {
+
+            const opcion =
+                document.createElement(
+                    "option"
+                );
+
+            opcion.value =
+                valor;
+
+            opcion.textContent =
+                datos.nombre;
+
+            selectRegion.appendChild(
+                opcion
+            );
+
+        }
+    );
+
+
+    /* -----------------------------------------
+        ESTADO INICIAL DE COMUNA
+       ----------------------------------------- */
+
+    limpiarSelectorComunas(
+        selectComuna
+    );
+
+
+    /* -----------------------------------------
+        EVENTO CHANGE
+       ----------------------------------------- */
+
+    selectRegion.addEventListener(
+        "change",
+        () => {
+
+            cargarComunas(
+                selectRegion.value,
+                selectComuna
+            );
+
+        }
+    );
+
+}
+
+
+/**
+ * Carga las comunas correspondientes
+ * a una región.
+ *
+ * @param {string} region
+ * @param {HTMLSelectElement} selectComuna
+ */
+function cargarComunas(
+    region,
+    selectComuna
+) {
+
+    limpiarSelectorComunas(
+        selectComuna
+    );
+
+
+    const datosRegion =
+        REGIONES_COMUNAS[
+            region
+        ];
+
+
+    if (!datosRegion) {
+        return;
+    }
+
+
+    datosRegion.comunas.forEach(
+        (comuna) => {
+
+            const opcion =
+                document.createElement(
+                    "option"
+                );
+
+            opcion.value =
+                comuna;
+
+            opcion.textContent =
+                comuna;
+
+            selectComuna.appendChild(
+                opcion
+            );
+
+        }
+    );
+
+
+    selectComuna.disabled =
+        false;
+
+}
+
+
+/**
+ * Limpia y deshabilita el selector
+ * de comunas.
+ *
+ * @param {HTMLSelectElement} selectComuna
+ */
+function limpiarSelectorComunas(
+    selectComuna
+) {
+
+    selectComuna.innerHTML =
+        '<option value="">Selecciona una comuna</option>';
+
+    selectComuna.disabled =
+        true;
+
+}
+
 
 /* =========================================================
-   5. UTILIDADES GENERALES
+    5. UTILIDADES GENERALES
    ========================================================= */
 
 /**

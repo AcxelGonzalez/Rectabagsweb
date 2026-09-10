@@ -503,8 +503,8 @@ function inicializarRegistro() {
         const selectRegion =
             document.getElementById("region");
 
-        const selectCiudad =
-            document.getElementById("ciudad");
+        const selectComuna =
+            document.getElementById("comuna");
 
 
         const direccion =
@@ -523,19 +523,34 @@ function inicializarRegistro() {
                     ].text
                     : "";
 
-            const ciudad =
-                selectCiudad &&
-                selectCiudad.selectedIndex > 0
-                    ? selectCiudad.options[
-                        selectCiudad.selectedIndex
+            const comuna =
+                selectComuna &&
+                selectComuna.selectedIndex > 0
+                    ? selectComuna.options[
+                        selectComuna.selectedIndex
                     ].text
                     : "";
 
+        if (
+            direccion !== "" &&
+            (
+                region === "" ||
+                comuna === ""
+            )
+        ) {
+
+            alert(
+                "Si ingresas una dirección, debes seleccionar también la región y comuna."
+            );
+
+            return;
+
+        }
 
             direcciones.push({
                 nombre: "Principal",
                 region: region,
-                ciudad: ciudad,
+                comuna: comuna,
                 calle: direccion
             });
 

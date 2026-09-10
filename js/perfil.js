@@ -21,7 +21,7 @@ Dependencias:
 
 
 /* =========================================================
-   1. INICIALIZACIÓN
+    1. INICIALIZACIÓN
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================================
-   2. OBTENER USUARIO ACTUAL
+    2. OBTENER USUARIO ACTUAL
    ========================================================= */
 
 /**
@@ -106,7 +106,7 @@ function obtenerIndiceUsuarioPerfil() {
 
 
 /* =========================================================
-   3. CARGAR INFORMACIÓN DEL PERFIL
+    3. CARGAR INFORMACIÓN DEL PERFIL
    ========================================================= */
 
 /**
@@ -235,7 +235,7 @@ function cargarDatosPerfil(usuario) {
 
 
 /* =========================================================
-   4. EDICIÓN DE PERFIL
+    4. EDICIÓN DE PERFIL
    ========================================================= */
 
 /**
@@ -315,7 +315,7 @@ function cargarFormularioEdicion(usuario) {
 
 
     /* -----------------------------------------------------
-       ACTIVAR EDICIÓN
+        ACTIVAR EDICIÓN
        ----------------------------------------------------- */
 
     btnEditar.addEventListener(
@@ -331,7 +331,7 @@ function cargarFormularioEdicion(usuario) {
 
 
     /* -----------------------------------------------------
-       CANCELAR EDICIÓN
+        CANCELAR EDICIÓN
        ----------------------------------------------------- */
 
     if (btnCancelar) {
@@ -362,7 +362,7 @@ function cargarFormularioEdicion(usuario) {
 
 
     /* -----------------------------------------------------
-       GUARDAR CAMBIOS
+        GUARDAR CAMBIOS
        ----------------------------------------------------- */
 
     if (btnGuardar) {
@@ -864,7 +864,7 @@ function inicializarTabsPerfil() {
 
 
 /* =========================================================
-   6. DIRECCIONES
+    6. DIRECCIONES
    ========================================================= */
 
 /**
@@ -930,12 +930,10 @@ function inicializarDireccion() {
                 );
 
 
-            const ciudad =
-                document
-                    .getElementById(
-                        "nueva-dir-ciudad"
-                    )
-                    ?.value.trim();
+            const comunaSelect =
+                document.getElementById(
+                    "nueva-dir-comuna"
+                );
 
 
             const calle =
@@ -967,6 +965,19 @@ function inicializarDireccion() {
 
             }
 
+            if (
+            !region ||
+            !comuna
+        ) {
+
+            alert(
+                "Selecciona una región y comuna."
+            );
+
+            return;
+
+        }
+
 
             const region =
                 regionSelect &&
@@ -976,6 +987,14 @@ function inicializarDireccion() {
                             regionSelect.selectedIndex
                         ]
                         ?.text
+                    : "";
+            
+            const comuna =
+                comunaSelect &&
+                comunaSelect.selectedIndex > 0
+                    ? comunaSelect.options[
+                        comunaSelect.selectedIndex
+                    ].text
                     : "";
 
 
@@ -987,8 +1006,8 @@ function inicializarDireccion() {
                 region:
                     region || "",
 
-                ciudad:
-                    ciudad || "",
+                comuna:
+                    comuna || "",
 
                 calle:
                     calle
@@ -1140,7 +1159,9 @@ function renderizarDirecciones(usuario) {
 
                     const ubicacion =
                         [
-                            direccion.ciudad,
+                            direccion.comuna ||
+                                direccion.ciudad,
+
                             direccion.region
                         ]
                         .filter(Boolean)
