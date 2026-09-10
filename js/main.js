@@ -18,7 +18,6 @@ Las funcionalidades específicas se separan en otros archivos:
 - carrito.js    → carrito de compras
 - catalogo.js   → catálogo y filtros
 - contacto.js   → formulario de contacto
-- componentes.js → header y footer
 
 ===========================================================
 */
