@@ -153,6 +153,61 @@ function inicializarPerfil() {
 
 }
 
+/**
+ * Convierte una fecha almacenada como AAAA-MM-DD
+ * al formato visual DD-MM-AAAA.
+ *
+ * @param {string} fecha
+ * @returns {string}
+ */
+function formatearFechaNacimiento(
+    fecha
+) {
+
+    if (!fecha) {
+        return "";
+    }
+
+
+    /*
+     * Compatibilidad por si ya estuviera
+     * guardada como DD-MM-AAAA.
+     */
+    if (
+        /^\d{2}-\d{2}-\d{4}$/.test(
+            fecha
+        )
+    ) {
+
+        return fecha;
+
+    }
+
+
+    const partes =
+        fecha.match(
+            /^(\d{4})-(\d{2})-(\d{2})$/
+        );
+
+
+    if (!partes) {
+        return fecha;
+    }
+
+
+    const anio =
+        partes[1];
+
+    const mes =
+        partes[2];
+
+    const dia =
+        partes[3];
+
+
+    return `${dia}-${mes}-${anio}`;
+
+}
 
 /**
  * Muestra los datos personales del usuario
@@ -232,7 +287,10 @@ function cargarDatosPerfil(usuario) {
     if (inputFechaNacimiento) {
 
         inputFechaNacimiento.value =
-            usuario.fechaNacimiento || "";
+            formatearFechaNacimiento(
+                usuario.fechaNacimiento
+            );
+
     }
 
 
@@ -351,16 +409,32 @@ function cargarFormularioEdicion(usuario) {
             () => {
 
                 /*
-                 * Restaurar los datos originales.
-                 */
-                cargarDatosPerfil(
-                    usuario
-                );
+                * Recuperamos nuevamente los datos
+                * realmente guardados.
+                */
+                const usuarioActual =
+                    obtenerUsuarioPerfil();
 
 
+                if (usuarioActual) {
+
+                    cargarDatosPerfil(
+                        usuarioActual
+                    );
+
+                }
+
+
+                /*
+                * Limpiamos posibles contraseñas
+                * escritas durante la edición.
+                */
                 limpiarCamposPassword();
 
 
+                /*
+                * Regresamos al modo visualización.
+                */
                 cambiarModoEdicion(
                     false
                 );
@@ -400,11 +474,14 @@ function cargarFormularioEdicion(usuario) {
 
 
 /**
- * Activa o desactiva el modo edición.
+ * Activa o desactiva el modo edición
+ * del perfil del usuario.
  *
  * @param {boolean} activo
  */
-function cambiarModoEdicion(activo) {
+function cambiarModoEdicion(
+    activo
+) {
 
     const campos = [
         "perfil-nombre",
@@ -414,53 +491,52 @@ function cambiarModoEdicion(activo) {
     ];
 
 
-    campos.forEach(id => {
+    /* -----------------------------------------
+        CAMPOS EDITABLES
+       ----------------------------------------- */
 
-        const input =
-            document.getElementById(id);
+    campos.forEach(
+        id => {
 
-        if (!input) {
-            return;
+            const input =
+                document.getElementById(
+                    id
+                );
+
+
+            if (!input) {
+                return;
+            }
+
+
+            if (activo) {
+
+                input.removeAttribute(
+                    "readonly"
+                );
+
+            } else {
+
+                input.setAttribute(
+                    "readonly",
+                    ""
+                );
+
+            }
+
         }
+    );
 
 
-        if (activo) {
-
-            input.removeAttribute(
-                "readonly"
-            );
-
-        } else {
-
-            input.setAttribute(
-                "readonly",
-                ""
-            );
-
-        }
-
-    });
-
-
-    const contenedorBotones =
-        document.getElementById(
-            "acciones-edicion-perfil"
-        );
-
-    if (contenedorBotones) {
-
-        contenedorBotones.classList.toggle(
-            "d-none",
-            !activo
-        );
-
-    }
-
+    /* -----------------------------------------
+        BOTÓN EDITAR
+       ----------------------------------------- */
 
     const btnEditar =
         document.getElementById(
             "btn-editar-perfil"
         );
+
 
     if (btnEditar) {
 
@@ -472,10 +548,55 @@ function cambiarModoEdicion(activo) {
     }
 
 
+    /* -----------------------------------------
+        BOTÓN GUARDAR
+       ----------------------------------------- */
+
+    const btnGuardar =
+        document.getElementById(
+            "btn-guardar-perfil"
+        );
+
+
+    if (btnGuardar) {
+
+        btnGuardar.classList.toggle(
+            "d-none",
+            !activo
+        );
+
+    }
+
+
+    /* -----------------------------------------
+        BOTÓN CANCELAR
+       ----------------------------------------- */
+
+    const btnCancelar =
+        document.getElementById(
+            "btn-cancelar-perfil"
+        );
+
+
+    if (btnCancelar) {
+
+        btnCancelar.classList.toggle(
+            "d-none",
+            !activo
+        );
+
+    }
+
+
+    /* -----------------------------------------
+        CAMPOS DE CONTRASEÑA
+       ----------------------------------------- */
+
     const camposPassword =
         document.querySelector(
             ".campos-password"
         );
+
 
     if (camposPassword) {
 
