@@ -364,6 +364,9 @@ function inicializarRegistro() {
 
         const inputPassword =
             document.getElementById("password");
+        
+        const inputConfirmPassword =
+            document.getElementById("confirm-password");
 
         const inputNombre =
             document.getElementById("nombre");
@@ -381,7 +384,11 @@ function inicializarRegistro() {
             document.getElementById("telefono");
 
 
-        if (!inputEmail || !inputPassword) {
+        if (
+            !inputEmail ||
+            !inputPassword ||
+            !inputConfirmPassword
+        ) {
             return;
         }
 
@@ -395,6 +402,9 @@ function inicializarRegistro() {
 
         const password =
             inputPassword.value.trim();
+
+        const confirmPassword =
+            inputConfirmPassword.value.trim();
 
         const nombre =
             inputNombre
@@ -462,6 +472,17 @@ function inicializarRegistro() {
             );
 
             inputPassword.focus();
+
+            return;
+        }
+
+        if (password !== confirmPassword) {
+
+            alert(
+                "Las contraseñas no coinciden."
+            );
+
+            inputConfirmPassword.focus();
 
             return;
         }
