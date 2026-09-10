@@ -374,6 +374,9 @@ function inicializarRegistro() {
         const inputRut =
             document.getElementById("rut");
 
+        const inputFechaNacimiento =
+            document.getElementById("fecha-nacimiento");
+
         const inputTelefono =
             document.getElementById("telefono");
 
@@ -406,6 +409,11 @@ function inicializarRegistro() {
         const rut =
             inputRut
                 ? inputRut.value.trim()
+                : "";
+
+        const fechaNacimiento =
+            inputFechaNacimiento
+                ? inputFechaNacimiento.value
                 : "";
 
         const telefono =
@@ -556,10 +564,28 @@ function inicializarRegistro() {
 
         }
 
+        /* ---------------------------------------------
+            Validación de fecha de nacimiento
+        --------------------------------------------- */
+
+        if (
+            fechaNacimiento === ""
+        ) {
+
+            alert(
+                "Debes ingresar tu fecha de nacimiento."
+            );
+
+            inputFechaNacimiento?.focus();
+
+            return;
+
+        }
+
 
         /* ---------------------------------------------
             Crear nuevo usuario
-           --------------------------------------------- */
+        --------------------------------------------- */
 
         const nuevoUsuario = {
 
@@ -574,6 +600,8 @@ function inicializarRegistro() {
             apellido: apellido,
 
             rut: rut,
+
+            fechaNacimiento: fechaNacimiento,
 
             telefono: telefono,
 

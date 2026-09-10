@@ -511,16 +511,6 @@ function inicializarSelectoresUbicacion() {
         "region",
         "comuna"
     );
-
-
-    /*
-     * Nueva dirección desde el perfil.
-     */
-    configurarSelectorRegionComuna(
-        "nueva-dir-region",
-        "nueva-dir-comuna"
-    );
-
 }
 
 

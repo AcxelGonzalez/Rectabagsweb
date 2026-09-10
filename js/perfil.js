@@ -8,7 +8,7 @@ Responsabilidad:
 - Visualización de datos personales.
 - Edición de información.
 - Cambio de contraseña.
-- Gestión de direcciones.
+- Visualización de la dirección registrada.
 - Visualización del historial de pedidos.
 
 Dependencias:
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     inicializarPerfil();
     inicializarTabsPerfil();
-    inicializarDireccion();
 
 });
 
@@ -195,6 +194,11 @@ function cargarDatosPerfil(usuario) {
         document.getElementById(
             "perfil-rut"
         );
+    
+    const inputFechaNacimiento =
+        document.getElementById(
+            "perfil-fecha-nacimiento"
+        );
 
     const inputTelefono =
         document.getElementById(
@@ -223,6 +227,12 @@ function cargarDatosPerfil(usuario) {
     if (inputRut) {
         inputRut.value =
             usuario.rut || "";
+    }
+
+    if (inputFechaNacimiento) {
+
+        inputFechaNacimiento.value =
+            usuario.fechaNacimiento || "";
     }
 
 
@@ -866,252 +876,6 @@ function inicializarTabsPerfil() {
 /* =========================================================
     6. DIRECCIONES
    ========================================================= */
-
-/**
- * Inicializa el formulario para agregar
- * una nueva dirección.
- */
-function inicializarDireccion() {
-
-    const formulario =
-        document.getElementById(
-            "form-nueva-direccion"
-        );
-
-
-    if (!formulario) {
-        return;
-    }
-
-
-    if (
-        formulario.dataset.initialized === "true"
-    ) {
-        return;
-    }
-
-    formulario.dataset.initialized =
-        "true";
-
-
-    formulario.addEventListener(
-        "submit",
-        (evento) => {
-
-            evento.preventDefault();
-
-
-            const usuario =
-                obtenerUsuarioPerfil();
-
-
-            if (!usuario) {
-
-                alert(
-                    "No se encontró una sesión activa."
-                );
-
-                return;
-
-            }
-
-
-            const nombre =
-                document
-                    .getElementById(
-                        "nueva-dir-nombre"
-                    )
-                    ?.value.trim();
-
-
-            const regionSelect =
-                document.getElementById(
-                    "nueva-dir-region"
-                );
-
-
-            const comunaSelect =
-                document.getElementById(
-                    "nueva-dir-comuna"
-                );
-
-
-            const calle =
-                document
-                    .getElementById(
-                        "nueva-dir-calle"
-                    )
-                    ?.value.trim();
-
-
-            if (!nombre) {
-
-                alert(
-                    "Ingresa un nombre para la dirección."
-                );
-
-                return;
-
-            }
-
-
-            if (!calle) {
-
-                alert(
-                    "Ingresa la dirección."
-                );
-
-                return;
-
-            }
-
-            if (
-            !region ||
-            !comuna
-        ) {
-
-            alert(
-                "Selecciona una región y comuna."
-            );
-
-            return;
-
-        }
-
-
-            const region =
-                regionSelect &&
-                regionSelect.selectedIndex >= 0
-                    ? regionSelect
-                        .options[
-                            regionSelect.selectedIndex
-                        ]
-                        ?.text
-                    : "";
-            
-            const comuna =
-                comunaSelect &&
-                comunaSelect.selectedIndex > 0
-                    ? comunaSelect.options[
-                        comunaSelect.selectedIndex
-                    ].text
-                    : "";
-
-
-            const nuevaDireccion = {
-
-                nombre:
-                    nombre,
-
-                region:
-                    region || "",
-
-                comuna:
-                    comuna || "",
-
-                calle:
-                    calle
-
-            };
-
-
-            if (
-                !Array.isArray(
-                    usuario.direcciones
-                )
-            ) {
-
-                usuario.direcciones = [];
-
-            }
-
-
-            usuario.direcciones.push(
-                nuevaDireccion
-            );
-
-
-            actualizarUsuarioPerfil(
-                usuario
-            );
-
-
-            renderizarDirecciones(
-                usuario
-            );
-
-
-            formulario.reset();
-
-
-            /*
-             * Cerrar modal Bootstrap si existe.
-             */
-            const modalElement =
-                document.getElementById(
-                    "modalDireccion"
-                );
-
-
-            if (modalElement) {
-
-                const modal =
-                    bootstrap.Modal
-                        .getInstance(
-                            modalElement
-                        );
-
-
-                if (modal) {
-                    modal.hide();
-                }
-
-            }
-
-
-            alert(
-                "La dirección fue agregada correctamente."
-            );
-
-        }
-    );
-
-}
-
-
-/**
- * Actualiza la información del usuario
- * dentro del arreglo almacenado.
- *
- * @param {Object} usuarioActualizado
- */
-function actualizarUsuarioPerfil(
-    usuarioActualizado
-) {
-
-    const indice =
-        obtenerIndiceUsuarioPerfil();
-
-
-    if (indice === -1) {
-        return;
-    }
-
-
-    const usuarios =
-        obtenerUsuarios();
-
-
-    usuarios[indice] =
-        usuarioActualizado;
-
-
-    guardarUsuarios(
-        usuarios
-    );
-
-}
-
 
 /**
  * Renderiza las direcciones almacenadas.
