@@ -604,6 +604,26 @@ function inicializarRegistro() {
         }
 
 
+        const hoy =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+
+        if (
+            fechaNacimiento > hoy
+        ) {
+
+            alert(
+                "La fecha de nacimiento no puede ser futura."
+            );
+
+            inputFechaNacimiento?.focus();
+
+            return;
+
+        }
+
         /* ---------------------------------------------
             Crear nuevo usuario
         --------------------------------------------- */
