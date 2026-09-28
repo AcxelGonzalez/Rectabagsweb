@@ -36,3 +36,6 @@ npm run dev
 VITE v5.x.x  ready in 300 ms
 
   ➜  Ingresar al localhost
+
+5. Hay algo que hacer con el npm install react-router-dom
+   -> pero no me acuerdo que es(Acxel)
