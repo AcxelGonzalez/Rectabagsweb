@@ -1,0 +1,42 @@
+function Footer() {
+    return (
+        <>
+            <footer className="bg-black text-white py-5 border-top border-secondary">
+                <div className="container">
+                    <div className="row">                        
+                        <div className="col-md-4 columna-logo">
+                        <img src="img/FOOTER/Logo footer.png" alt="Logo Recta" className="logo-footer"/>
+                        </div>
+
+                        <div className="col-md-4 mb-4 mb-md-0">
+                        <h4 className="fw-bold mb-3">INFORMACIÓN</h4>
+                        <ul className="list-unstyled lh-lg">
+                            <li><a href="quienes_somos.html" className="text-white text-decoration-none">Sobre Nosotros</a></li>
+                            <li><a href="blog.html" className="text-white text-decoration-none">Blog</a></li>
+                            <li><a href="contacto.html" className="text-white text-decoration-none">Contáctanos</a></li>
+                        </ul>
+                        </div>
+
+                        <div className="col-md-4">
+                            <h4 className="fw-bold mb-3">RETIRO EN TIENDA</h4>
+                            <p className="text-white text-decoration-none">Monseñor Miller 22-B, Providencia, Chile</p>
+                            <div className="mapa-footer">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.4698185437396!2d-70.63188502467405!3d-33.43706427339478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c58475915d57%3A0x2e24abacf9e5cc2f!2sMonse%C3%B1or%20Miller%2022%2C%20b%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1789040363216!5m2!1ses-419!2scl"
+                                    width="100%"
+                                    height="300"
+                                    style={{border: 0}}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="strict-origin-when-cross-origin">
+                                </iframe>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </footer>
+            </>
+);
+}
+export default Footer;
