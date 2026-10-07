@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
 import Home from "./pages/Home";
+import Catalogo from "./pages/Catalogo";
 
 import PaginaEnConstruccion from "./pages/PaginaEnConstruccion";
 
@@ -22,8 +23,8 @@ function App() {
           {/* CATÁLOGO */}
 
           <Route
-            path="/catalogo"
-            element={<PaginaEnConstruccion titulo="Catálogo" />}
+              path="/catalogo"
+              element={<Catalogo />}
           />
 
           {/* BLOG */}
