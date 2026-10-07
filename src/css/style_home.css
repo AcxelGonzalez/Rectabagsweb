@@ -2,7 +2,7 @@
 HOJA DE ESTILOS: VISTA HOME (HERO SECTION)
 ========================================================================== */
 .hero-section {
-    background-image: url('../img/HOME/main.jpeg');
+    background-image: url('/img/HOME/main.jpeg');
     
     /* cover: Obliga a la imagen a escalar hasta cubrir todo el ancho y alto del contenedor */
     background-size: cover; /* Cubre todo. Cambio: Si pones 'contain', verás la foto chiquita y bordes blancos a los lados. */    
