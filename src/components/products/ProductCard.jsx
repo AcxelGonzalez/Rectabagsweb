@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ProductCard({
     producto
 }) {
@@ -44,6 +46,13 @@ function ProductCard({
                     {producto.descripcion}
 
                 </p>
+
+                <Link
+                    to={`/producto/${producto.id}`}
+                    className="btn btn-dark"
+                >
+                    Ver producto
+                </Link>
 
             </div>
 
